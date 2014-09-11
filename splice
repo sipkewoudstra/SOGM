@@ -1,0 +1,27 @@
+#! /bin/bash
+# Audio Splicer
+
+if [ $# -lt 2 ]; then
+echo "$0: Input, Delen"
+exit
+fi
+
+INPUT=$1
+DELEN=$2
+SAMPLES=$(soxi -s ${INPUT})
+KANALEN=$(soxi -c ${INPUT})
+let SAMPLESPERKANAAL=${SAMPLES}/${KANALEN}
+let SAMPLESPERDEEL=${SAMPLESPERKANAAL}/${DELEN}
+BEGIN=0
+i=0
+
+while [ ${i} -lt ${DELEN}  ]
+do
+echo "Processing " loop${i}
+sox ${INPUT} loop${i}.aiff trim ${BEGIN}s ${SAMPLESPERDEEL}s
+let i=${i}+1
+let BEGIN=${BEGIN}+${SAMPLESPERDEEL}
+done
+
+echo "DONE"
+
