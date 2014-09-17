@@ -16,9 +16,34 @@ fi
 case ${OUTPUTFORMAT} in
 mp3)
 for i in *.${INPUTFORMAT};
-  do name=`echo $i | cut -d'.' -f1` tr -d ' ';
-  echo $name;
-  ffmpeg -i $name.${INPUTFORMAT} -acodec libmp3lame Converted/$name.mp3;
+  do name=`echo $i | cut -d'.' -f1`;
+  echo $name
+  ffmpeg -i "$i" -ab 320k -acodec libmp3lame "Converted/$name.mp3";
 done
+;;
+ogg)
+for i in *.${INPUTFORMAT};
+do name=`echo $i | cut -d'.' -f1`;
+echo $name
+ffmpeg -i "$i" -ab 320k -acodec libvorbis "Converted/$name.ogg";
+done
+;;
+aac)
+for i in *.${INPUTFORMAT};
+do name=`echo $i | cut -d'.' -f1`;
+echo $name
+ffmpeg -i "$i" -ab 320k -acodec libfaac "Converted/$name.aac";
+done
+;;
+ac3)
+for i in *.${INPUTFORMAT};
+do name=`echo $i | cut -d'.' -f1`;
+echo $name
+ffmpeg -i "$i" -acodec ac3 "Converted/$name.mp3";
+done
+;;
+*)
+echo "Wrong Output Format, please choose mp3 ogg aac or ac3."
+;;
 esac
 
