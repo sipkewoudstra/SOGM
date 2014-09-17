@@ -1,0 +1,24 @@
+#! /bin/bash
+# Audio format converter
+
+if [ $# -lt 2 ]; then
+echo "$0: ["inputformat" "outputformat"]"
+exit
+fi
+
+INPUTFORMAT=$1
+OUTPUTFORMAT=$2
+
+if [ ! -d "$Converted" ]; then
+mkdir Converted
+fi
+
+case ${OUTPUTFORMAT} in
+mp3)
+for i in *.${INPUTFORMAT};
+  do name=`echo $i | cut -d'.' -f1` tr -d ' ';
+  echo $name;
+  ffmpeg -i $name.${INPUTFORMAT} -acodec libmp3lame Converted/$name.mp3;
+done
+esac
+
