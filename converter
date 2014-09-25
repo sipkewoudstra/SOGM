@@ -12,7 +12,8 @@ OUTPUTFORMAT=$2
 if [ ! -d "$Converted" ]; then
 mkdir Converted
 fi
-
+read -p "Are you sure? y/n: " USRINP
+if [ ${USRINP} == "y" ]; then
 case ${OUTPUTFORMAT} in
 mp3)
 for i in *.${INPUTFORMAT};
@@ -46,4 +47,4 @@ done
 echo "Wrong Output Format, please choose mp3 ogg aac or ac3."
 ;;
 esac
-
+fi
