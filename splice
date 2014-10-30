@@ -9,7 +9,7 @@ fi
 INPUT=$1
 DELEN=$2
 EXT=$3
-INPUTPAD=`dirname ${INPUT}`
+INPUTPAD=`dirname "$INPUT"`
 SAMPLES=$(soxi -s "${INPUT}")
 let SAMPLESPERDEEL=${SAMPLES}/${DELEN}
 BEGIN=0
@@ -18,7 +18,7 @@ i=0
 while [ ${i} -lt ${DELEN}  ]
 do
 echo "Processing " loop${i}
-sox "${INPUT}" loop${i}${EXT} trim ${BEGIN}s ${SAMPLESPERDEEL}s
+sox "${INPUT}" "${INPUTPAD}/loop${i}${EXT}" trim ${BEGIN}s ${SAMPLESPERDEEL}s
 let i=${i}+1
 let BEGIN=${BEGIN}+${SAMPLESPERDEEL}
 done
