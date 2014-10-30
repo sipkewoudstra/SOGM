@@ -15,4 +15,5 @@ int main(){
 	cin >> getal2;
 	int uitslag = optellen(getal1, getal2);
 	cout << uitslag << endl;
+	return 0;
 }

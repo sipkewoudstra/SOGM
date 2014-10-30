@@ -1,0 +1,21 @@
+all: optellen printarray maxarray maxintarray rotleftarray
+
+	optellen: optellen.cpp
+	g++ -c optellen.cpp
+	g++ -o optellen optellen.o
+
+	printarray: printarray.cpp
+	g++ -c printarray.cpp
+	g++ -o printarray printarray.o
+
+	maxarray: maxarray.cpp
+	g++ -c maxarray.cpp
+	g++ -o maxarray maxarray.o
+
+	maxintarray: maxintarray.cpp
+	g++ -c maxintarray.cpp
+	g++ -o maxintarray maxintarray.o
+
+	rotleftarray: rotleftarray.cpp
+	g++ -c rotleftarray.cpp
+	g++ -o rotleftarray rotleftarray.o
