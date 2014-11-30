@@ -63,6 +63,41 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    double LFGainValue;
+    double LFShapeValue;
+    double LFFreqValue;
+    double LFQValue;
+    double LMFGainValue;
+    double LMFShapeValue;
+    double LMFFreqValue;
+    double LMFQValue;
+    double HMFGainValue;
+    double HMFShapeValue;
+    double HMFFreqValue;
+    double HMFQValue;
+    double HFGainValue;
+    double HFShapeValue;
+    double HFFreqValue;
+    double HFQValue;
+    double HPFreqValue;
+    double HPQValue;
+    double LPFreqValue;
+    double LPQValue;
+    
+    bool LFPosBool;
+    bool LFPNBool;
+    bool LFEnableBool;
+    bool LMFPosBool;
+    bool LMFPNBool;
+    bool LMFEnableBool;
+    bool HMFPosBool;
+    bool HMFPNBool;
+    bool HMFEnableBool;
+    bool HFPosBool;
+    bool HFPNBool;
+    bool HFEnableBool;
+    bool HPEnableBool;
+    bool LPEnableBool;
     //[/UserVariables]
 
     //==============================================================================

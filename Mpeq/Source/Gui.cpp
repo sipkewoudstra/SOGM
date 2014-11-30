@@ -285,6 +285,49 @@ Gui::Gui ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    LFPos->setClickingTogglesState(true);
+    LFPN->setClickingTogglesState(true);
+    LFEnable->setClickingTogglesState(true);
+    LMFPos->setClickingTogglesState(true);
+    LMFPN->setClickingTogglesState(true);
+    LMFEnable->setClickingTogglesState(true);
+    HMFPos->setClickingTogglesState(true);
+    HMFPN->setClickingTogglesState(true);
+    HMFEnable->setClickingTogglesState(true);
+    HFPos->setClickingTogglesState(true);
+    HFPN->setClickingTogglesState(true);
+    HFEnable->setClickingTogglesState(true);
+    HPEnable->setClickingTogglesState(true);
+    LPEnable->setClickingTogglesState(true);
+    
+    LFEnable->setToggleState(false, sendNotification);
+    LFEnable->setState(LFEnable->buttonDown);
+    LMFEnable->setToggleState(false, sendNotification);
+    LMFEnable->setState(LMFEnable->buttonDown);
+    HMFEnable->setToggleState(false, sendNotification);
+    HMFEnable->setState(HMFEnable->buttonDown);
+    HFEnable->setToggleState(false, sendNotification);
+    HFEnable->setState(HFEnable->buttonDown);
+    HPEnable->setToggleState(false, sendNotification);
+    HPEnable->setState(HPEnable->buttonDown);
+    LPEnable->setToggleState(false, sendNotification);
+    LPEnable->setState(LPEnable->buttonDown);
+    
+    this->LFPosBool = LFPos->getToggleState();
+    this->LFPNBool = LFPN->getToggleState();
+    this->LFEnableBool = LFEnable->getToggleState();
+    this->LMFPosBool = LFPos->getToggleState();
+    this->LMFPNBool = LMFPN->getToggleState();
+    this->LMFEnableBool = LMFEnable->getToggleState();
+    this->HMFPosBool = HMFPos->getToggleState();
+    this->HMFPNBool = HMFPN->getToggleState();
+    this->HMFEnableBool = HMFEnable->getToggleState();
+    this->HFPosBool = HFPos->getToggleState();
+    this->HFPNBool = HFPN->getToggleState();
+    this->HFEnableBool = HFEnable->getToggleState();
+    this->HPEnableBool = HPEnable->getToggleState();
+    this->LPEnableBool = LPEnable->getToggleState();
+    
     //[/Constructor]
 }
 
@@ -393,101 +436,121 @@ void Gui::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == LFGain)
     {
         //[UserSliderCode_LFGain] -- add your slider handling code here..
+        this->LFGainValue = LFGain->getValue();
         //[/UserSliderCode_LFGain]
     }
     else if (sliderThatWasMoved == LFShape)
     {
         //[UserSliderCode_LFShape] -- add your slider handling code here..
+        this->LFShapeValue = LFShape->getValue();
         //[/UserSliderCode_LFShape]
     }
     else if (sliderThatWasMoved == LFFreq)
     {
         //[UserSliderCode_LFFreq] -- add your slider handling code here..
+        this->LFFreqValue = LFFreq->getValue();
         //[/UserSliderCode_LFFreq]
     }
     else if (sliderThatWasMoved == LFQ)
     {
         //[UserSliderCode_LFQ] -- add your slider handling code here..
+        this->LFQValue = LFQ->getValue();
         //[/UserSliderCode_LFQ]
     }
     else if (sliderThatWasMoved == LMFGain)
     {
         //[UserSliderCode_LMFGain] -- add your slider handling code here..
+        this->LMFGainValue = LMFGain->getValue();
         //[/UserSliderCode_LMFGain]
     }
     else if (sliderThatWasMoved == LMFShape)
     {
         //[UserSliderCode_LMFShape] -- add your slider handling code here..
+        this->LMFShapeValue = LMFShape->getValue();
         //[/UserSliderCode_LMFShape]
     }
     else if (sliderThatWasMoved == LMFFreq)
     {
         //[UserSliderCode_LMFFreq] -- add your slider handling code here..
+        this->LMFFreqValue = LMFFreq->getValue();
         //[/UserSliderCode_LMFFreq]
     }
     else if (sliderThatWasMoved == LMFQ)
     {
         //[UserSliderCode_LMFQ] -- add your slider handling code here..
+        this->LMFQValue = LMFQ->getValue();
         //[/UserSliderCode_LMFQ]
     }
     else if (sliderThatWasMoved == HMFGain)
     {
         //[UserSliderCode_HMFGain] -- add your slider handling code here..
+        this->HMFGainValue = HMFGain->getValue();
         //[/UserSliderCode_HMFGain]
     }
     else if (sliderThatWasMoved == HMFShape)
     {
         //[UserSliderCode_HMFShape] -- add your slider handling code here..
+        this->HMFShapeValue = HMFShape->getValue();
         //[/UserSliderCode_HMFShape]
     }
     else if (sliderThatWasMoved == HMFFreq)
     {
         //[UserSliderCode_HMFFreq] -- add your slider handling code here..
+        this->HMFFreqValue = HMFFreq->getValue();
         //[/UserSliderCode_HMFFreq]
     }
     else if (sliderThatWasMoved == HMFQ)
     {
         //[UserSliderCode_HMFQ] -- add your slider handling code here..
+        this->HMFQValue = HMFQ->getValue();
         //[/UserSliderCode_HMFQ]
     }
     else if (sliderThatWasMoved == HFGain)
     {
         //[UserSliderCode_HFGain] -- add your slider handling code here..
+        this->HFGainValue = HFGain->getValue();
         //[/UserSliderCode_HFGain]
     }
     else if (sliderThatWasMoved == HFShape)
     {
         //[UserSliderCode_HFShape] -- add your slider handling code here..
+        this->HFShapeValue = HFShape->getValue();
         //[/UserSliderCode_HFShape]
     }
     else if (sliderThatWasMoved == HFFreq)
     {
         //[UserSliderCode_HFFreq] -- add your slider handling code here..
+        this->HFFreqValue = HFFreq->getValue();
         //[/UserSliderCode_HFFreq]
     }
     else if (sliderThatWasMoved == HFQ)
     {
         //[UserSliderCode_HFQ] -- add your slider handling code here..
+        this->HFQValue = HFQ->getValue();
         //[/UserSliderCode_HFQ]
     }
     else if (sliderThatWasMoved == HPFreq)
     {
         //[UserSliderCode_HPFreq] -- add your slider handling code here..
+        this->HPFreqValue = HPFreq->getValue();
         //[/UserSliderCode_HPFreq]
     }
     else if (sliderThatWasMoved == HPQ)
     {
         //[UserSliderCode_HPQ] -- add your slider handling code here..
+        this->HPQValue = HPQ->getValue();
         //[/UserSliderCode_HPQ]
     }
     else if (sliderThatWasMoved == LPFreq)
     {
         //[UserSliderCode_LPFreq] -- add your slider handling code here..
+        this->LPFreqValue = LPFreq->getValue();
         //[/UserSliderCode_LPFreq]
     }
     else if (sliderThatWasMoved == LPQ)
     {
         //[UserSliderCode_LPQ] -- add your slider handling code here..
+        this->LPQValue = LPQ->getValue();
         //[/UserSliderCode_LPQ]
     }
 
@@ -503,71 +566,85 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == LFPos)
     {
         //[UserButtonCode_LFPos] -- add your button handler code here..
+        this->LFPosBool = LFPos->getToggleState();
         //[/UserButtonCode_LFPos]
     }
     else if (buttonThatWasClicked == LFPN)
     {
         //[UserButtonCode_LFPN] -- add your button handler code here..
+        this->LFPNBool = LFPN->getToggleState();
         //[/UserButtonCode_LFPN]
     }
     else if (buttonThatWasClicked == LFEnable)
     {
         //[UserButtonCode_LFEnable] -- add your button handler code here..
+        this->LFEnableBool = LFEnable->getToggleState();
         //[/UserButtonCode_LFEnable]
     }
     else if (buttonThatWasClicked == LMFPos)
     {
         //[UserButtonCode_LMFPos] -- add your button handler code here..
+        this->LMFPosBool = LMFPos->getToggleState();
         //[/UserButtonCode_LMFPos]
     }
     else if (buttonThatWasClicked == LMFPN)
     {
         //[UserButtonCode_LMFPN] -- add your button handler code here..
+        this->LMFPNBool = LMFPN->getToggleState();
         //[/UserButtonCode_LMFPN]
     }
     else if (buttonThatWasClicked == LMFEnable)
     {
         //[UserButtonCode_LMFEnable] -- add your button handler code here..
+        this->LMFEnableBool = LMFEnable->getToggleState();
         //[/UserButtonCode_LMFEnable]
     }
     else if (buttonThatWasClicked == HMFPos)
     {
         //[UserButtonCode_HMFPos] -- add your button handler code here..
+        this->HMFPosBool = HMFPos->getToggleState();
         //[/UserButtonCode_HMFPos]
     }
     else if (buttonThatWasClicked == HMFPN)
     {
         //[UserButtonCode_HMFPN] -- add your button handler code here..
+        this->HMFPNBool = HMFPN->getToggleState();
         //[/UserButtonCode_HMFPN]
     }
     else if (buttonThatWasClicked == HMFEnable)
     {
         //[UserButtonCode_HMFEnable] -- add your button handler code here..
+        this->HMFEnableBool = HMFEnable->getToggleState();
         //[/UserButtonCode_HMFEnable]
     }
     else if (buttonThatWasClicked == HFPos)
     {
         //[UserButtonCode_HFPos] -- add your button handler code here..
+        this->HFPosBool = HFPos->getToggleState();
         //[/UserButtonCode_HFPos]
     }
     else if (buttonThatWasClicked == HFPN)
     {
         //[UserButtonCode_HFPN] -- add your button handler code here..
+        this->HFPNBool = HFPN->getToggleState();
         //[/UserButtonCode_HFPN]
     }
     else if (buttonThatWasClicked == HFEnable)
     {
         //[UserButtonCode_HFEnable] -- add your button handler code here..
+        this->HFEnableBool = HFEnable->getToggleState();
         //[/UserButtonCode_HFEnable]
     }
     else if (buttonThatWasClicked == HPEnable)
     {
         //[UserButtonCode_HPEnable] -- add your button handler code here..
+        this->HPEnableBool = HPEnable->getToggleState();
         //[/UserButtonCode_HPEnable]
     }
     else if (buttonThatWasClicked == LPEnable)
     {
         //[UserButtonCode_LPEnable] -- add your button handler code here..
+        this->LPEnableBool = LPEnable->getToggleState();
         //[/UserButtonCode_LPEnable]
     }
 
