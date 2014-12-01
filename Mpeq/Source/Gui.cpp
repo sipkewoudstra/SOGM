@@ -299,8 +299,8 @@ Gui::Gui ()
     HFEnable->setClickingTogglesState(true);
     HPEnable->setClickingTogglesState(true);
     LPEnable->setClickingTogglesState(true);
-    
-    
+
+
     this->LFPosBool = LFPos->getToggleState();
     this->LFPNBool = LFPN->getToggleState();
     this->LFEnableBool = LFEnable->getToggleState();
@@ -315,20 +315,34 @@ Gui::Gui ()
     this->HFEnableBool = HFEnable->getToggleState();
     this->HPEnableBool = HPEnable->getToggleState();
     this->LPEnableBool = LPEnable->getToggleState();
-    
+
     this->LPFreqValue = 22000;
     LPFreq->setValue(22000);
     this->LPQValue = 0.5;
-    
+
     this->HPFreqValue = 20;
     this->HPQValue = 0.5;
-    
+
     this->LFFreqValue = 20;
     this->LFQValue = 0.5;
     this->LFShapeValue = 0;
     this->LFGainValue = 0;
     
+    this->LMFFreqValue = 90;
+    this->LMFQValue = 0.5;
+    this->LMFShapeValue = 0;
+    this->LMFGainValue = 0;
+
+    this->HMFFreqValue = 400;
+    this->HMFQValue = 0.5;
+    this->HMFShapeValue = 0;
+    this->HMFGainValue = 0;
     
+    this->HFFreqValue = 1500;
+    this->HFQValue = 0.5;
+    this->HFShapeValue = 0;
+    this->HFGainValue = 0;
+
     //[/Constructor]
 }
 
@@ -383,7 +397,19 @@ void Gui::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colours::white);
+    g.fillAll (Colour (0xffdbd446));
+
+    g.setColour (Colour (0x964d4c4d));
+    g.fillRoundedRectangle (172.0f, 4.0f, 8.0f, 132.0f, 4.500f);
+
+    g.setColour (Colour (0x964d4c4d));
+    g.fillRoundedRectangle (356.0f, 4.0f, 8.0f, 132.0f, 4.500f);
+
+    g.setColour (Colour (0x964d4c4d));
+    g.fillRoundedRectangle (540.0f, 4.0f, 8.0f, 132.0f, 4.500f);
+
+    g.setColour (Colour (0x964d4c4d));
+    g.fillRoundedRectangle (732.0f, 4.0f, 8.0f, static_cast<float> (proportionOfHeight (0.1725f)), 4.500f);
 
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
@@ -392,26 +418,26 @@ void Gui::paint (Graphics& g)
 void Gui::resized()
 {
     LFGain->setBounds (46 - (75 / 2), 46 - (75 / 2), 75, 75);
-    LFShape->setBounds (46 - (50 / 2), 46 - (50 / 2), 50, 50);
+    LFShape->setBounds ((46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LFPos->setBounds (16, 88, 24, 40);
     LFFreq->setBounds (126 - (75 / 2), 110 - (75 / 2), 75, 75);
-    LFQ->setBounds (126 - (50 / 2), 110 - (50 / 2), 50, 50);
+    LFQ->setBounds ((126 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LMFGain->setBounds (230 - (75 / 2), 46 - (75 / 2), 75, 75);
-    LMFShape->setBounds (230 - (50 / 2), 46 - (50 / 2), 50, 50);
+    LMFShape->setBounds ((230 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LMFFreq->setBounds (310 - (75 / 2), 110 - (75 / 2), 75, 75);
-    LMFQ->setBounds (310 - (50 / 2), 110 - (50 / 2), 50, 50);
+    LMFQ->setBounds ((310 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HMFGain->setBounds (414 - (75 / 2), 46 - (75 / 2), 75, 75);
-    HMFShape->setBounds (414 - (50 / 2), 46 - (50 / 2), 50, 50);
+    HMFShape->setBounds ((414 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HMFFreq->setBounds (494 - (75 / 2), 110 - (75 / 2), 75, 75);
-    HMFQ->setBounds (494 - (50 / 2), 110 - (50 / 2), 50, 50);
+    HMFQ->setBounds ((494 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HFGain->setBounds (598 - (75 / 2), 46 - (75 / 2), 75, 75);
-    HFShape->setBounds (598 - (50 / 2), 46 - (50 / 2), 50, 50);
+    HFShape->setBounds ((598 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HFFreq->setBounds (678 - (75 / 2), 110 - (75 / 2), 75, 75);
-    HFQ->setBounds (678 - (50 / 2), 110 - (50 / 2), 50, 50);
+    HFQ->setBounds ((678 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HPFreq->setBounds (790 - (75 / 2), 46 - (75 / 2), 75, 75);
-    HPQ->setBounds (790 - (50 / 2), 46 - (50 / 2), 50, 50);
+    HPQ->setBounds ((790 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LPFreq->setBounds (870 - (75 / 2), 46 - (75 / 2), 75, 75);
-    LPQ->setBounds (870 - (50 / 2), 46 - (50 / 2), 50, 50);
+    LPQ->setBounds ((870 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LFPN->setBounds (48, 88, 24, 40);
     LFEnable->setBounds (112, 16, 24, 40);
     LMFPos->setBounds (200, 88, 24, 40);
@@ -763,7 +789,7 @@ bool Gui::get_LPEnableBool(){
 void Gui::set_LFGainValue(double input){
     this->LFGainValue = input;
     LFGain->setValue(input);
-    
+
 }
 void Gui::set_LFShapeValue(double input){
     this->LFShapeValue = input;
@@ -914,16 +940,24 @@ BEGIN_JUCER_METADATA
                  constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
                  snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="1000"
                  initialHeight="150">
-  <BACKGROUND backgroundColour="ffffffff"/>
+  <BACKGROUND backgroundColour="ffdbd446">
+    <ROUNDRECT pos="172 4 8 132" cornerSize="4.5" fill="solid: 964d4c4d" hasStroke="0"/>
+    <ROUNDRECT pos="356 4 8 132" cornerSize="4.5" fill="solid: 964d4c4d" hasStroke="0"/>
+    <ROUNDRECT pos="540 4 8 132" cornerSize="4.5" fill="solid: 964d4c4d" hasStroke="0"/>
+    <ROUNDRECT pos="732 4 8 17.255%" cornerSize="4.5" fill="solid: 964d4c4d"
+               hasStroke="0"/>
+  </BACKGROUND>
   <SLIDER name="LFGain" id="2da3ccd11a0571ba" memberName="LFGain" virtualName=""
           explicitFocusOrder="0" pos="45.5c 45.5c 75 75" min="0" max="10"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LFShape" id="c3b66bdd39bb9695" memberName="LFShape" virtualName=""
-          explicitFocusOrder="0" pos="45c 45c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0"
-          max="1" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="2da3ccd11a0571ba" posRelativeY="2da3ccd11a0571ba"
+          posRelativeW="2da3ccd11a0571ba" posRelativeH="2da3ccd11a0571ba"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0" max="1" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <IMAGEBUTTON name="LFPos" id="f89c37fbfe8b4695" memberName="LFPos" virtualName=""
                explicitFocusOrder="0" pos="16 88 24 40" buttonText="LFPos" connectedEdges="0"
                needsCallback="1" radioGroupId="0" keepProportions="1" resourceNormal="switcherUp_png"
@@ -935,82 +969,100 @@ BEGIN_JUCER_METADATA
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LFQ" id="99c50d5da624389f" memberName="LFQ" virtualName=""
-          explicitFocusOrder="0" pos="125c 109c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0.5"
-          max="3" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="8d1838f73a6a2fa4" posRelativeY="8d1838f73a6a2fa4"
+          posRelativeW="8d1838f73a6a2fa4" posRelativeH="8d1838f73a6a2fa4"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0.5" max="3" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LMFGain" id="e36c61139074928d" memberName="LMFGain" virtualName=""
           explicitFocusOrder="0" pos="229.5c 45.5c 75 75" min="0" max="10"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LMFShape" id="44702fe8e458ac09" memberName="LMFShape" virtualName=""
-          explicitFocusOrder="0" pos="229c 45c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0"
-          max="1" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="e36c61139074928d" posRelativeY="e36c61139074928d"
+          posRelativeW="e36c61139074928d" posRelativeH="e36c61139074928d"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0" max="1" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LMFFreq" id="51d0c4677cd4bbab" memberName="LMFFreq" virtualName=""
           explicitFocusOrder="0" pos="309.5c 109.5c 75 75" min="90" max="1400"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LMFQ" id="81c2b9e0744f63ca" memberName="LMFQ" virtualName=""
-          explicitFocusOrder="0" pos="309c 109c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0.5"
-          max="3" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="51d0c4677cd4bbab" posRelativeY="51d0c4677cd4bbab"
+          posRelativeW="51d0c4677cd4bbab" posRelativeH="51d0c4677cd4bbab"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0.5" max="3" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HMFGain" id="e797ce9b4e623ce9" memberName="HMFGain" virtualName=""
           explicitFocusOrder="0" pos="413.5c 45.5c 75 75" min="0" max="10"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HMFShape" id="5136b6bc052cdb56" memberName="HMFShape" virtualName=""
-          explicitFocusOrder="0" pos="413c 45c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0"
-          max="1" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="e797ce9b4e623ce9" posRelativeY="e797ce9b4e623ce9"
+          posRelativeW="e797ce9b4e623ce9" posRelativeH="e797ce9b4e623ce9"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0" max="1" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HMFFreq" id="1d5de2929924bd4b" memberName="HMFFreq" virtualName=""
           explicitFocusOrder="0" pos="493.5c 109.5c 75 75" min="400" max="6000"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HMFQ" id="c3920e7a958555f9" memberName="HMFQ" virtualName=""
-          explicitFocusOrder="0" pos="493c 109c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0.5"
-          max="3" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="1d5de2929924bd4b" posRelativeY="1d5de2929924bd4b"
+          posRelativeW="1d5de2929924bd4b" posRelativeH="1d5de2929924bd4b"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0.5" max="3" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HFGain" id="5a64293800a187be" memberName="HFGain" virtualName=""
           explicitFocusOrder="0" pos="597.5c 45.5c 75 75" min="0" max="10"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HFShape" id="7b260dd48ed98dcd" memberName="HFShape" virtualName=""
-          explicitFocusOrder="0" pos="597c 45c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0"
-          max="1" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="5a64293800a187be" posRelativeY="5a64293800a187be"
+          posRelativeW="5a64293800a187be" posRelativeH="5a64293800a187be"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0" max="1" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HFFreq" id="2f090c23a99474c7" memberName="HFFreq" virtualName=""
           explicitFocusOrder="0" pos="677.5c 109.5c 75 75" min="1500" max="22000"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HFQ" id="30d8aa2b0ed8c341" memberName="HFQ" virtualName=""
-          explicitFocusOrder="0" pos="677c 109c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0.5"
-          max="3" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="2f090c23a99474c7" posRelativeY="2f090c23a99474c7"
+          posRelativeW="2f090c23a99474c7" posRelativeH="2f090c23a99474c7"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0.5" max="3" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HPFreq" id="a27c250061a41ca7" memberName="HPFreq" virtualName=""
           explicitFocusOrder="0" pos="789.5c 45.5c 75 75" min="20" max="340"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="HPQ" id="b233d48e5d6b717c" memberName="HPQ" virtualName=""
-          explicitFocusOrder="0" pos="789c 45c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0.5"
-          max="3" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="a27c250061a41ca7" posRelativeY="a27c250061a41ca7"
+          posRelativeW="a27c250061a41ca7" posRelativeH="a27c250061a41ca7"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0.5" max="3" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LPFreq" id="eb953b056784384c" memberName="LPFreq" virtualName=""
           explicitFocusOrder="0" pos="869.5c 45.5c 75 75" min="1500" max="22000"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <SLIDER name="LPQ" id="bb46a6252824b9d2" memberName="LPQ" virtualName=""
-          explicitFocusOrder="0" pos="869c 45c 50 50" thumbcol="ffffbbbb"
-          rotarysliderfill="7f1100ff" textboxhighlight="40ee1111" min="0.5"
-          max="3" int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
+          explicitFocusOrder="0" pos="49.333%c 49.333%c 66.667% 66.667%"
+          posRelativeX="eb953b056784384c" posRelativeY="eb953b056784384c"
+          posRelativeW="eb953b056784384c" posRelativeH="eb953b056784384c"
+          thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
+          min="0.5" max="3" int="0" style="Rotary" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
   <IMAGEBUTTON name="LFPN" id="1605adfc1ac47edd" memberName="LFPN" virtualName=""
                explicitFocusOrder="0" pos="48 88 24 40" buttonText="LFPN" connectedEdges="0"
                needsCallback="1" radioGroupId="0" keepProportions="1" resourceNormal="switcherUp_png"

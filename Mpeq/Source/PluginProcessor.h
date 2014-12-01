@@ -68,9 +68,53 @@ public:
     float LowPassFilter(float buffer, int channel);
     float HighPassFilter(float buffer, int channel);
     float LFPeakFilter(float buffer, int channel);
+    float LFShelfFilter(float buffer, int channel);
+    float LMFPeakFilter(float buffer, int channel);
+    float HMFPeakFilter(float buffer, int channel);
+    float HFPeakFilter(float buffer, int channel);
     //==============================================================================
     
     Gui custom;
+    
+    enum Parameters
+    {
+        LFGain = 0,
+        LFShape,
+        LFFreq,
+        LFQ,
+        LFPos,
+        LFPN,
+        LFEnable,
+        LMFGain,
+        LMFShape,
+        LMFFreq,
+        LMFQ,
+        LMFPos,
+        LMFPN,
+        LMFEnable,
+        HMFGain,
+        HMFShape,
+        HMFFreq,
+        HMFQ,
+        HMFPos,
+        HMFPN,
+        HMFEnable,
+        HFGain,
+        HFShape,
+        HFFreq,
+        HFQ,
+        HFPos,
+        HFPN,
+        HFEnable,
+        HPFreq,
+        HPQ,
+        HPEnable,
+        LPFreq,
+        LPQ,
+        LPEnable,
+        
+        totalNumParams
+    };
 private:
     float xLP[2][3];
     float yLP[2][3];
@@ -80,6 +124,20 @@ private:
     
     float xLFPeak[2][3];
     float yLFPeak[2][3];
+    float xLFShelf[2][3];
+    float yLFShelf[2][3];
+    
+    float xLMFPeak[2][3];
+    float yLMFPeak[2][3];
+    
+    float xHMFPeak[2][3];
+    float yHMFPeak[2][3];
+    
+    float xHFPeak[2][3];
+    float yHFPeak[2][3];
+    
+    float parallelChain1;
+    float parallelChain2;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };

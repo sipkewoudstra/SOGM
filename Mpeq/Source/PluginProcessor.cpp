@@ -12,45 +12,6 @@
 #include "PluginEditor.h"
 #include <math.h>
 
-enum Parameters
-{
-    LFGain = 0,
-    LFShape,
-    LFFreq,
-    LFQ,
-    LFPos,
-    LFPN,
-    LFEnable,
-    LMFGain,
-    LMFShape,
-    LMFFreq,
-    LMFQ,
-    LMFPos,
-    LMFPN,
-    LMFEnable,
-    HMFGain,
-    HMFShape,
-    HMFFreq,
-    HMFQ,
-    HMFPos,
-    HMFPN,
-    HMFEnable,
-    HFGain,
-    HFShape,
-    HFFreq,
-    HFQ,
-    HFPos,
-    HFPN,
-    HFEnable,
-    HPFreq,
-    HPQ,
-    HPEnable,
-    LPFreq,
-    LPQ,
-    LPEnable,
-    
-    totalNumParams
-};
 
 //==============================================================================
 NewProjectAudioProcessor::NewProjectAudioProcessor()
@@ -61,6 +22,20 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
             yLP[i][j] = 0;
             xHP[i][j] = 0;
             yHP[i][j] = 0;
+            
+            xLFPeak[i][j] = 0;
+            yLFPeak[i][j] = 0;
+            xLFShelf[i][j] = 0;
+            yLFShelf[i][j] = 0;
+            
+            xLMFPeak[i][j] = 0;
+            yLMFPeak[i][j] = 0;
+            
+            xHMFPeak[i][j] = 0;
+            yHMFPeak[i][j] = 0;
+            
+            xHFPeak[i][j] = 0;
+            yHFPeak[i][j] = 0;
         }
     }
 }
@@ -204,6 +179,7 @@ const String NewProjectAudioProcessor::getParameterName (int index)
         case LPEnable:      return  "LP:Enable";
         default:            break;
     }
+    return String::empty;
 }
 
 const String NewProjectAudioProcessor::getParameterText (int index)
@@ -246,6 +222,7 @@ const String NewProjectAudioProcessor::getParameterText (int index)
         case LPEnable:      return  "LP:Enable";
         default:            break;
     }
+    return String::empty;
 }
 
 const String NewProjectAudioProcessor::getInputChannelName (int channelIndex) const
@@ -403,14 +380,14 @@ float NewProjectAudioProcessor::LFPeakFilter(float buffer, int channel){
     double a2;
     double b1;
     double b2;
-    //if (custom.get_LFPosBool() == true) {
+    if (custom.get_LFPosBool() == false) {
         norm = 1 / (1 + 1/Q * K + K * K);
         a0 = (1 + V/Q * K + K * K) * norm;
         a1 = 2 * (K * K -1) * norm;
         a2 = (1 - V/Q * K + K * K) * norm;
         b1 = a1;
         b2 = (1 - 1/Q * K + K * K) * norm;
-    /*} else {
+    } else {
         norm = 1 / (1 + V/Q * K + K * K);
         a0 = (1 + 1/Q * K + K * K) * norm;
         a1 = 2 * (K * K - 1) * norm;
@@ -418,7 +395,7 @@ float NewProjectAudioProcessor::LFPeakFilter(float buffer, int channel){
         b1 = a1;
         b2 = (1 - V/Q * K + K * K) * norm;
     }
-    */
+
     
     xLFPeak[channel][2] = xLFPeak[channel][1];
     xLFPeak[channel][1] = xLFPeak[channel][0];
@@ -432,6 +409,165 @@ float NewProjectAudioProcessor::LFPeakFilter(float buffer, int channel){
     
     return buffer;
 }
+
+float NewProjectAudioProcessor::LFShelfFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_LFFreqValue();
+    double Q = custom.get_LFQValue();
+    double V = pow(10, fabs(custom.get_LFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_LFPosBool() == false) {
+        norm = 1 / (1 + 1/Q * K + K * K);
+        a0 = (1 + V/Q * K + K * K) * norm;
+        a1 = 2 * (K * K -1) * norm;
+        a2 = (1 - V/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - 1/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (1 + V/Q * K + K * K);
+        a0 = (1 + 1/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - 1/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - V/Q * K + K * K) * norm;
+    }
+}
+
+float NewProjectAudioProcessor::LMFPeakFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_LMFFreqValue();
+    double Q = custom.get_LMFQValue();
+    double V = pow(10, fabs(custom.get_LMFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_LMFPosBool() == false) {
+        norm = 1 / (1 + 1/Q * K + K * K);
+        a0 = (1 + V/Q * K + K * K) * norm;
+        a1 = 2 * (K * K -1) * norm;
+        a2 = (1 - V/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - 1/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (1 + V/Q * K + K * K);
+        a0 = (1 + 1/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - 1/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - V/Q * K + K * K) * norm;
+    }
+    
+    
+    xLMFPeak[channel][2] = xLMFPeak[channel][1];
+    xLMFPeak[channel][1] = xLMFPeak[channel][0];
+    xLMFPeak[channel][0] = buffer;
+    yLMFPeak[channel][2] = yLMFPeak[channel][1];
+    yLMFPeak[channel][1] = yLMFPeak[channel][0];
+    
+    buffer = (a0*xLMFPeak[channel][0] + a1*xLMFPeak[channel][1] + a2*xLMFPeak[channel][2] - b1*yLMFPeak[channel][1] - b2*yLMFPeak[channel][2]);
+    
+    yLMFPeak[channel][0] = buffer;
+    
+    return buffer;
+}
+
+float NewProjectAudioProcessor::HMFPeakFilter(float buffer, int channel){
+    
+    double Fs = getSampleRate();
+    double f0 = custom.get_HMFFreqValue();
+    double Q = custom.get_HMFQValue();
+    double V = pow(10, fabs(custom.get_HMFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_HMFPosBool() == false) {
+        norm = 1 / (1 + 1/Q * K + K * K);
+        a0 = (1 + V/Q * K + K * K) * norm;
+        a1 = 2 * (K * K -1) * norm;
+        a2 = (1 - V/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - 1/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (1 + V/Q * K + K * K);
+        a0 = (1 + 1/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - 1/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - V/Q * K + K * K) * norm;
+    }
+    
+    
+    xHMFPeak[channel][2] = xHMFPeak[channel][1];
+    xHMFPeak[channel][1] = xHMFPeak[channel][0];
+    xHMFPeak[channel][0] = buffer;
+    yHMFPeak[channel][2] = yHMFPeak[channel][1];
+    yHMFPeak[channel][1] = yHMFPeak[channel][0];
+    
+    buffer = (a0*xHMFPeak[channel][0] + a1*xHMFPeak[channel][1] + a2*xHMFPeak[channel][2] - b1*yHMFPeak[channel][1] - b2*yHMFPeak[channel][2]);
+    
+    yHMFPeak[channel][0] = buffer;
+    
+    return buffer;
+}
+
+float NewProjectAudioProcessor::HFPeakFilter(float buffer, int channel){
+    
+    double Fs = getSampleRate();
+    double f0 = custom.get_HFFreqValue();
+    double Q = custom.get_HFQValue();
+    double V = pow(10, fabs(custom.get_HFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_HFPosBool() == false) {
+        norm = 1 / (1 + 1/Q * K + K * K);
+        a0 = (1 + V/Q * K + K * K) * norm;
+        a1 = 2 * (K * K -1) * norm;
+        a2 = (1 - V/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - 1/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (1 + V/Q * K + K * K);
+        a0 = (1 + 1/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - 1/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - V/Q * K + K * K) * norm;
+    }
+    
+    
+    xHFPeak[channel][2] = xHFPeak[channel][1];
+    xHFPeak[channel][1] = xHFPeak[channel][0];
+    xHFPeak[channel][0] = buffer;
+    yHFPeak[channel][2] = yHFPeak[channel][1];
+    yHFPeak[channel][1] = yHFPeak[channel][0];
+    
+    buffer = (a0*xHFPeak[channel][0] + a1*xHFPeak[channel][1] + a2*xHFPeak[channel][2] - b1*yHFPeak[channel][1] - b2*yHFPeak[channel][2]);
+    
+    yHFPeak[channel][0] = buffer;
+    
+    return buffer;
+}
+
+
 
 
 void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
@@ -455,23 +591,47 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
         // ..do something to the data...
         
         //Highpass Filter
-        if (custom.get_HPEnableBool() == true) {
-            for (int i = 0; i < numSamples; i++) {
+        for (int i = 0; i < numSamples; i++) {
+            if (custom.get_HPEnableBool() == true) {
                 channelData[i] = HighPassFilter(channelData[i], channel);
             }
         }
         //Lowpass Filter
-        if (custom.get_LPEnableBool() == true) {
-            for (int i = 0; i < numSamples; i++) {
+        for (int i = 0; i < numSamples; i++) {
+            if (custom.get_LPEnableBool() == true) {
                 channelData[i] = LowPassFilter(channelData[i], channel);
             }
         }
         
-        //LFPeakFilter
-        if (custom.get_LFEnableBool() == true) {
-            for (int i = 0; i < numSamples; i++){
-                channelData[i] = LFPeakFilter(channelData[i], channel);
+        for (int i = 0; i < numSamples; i++){
+            //LFPeakFilter
+            if (custom.get_LFEnableBool() == true) {
+                parallelChain1 = (LFPeakFilter(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+0;
+            } else {
+                parallelChain1 = channelData[i];
             }
+            //LMFPeakFilter
+            if (custom.get_LMFEnableBool() == true) {
+                parallelChain2 = LMFPeakFilter(channelData[i], channel);
+            } else {
+                parallelChain2 = channelData[i];
+            }
+            
+            //HMFPeakFilter
+            if (custom.get_HMFEnableBool() == true) {
+                parallelChain1 = HMFPeakFilter(parallelChain1, channel);
+            } else {
+                parallelChain1 = parallelChain1;
+            }
+            
+            //HFPeakFilter
+            if (custom.get_HFEnableBool() == true) {
+                parallelChain2 = HFPeakFilter(parallelChain2, channel);
+            } else {
+                parallelChain1 = parallelChain1;
+            }
+            
+            channelData[i] = parallelChain1+parallelChain2*0.5;
         }
         
         //protect your fucking ears!
@@ -528,12 +688,40 @@ void NewProjectAudioProcessor::getStateInformation (MemoryBlock& destData)
     xml.setAttribute("LMFPos", custom.get_LMFPosBool());
     xml.setAttribute("LMFPN", custom.get_LMFPNBool());
     xml.setAttribute("LMFEnable", custom.get_LMFEnableBool());
+    xml.setAttribute("HMFPos", custom.get_HMFPosBool());
+    xml.setAttribute("HMFPN", custom.get_HMFPNBool());
+    xml.setAttribute("HMFEnable", custom.get_HMFEnableBool());
+    xml.setAttribute("HFPos", custom.get_HFPosBool());
+    xml.setAttribute("HFPN", custom.get_HFPNBool());
+    xml.setAttribute("HFEnable", custom.get_HFEnableBool());
+    xml.setAttribute("HPEnable", custom.get_HPEnableBool());
+    xml.setAttribute("LPEnable", custom.get_LPEnableBool());
+    
+    copyXmlToBinary (xml, destData);
 }
 
 void NewProjectAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    ScopedPointer<XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+    
+    if (xmlState != nullptr)
+    {
+        // make sure that it's actually our type of XML object..
+        if (xmlState->hasTagName ("MYPLUGINSETTINGS"))
+        {
+            /* ok, now pull out our parameters..
+            lastUIWidth  = xmlState->getIntAttribute ("uiWidth", lastUIWidth);
+            lastUIHeight = xmlState->getIntAttribute ("uiHeight", lastUIHeight);
+            
+            gain  = (float) xmlState->getDoubleAttribute ("gain", gain);
+            delay = (float) xmlState->getDoubleAttribute ("delay", delay);
+             */
+            
+            custom.set_LPEnableBool(xmlState->getBoolAttribute("LPEnable"));
+        }
+    }
 }
 
 //==============================================================================

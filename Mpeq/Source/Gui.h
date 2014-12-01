@@ -65,7 +65,7 @@ public:
     double get_HPQValue();
     double get_LPFreqValue();
     double get_LPQValue();
-    
+
     bool get_LFPosBool();
     bool get_LFPNBool();
     bool get_LFEnableBool();
@@ -80,7 +80,7 @@ public:
     bool get_HFEnableBool();
     bool get_HPEnableBool();
     bool get_LPEnableBool();
-    
+
     void set_LFGainValue(double input);
     void set_LFShapeValue(double input);
     void set_LFFreqValue(double input);
@@ -101,7 +101,7 @@ public:
     void set_HPQValue(double input);
     void set_LPFreqValue(double input);
     void set_LPQValue(double input);
-    
+
     void set_LFPosBool(bool input);
     void set_LFPNBool(bool input);
     void set_LFEnableBool(bool input);
@@ -154,7 +154,7 @@ private:
     double HPQValue;
     double LPFreqValue;
     double LPQValue;
-    
+
     bool LFPosBool;
     bool LFPNBool;
     bool LFEnableBool;
