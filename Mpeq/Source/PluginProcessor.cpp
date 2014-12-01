@@ -35,6 +35,8 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
             
             xHMFPeak[i][j] = 0;
             yHMFPeak[i][j] = 0;
+            xHMFShelf[i][j] = 0;
+            yHMFShelf[i][j] = 0;
             
             xHFPeak[i][j] = 0;
             yHFPeak[i][j] = 0;
@@ -579,6 +581,49 @@ float NewProjectAudioProcessor::HMFPeakFilter(float buffer, int channel){
     return buffer;
 }
 
+float NewProjectAudioProcessor::HMFShelfFilter(float buffer, int channel){
+    
+    double Fs = getSampleRate();
+    double f0 = custom.get_HMFFreqValue();
+    double Q = custom.get_HMFQValue();
+    double V = pow(10, fabs(custom.get_HMFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_HMFPosBool() == false) {
+        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
+        a0 = (V + sqrt(2*V)/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - V) * norm;
+        a2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
+        b1 = 2 * (K * K - 1) * norm;
+        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (V + sqrt(2*V)/Q * K + K * K);
+        a0 = (1 + sqrt(2)/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+        b1 = 2 * (K * K - V) * norm;
+        b2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
+    }
+    
+    
+    xHMFShelf[channel][2] = xHMFShelf[channel][1];
+    xHMFShelf[channel][1] = xHMFShelf[channel][0];
+    xHMFShelf[channel][0] = buffer;
+    yHMFShelf[channel][2] = yHMFShelf[channel][1];
+    yHMFShelf[channel][1] = yHMFShelf[channel][0];
+    
+    buffer = (a0*xHMFShelf[channel][0] + a1*xHMFShelf[channel][1] + a2*xHMFShelf[channel][2] - b1*yHMFShelf[channel][1] - b2*yHMFShelf[channel][2]);
+    
+    yHMFShelf[channel][0] = buffer;
+    
+    return buffer;
+}
+
 float NewProjectAudioProcessor::HFPeakFilter(float buffer, int channel){
     
     double Fs = getSampleRate();
@@ -672,9 +717,9 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
                 parallelChain2 = channelData[i];
             }
             
-            //HMFPeakFilter
+            //HMFFilters
             if (custom.get_HMFEnableBool() == true) {
-                parallelChain1 = HMFPeakFilter(parallelChain1, channel);
+                parallelChain1 = (HMFPeakFilter(parallelChain1, channel)*(1-custom.get_HMFShapeValue()))+(HMFShelfFilter(parallelChain1, channel)*custom.get_HMFShapeValue());
             } else {
                 parallelChain1 = parallelChain1;
             }

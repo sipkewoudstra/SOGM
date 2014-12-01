@@ -72,6 +72,7 @@ public:
     float LMFPeakFilter(float buffer, int channel);
     float LMFShelfFilter(float buffer, int channel);
     float HMFPeakFilter(float buffer, int channel);
+    float HMFShelfFilter(float buffer, int channel);
     float HFPeakFilter(float buffer, int channel);
     //==============================================================================
     
@@ -135,6 +136,8 @@ private:
     
     float xHMFPeak[2][3];
     float yHMFPeak[2][3];
+    float xHMFShelf[2][3];
+    float yHMFShelf[2][3];
     
     float xHFPeak[2][3];
     float yHFPeak[2][3];
