@@ -759,6 +759,145 @@ bool Gui::get_HPEnableBool(){
 bool Gui::get_LPEnableBool(){
     return LPEnableBool;
 }
+
+void Gui::set_LFGainValue(double input){
+    this->LFGainValue = input;
+    LFGain->setValue(input);
+    
+}
+void Gui::set_LFShapeValue(double input){
+    this->LFShapeValue = input;
+    LFShape->setValue(input);
+}
+void Gui::set_LFFreqValue(double input){
+    this->LFFreqValue = input;
+    LFFreq->setValue(input);
+}
+void Gui::set_LFQValue(double input){
+    this->LFQValue = input;
+    LFQ->setValue(input);
+}
+void Gui::set_LMFGainValue(double input){
+    this->LMFGainValue = input;
+    LMFGain->setValue(input);
+}
+void Gui::set_LMFShapeValue(double input){
+    this->LMFShapeValue = input;
+    LMFShape->setValue(input);
+}
+void Gui::set_LMFFreqValue(double input){
+    this->LMFFreqValue = input;
+    LMFFreq->setValue(input);
+}
+void Gui::set_LMFQValue(double input){
+    this->LMFQValue = input;
+    LMFQ->setValue(input);
+}
+void Gui::set_HMFGainValue(double input){
+    this->HMFGainValue = input;
+    HMFGain->setValue(input);
+}
+void Gui::set_HMFShapeValue(double input){
+    this->HMFShapeValue = input;
+    HMFShape->setValue(input);
+}
+void Gui::set_HMFFreqValue(double input){
+    this->HMFFreqValue = input;
+    HMFFreq->setValue(input);
+}
+void Gui::set_HMFQValue(double input){
+    this->HMFQValue = input;
+    HMFQ->setValue(input);
+}
+void Gui::set_HFGainValue(double input){
+    this->HFGainValue = input;
+    HFGain->setValue(input);
+}
+void Gui::set_HFShapeValue(double input){
+    this->HFShapeValue = input;
+    HFShape->setValue(input);
+}
+void Gui::set_HFFreqValue(double input){
+    this->HFFreqValue = input;
+    HFFreq->setValue(input);
+}
+void Gui::set_HFQValue(double input){
+    this->HFQValue = input;
+    HFQ->setValue(input);
+}
+void Gui::set_HPFreqValue(double input){
+    this->HPFreqValue = input;
+    HPFreq->setValue(input);
+}
+void Gui::set_HPQValue(double input){
+    this->HPQValue = input;
+    HPQ->setValue(input);
+}
+void Gui::set_LPFreqValue(double input){
+    this->LPFreqValue = input;
+    LPFreq->setValue(input);
+}
+void Gui::set_LPQValue(double input){
+    this->LPQValue = input;
+    LPQ->setValue(input);
+}
+
+void Gui::set_LFPosBool(bool input){
+    this->LFPosBool = input;
+    LFPos->setToggleState(input, sendNotification);
+}
+void Gui::set_LFPNBool(bool input){
+    this->LFPNBool = input;
+    LFPN->setToggleState(input, sendNotification);
+}
+void Gui::set_LFEnableBool(bool input){
+    this->LFEnableBool = input;
+    LFEnable->setToggleState(input, sendNotification);
+}
+void Gui::set_LMFPosBool(bool input){
+    this->LMFPosBool = input;
+    LMFPos->setToggleState(input, sendNotification);
+}
+void Gui::set_LMFPNBool(bool input){
+    this->LMFPNBool = input;
+    LMFPN->setToggleState(input, sendNotification);
+}
+void Gui::set_LMFEnableBool(bool input){
+    this->LMFEnableBool = input;
+    LMFEnable->setToggleState(input, sendNotification);
+}
+void Gui::set_HMFPosBool(bool input){
+    this->HMFPosBool = input;
+    HMFPos->setToggleState(input, sendNotification);
+}
+void Gui::set_HMFPNBool(bool input){
+    this->HMFPNBool = input;
+    HMFPN->setToggleState(input, sendNotification);
+}
+void Gui::set_HMFEnableBool(bool input){
+    this->HMFEnableBool = input;
+    HMFEnable->setToggleState(input, sendNotification);
+}
+void Gui::set_HFPosBool(bool input){
+    this->HFPosBool = input;
+    HFPos->setToggleState(input, sendNotification);
+}
+void Gui::set_HFPNBool(bool input){
+    this->HFPNBool = input;
+    HFPN->setToggleState(input, sendNotification);
+}
+void Gui::set_HFEnableBool(bool input){
+    this->HFEnableBool = input;
+    HFEnable->setToggleState(input, sendNotification);
+}
+void Gui::set_HPEnableBool(bool input){
+    this->HPEnableBool = input;
+    HPEnable->setToggleState(input, sendNotification);
+}
+void Gui::set_LPEnableBool(bool input){
+    this->LPEnableBool = input;
+    LPEnable->setToggleState(input, sendNotification);
+}
 //[/MiscUserCode]
 
 

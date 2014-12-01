@@ -12,6 +12,46 @@
 #include "PluginEditor.h"
 #include <math.h>
 
+enum Parameters
+{
+    LFGain = 0,
+    LFShape,
+    LFFreq,
+    LFQ,
+    LFPos,
+    LFPN,
+    LFEnable,
+    LMFGain,
+    LMFShape,
+    LMFFreq,
+    LMFQ,
+    LMFPos,
+    LMFPN,
+    LMFEnable,
+    HMFGain,
+    HMFShape,
+    HMFFreq,
+    HMFQ,
+    HMFPos,
+    HMFPN,
+    HMFEnable,
+    HFGain,
+    HFShape,
+    HFFreq,
+    HFQ,
+    HFPos,
+    HFPN,
+    HFEnable,
+    HPFreq,
+    HPQ,
+    HPEnable,
+    LPFreq,
+    LPQ,
+    LPEnable,
+    
+    totalNumParams
+};
+
 //==============================================================================
 NewProjectAudioProcessor::NewProjectAudioProcessor()
 {
@@ -37,26 +77,175 @@ const String NewProjectAudioProcessor::getName() const
 
 int NewProjectAudioProcessor::getNumParameters()
 {
-    return 0;
+    return totalNumParams;
 }
 
 float NewProjectAudioProcessor::getParameter (int index)
 {
-    return 0.0f;
+    switch (index)
+    {
+        case LFGain:        return  custom.get_LFGainValue();
+        case LFShape:       return  custom.get_LFShapeValue();
+        case LFFreq:        return  custom.get_LFFreqValue();
+        case LFQ:           return  custom.get_LFQValue();
+        case LFPos:         return  custom.get_LFPosBool();
+        case LFPN:          return  custom.get_LFPNBool();
+        case LFEnable:      return  custom.get_LFEnableBool();
+        case LMFGain:       return  custom.get_LMFGainValue();
+        case LMFShape:      return  custom.get_LMFShapeValue();
+        case LMFFreq:       return  custom.get_LMFFreqValue();
+        case LMFQ:          return  custom.get_LMFQValue();
+        case LMFPos:        return  custom.get_LMFPosBool();
+        case LMFPN:         return  custom.get_LMFPNBool();
+        case LMFEnable:     return  custom.get_LMFEnableBool();
+        case HMFGain:       return  custom.get_HMFGainValue();
+        case HMFShape:      return  custom.get_HMFShapeValue();
+        case HMFFreq:       return  custom.get_HMFFreqValue();
+        case HMFQ:          return  custom.get_HMFQValue();
+        case HMFPos:        return  custom.get_HMFPosBool();
+        case HMFPN:         return  custom.get_HMFPNBool();
+        case HMFEnable:     return  custom.get_HMFEnableBool();
+        case HFGain:        return  custom.get_HFGainValue();
+        case HFShape:       return  custom.get_HFShapeValue();
+        case HFFreq:        return  custom.get_HFFreqValue();
+        case HFQ:           return  custom.get_HFQValue();
+        case HFPos:         return  custom.get_HFPosBool();
+        case HFPN:          return  custom.get_HFPNBool();
+        case HFEnable:      return  custom.get_HFEnableBool();
+        case HPFreq:        return  custom.get_HPFreqValue();
+        case HPQ:           return  custom.get_HPQValue();
+        case HPEnable:      return  custom.get_HPEnableBool();
+        case LPFreq:        return  custom.get_LPFreqValue();
+        case LPQ:           return  custom.get_LPQValue();
+        case LPEnable:      return  custom.get_LPEnableBool();
+        default:            return 0.0f;
+    }
 }
 
 void NewProjectAudioProcessor::setParameter (int index, float newValue)
 {
+    switch (index)
+    {
+        case LFGain:        custom.set_LFGainValue(newValue); break;
+        case LFShape:       custom.set_LFShapeValue(newValue); break;
+        case LFFreq:        custom.set_LFFreqValue(newValue); break;
+        case LFQ:           custom.set_LFQValue(newValue); break;
+        case LFPos:         custom.set_LFPosBool(newValue); break;
+        case LFPN:          custom.set_LFPNBool(newValue); break;
+        case LFEnable:      custom.set_LFEnableBool(newValue); break;
+        case LMFGain:       custom.set_LMFGainValue(newValue); break;
+        case LMFShape:      custom.set_LMFShapeValue(newValue); break;
+        case LMFFreq:       custom.set_LMFFreqValue(newValue); break;
+        case LMFQ:          custom.set_LMFQValue(newValue); break;
+        case LMFPos:        custom.set_LMFPosBool(newValue); break;
+        case LMFPN:         custom.set_LMFPNBool(newValue); break;
+        case LMFEnable:     custom.set_LMFEnableBool(newValue); break;
+        case HMFGain:       custom.set_HMFGainValue(newValue); break;
+        case HMFShape:      custom.set_HMFShapeValue(newValue); break;
+        case HMFFreq:       custom.set_HMFFreqValue(newValue); break;
+        case HMFQ:          custom.set_HMFQValue(newValue); break;
+        case HMFPos:        custom.set_HMFPosBool(newValue); break;
+        case HMFPN:         custom.set_HMFPNBool(newValue); break;
+        case HMFEnable:     custom.set_HMFEnableBool(newValue); break;
+        case HFGain:        custom.set_HFGainValue(newValue); break;
+        case HFShape:       custom.set_HFShapeValue(newValue); break;
+        case HFFreq:        custom.set_HFFreqValue(newValue); break;
+        case HFQ:           custom.set_HFQValue(newValue); break;
+        case HFPos:         custom.set_HFPosBool(newValue); break;
+        case HFPN:          custom.set_HFPNBool(newValue); break;
+        case HFEnable:      custom.set_HFEnableBool(newValue); break;
+        case HPFreq:        custom.set_HPFreqValue(newValue); break;
+        case HPQ:           custom.set_HPQValue(newValue); break;
+        case HPEnable:      custom.set_HPEnableBool(newValue); break;
+        case LPFreq:        custom.set_LPFreqValue(newValue); break;
+        case LPQ:           custom.set_LPQValue(newValue); break;
+        case LPEnable:      custom.set_LPEnableBool(newValue); break;
+        default:            break;
+    }
 }
 
 const String NewProjectAudioProcessor::getParameterName (int index)
 {
-    return String();
+    switch (index)
+    {
+        case LFGain:        return  "LF:Gain";
+        case LFShape:       return  "LF:Shape";
+        case LFFreq:        return  "LF:Freq";
+        case LFQ:           return  "LF:Q";
+        case LFPos:         return  "LF:Gain Pos./Neg.";
+        case LFPN:          return  "LF:Peak/Notch";
+        case LFEnable:      return  "LF:Enable";
+        case LMFGain:       return  "LMF:Gain";
+        case LMFShape:      return  "LMF:Shape";
+        case LMFFreq:       return  "LMF:Freq";
+        case LMFQ:          return  "LMF:Q";
+        case LMFPos:        return  "LMF:Gain Pos./Neg.";
+        case LMFPN:         return  "LMF:Peak/Notch";
+        case LMFEnable:     return  "LMF:Enable";
+        case HMFGain:       return  "HMF:Gain";
+        case HMFShape:      return  "HMF:Shape";
+        case HMFFreq:       return  "HMF:Freq";
+        case HMFQ:          return  "HMF:Q";
+        case HMFPos:        return  "HMF:Gain Pos./Neg.";
+        case HMFPN:         return  "HMF:Peak/Notch";
+        case HMFEnable:     return  "HMFEnable";
+        case HFGain:        return  "HF:Gain";
+        case HFShape:       return  "HF:Shape";
+        case HFFreq:        return  "HF:Freq";
+        case HFQ:           return  "HF:Q";
+        case HFPos:         return  "HF:Gain Pos./Neg.";
+        case HFPN:          return  "HF:Peak/Notch";
+        case HFEnable:      return  "HF:Enable";
+        case HPFreq:        return  "HP:Freq";
+        case HPQ:           return  "HP:Q";
+        case HPEnable:      return  "HP:Enable";
+        case LPFreq:        return  "LP:Freq";
+        case LPQ:           return  "LP:Q";
+        case LPEnable:      return  "LP:Enable";
+        default:            break;
+    }
 }
 
 const String NewProjectAudioProcessor::getParameterText (int index)
 {
-    return String();
+    switch (index)
+    {
+        case LFGain:        return  "LF:Gain";
+        case LFShape:       return  "LF:Shape";
+        case LFFreq:        return  "LF:Freq";
+        case LFQ:           return  "LF:Q";
+        case LFPos:         return  "LF:Gain Pos./Neg.";
+        case LFPN:          return  "LF:Peak/Notch";
+        case LFEnable:      return  "LF:Enable";
+        case LMFGain:       return  "LMF:Gain";
+        case LMFShape:      return  "LMF:Shape";
+        case LMFFreq:       return  "LMF:Freq";
+        case LMFQ:          return  "LMF:Q";
+        case LMFPos:        return  "LMF:Gain Pos./Neg.";
+        case LMFPN:         return  "LMF:Peak/Notch";
+        case LMFEnable:     return  "LMF:Enable";
+        case HMFGain:       return  "HMF:Gain";
+        case HMFShape:      return  "HMF:Shape";
+        case HMFFreq:       return  "HMF:Freq";
+        case HMFQ:          return  "HMF:Q";
+        case HMFPos:        return  "HMF:Gain Pos./Neg.";
+        case HMFPN:         return  "HMF:Peak/Notch";
+        case HMFEnable:     return  "HMFEnable";
+        case HFGain:        return  "HF:Gain";
+        case HFShape:       return  "HF:Shape";
+        case HFFreq:        return  "HF:Freq";
+        case HFQ:           return  "HF:Q";
+        case HFPos:         return  "HF:Gain Pos./Neg.";
+        case HFPN:          return  "HF:Peak/Notch";
+        case HFEnable:      return  "HF:Enable";
+        case HPFreq:        return  "HP:Freq";
+        case HPQ:           return  "HP:Q";
+        case HPEnable:      return  "HP:Enable";
+        case LPFreq:        return  "LP:Freq";
+        case LPQ:           return  "LP:Q";
+        case LPEnable:      return  "LP:Enable";
+        default:            break;
+    }
 }
 
 const String NewProjectAudioProcessor::getInputChannelName (int channelIndex) const
@@ -284,6 +473,7 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
                 channelData[i] = LFPeakFilter(channelData[i], channel);
             }
         }
+        
         //protect your fucking ears!
         for (int i = 0; i < numSamples; i++) {
             if (channelData[i] > 1) {
@@ -311,6 +501,33 @@ void NewProjectAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    XmlElement xml ("MYPLUGINSETTINGS");
+    xml.setAttribute("LFGain", custom.get_LFGainValue());
+    xml.setAttribute("LFShape", custom.get_LFShapeValue());
+    xml.setAttribute("LFFreq", custom.get_LFFreqValue());
+    xml.setAttribute("LFQ", custom.get_LFQValue());
+    xml.setAttribute("LMFGain", custom.get_LMFGainValue());
+    xml.setAttribute("LMFShape", custom.get_LMFShapeValue());
+    xml.setAttribute("LMFFreq", custom.get_LMFFreqValue());
+    xml.setAttribute("LMFQ", custom.get_LMFQValue());
+    xml.setAttribute("HMFGain", custom.get_HMFGainValue());
+    xml.setAttribute("HMFShape", custom.get_HMFShapeValue());
+    xml.setAttribute("HMFFreq", custom.get_HMFFreqValue());
+    xml.setAttribute("HMFQ", custom.get_HMFQValue());
+    xml.setAttribute("HFGain", custom.get_HFGainValue());
+    xml.setAttribute("HFShape", custom.get_HFShapeValue());
+    xml.setAttribute("HFFreq", custom.get_HFFreqValue());
+    xml.setAttribute("HFQ", custom.get_HFQValue());
+    xml.setAttribute("HPFreq", custom.get_HPFreqValue());
+    xml.setAttribute("HPQ", custom.get_HPQValue());
+    xml.setAttribute("LPFreq", custom.get_LPFreqValue());
+    xml.setAttribute("LPQ", custom.get_LPQValue());
+    xml.setAttribute("LFPos", custom.get_LFPosBool());
+    xml.setAttribute("LFPN", custom.get_LFPNBool());
+    xml.setAttribute("LFEnable", custom.get_LFEnableBool());
+    xml.setAttribute("LMFPos", custom.get_LMFPosBool());
+    xml.setAttribute("LMFPN", custom.get_LMFPNBool());
+    xml.setAttribute("LMFEnable", custom.get_LMFEnableBool());
 }
 
 void NewProjectAudioProcessor::setStateInformation (const void* data, int sizeInBytes)

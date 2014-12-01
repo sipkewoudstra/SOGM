@@ -80,6 +80,42 @@ public:
     bool get_HFEnableBool();
     bool get_HPEnableBool();
     bool get_LPEnableBool();
+    
+    void set_LFGainValue(double input);
+    void set_LFShapeValue(double input);
+    void set_LFFreqValue(double input);
+    void set_LFQValue(double input);
+    void set_LMFGainValue(double input);
+    void set_LMFShapeValue(double input);
+    void set_LMFFreqValue(double input);
+    void set_LMFQValue(double input);
+    void set_HMFGainValue(double input);
+    void set_HMFShapeValue(double input);
+    void set_HMFFreqValue(double input);
+    void set_HMFQValue(double input);
+    void set_HFGainValue(double input);
+    void set_HFShapeValue(double input);
+    void set_HFFreqValue(double input);
+    void set_HFQValue(double input);
+    void set_HPFreqValue(double input);
+    void set_HPQValue(double input);
+    void set_LPFreqValue(double input);
+    void set_LPQValue(double input);
+    
+    void set_LFPosBool(bool input);
+    void set_LFPNBool(bool input);
+    void set_LFEnableBool(bool input);
+    void set_LMFPosBool(bool input);
+    void set_LMFPNBool(bool input);
+    void set_LMFEnableBool(bool input);
+    void set_HMFPosBool(bool input);
+    void set_HMFPNBool(bool input);
+    void set_HMFEnableBool(bool input);
+    void set_HFPosBool(bool input);
+    void set_HFPNBool(bool input);
+    void set_HFEnableBool(bool input);
+    void set_HPEnableBool(bool input);
+    void set_LPEnableBool(bool input);
     //[/UserMethods]
 
     void paint (Graphics& g);
