@@ -30,6 +30,8 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
             
             xLMFPeak[i][j] = 0;
             yLMFPeak[i][j] = 0;
+            xLMFShelf[i][j] = 0;
+            yLMFShelf[i][j] = 0;
             
             xHMFPeak[i][j] = 0;
             yHMFPeak[i][j] = 0;
@@ -423,20 +425,32 @@ float NewProjectAudioProcessor::LFShelfFilter(float buffer, int channel){
     double b1;
     double b2;
     if (custom.get_LFPosBool() == false) {
-        norm = 1 / (1 + 1/Q * K + K * K);
-        a0 = (1 + V/Q * K + K * K) * norm;
-        a1 = 2 * (K * K -1) * norm;
-        a2 = (1 - V/Q * K + K * K) * norm;
-        b1 = a1;
-        b2 = (1 - 1/Q * K + K * K) * norm;
+        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
+        a0 = (1 + sqrt(2*V)/Q * K + V * K * K) * norm;
+        a1 = 2 * (V * K * K - 1) * norm;
+        a2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
+        b1 = 2 * (K * K - 1) * norm;
+        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
     } else {
-        norm = 1 / (1 + V/Q * K + K * K);
-        a0 = (1 + 1/Q * K + K * K) * norm;
+        norm = 1 / (1 + sqrt(2*V)/Q * K + V * K * K);
+        a0 = (1+ sqrt(2)/Q * K + K * K) * norm;
         a1 = 2 * (K * K - 1) * norm;
-        a2 = (1 - 1/Q * K + K * K) * norm;
-        b1 = a1;
-        b2 = (1 - V/Q * K + K * K) * norm;
+        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+        b1 = 2 * (V * K * K - 1) * norm;
+        b2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
     }
+    xLFShelf[channel][2] = xLFShelf[channel][1];
+    xLFShelf[channel][1] = xLFShelf[channel][0];
+    xLFShelf[channel][0] = buffer;
+    yLFShelf[channel][2] = yLFShelf[channel][1];
+    yLFShelf[channel][1] = yLFShelf[channel][0];
+    
+    buffer = (a0*xLFShelf[channel][0] + a1*xLFShelf[channel][1] + a2*xLFShelf[channel][2] - b1*yLFShelf[channel][1] - b2*yLFShelf[channel][2]);
+    
+    yLFShelf[channel][0] = buffer;
+    
+    return buffer;
+    
 }
 
 float NewProjectAudioProcessor::LMFPeakFilter(float buffer, int channel){
@@ -479,6 +493,47 @@ float NewProjectAudioProcessor::LMFPeakFilter(float buffer, int channel){
     yLMFPeak[channel][0] = buffer;
     
     return buffer;
+}
+
+float NewProjectAudioProcessor::LMFShelfFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_LMFFreqValue();
+    double Q = custom.get_LMFQValue();
+    double V = pow(10, fabs(custom.get_LMFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_LMFPosBool() == false) {
+        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
+        a0 = (1 + sqrt(2*V)/Q * K + V * K * K) * norm;
+        a1 = 2 * (V * K * K - 1) * norm;
+        a2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
+        b1 = 2 * (K * K - 1) * norm;
+        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (1 + sqrt(2*V)/Q * K + V * K * K);
+        a0 = (1+ sqrt(2)/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+        b1 = 2 * (V * K * K - 1) * norm;
+        b2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
+    }
+    xLMFShelf[channel][2] = xLMFShelf[channel][1];
+    xLMFShelf[channel][1] = xLMFShelf[channel][0];
+    xLMFShelf[channel][0] = buffer;
+    yLMFShelf[channel][2] = yLMFShelf[channel][1];
+    yLMFShelf[channel][1] = yLMFShelf[channel][0];
+    
+    buffer = (a0*xLMFShelf[channel][0] + a1*xLMFShelf[channel][1] + a2*xLMFShelf[channel][2] - b1*yLMFShelf[channel][1] - b2*yLMFShelf[channel][2]);
+    
+    yLMFShelf[channel][0] = buffer;
+    
+    return buffer;
+    
 }
 
 float NewProjectAudioProcessor::HMFPeakFilter(float buffer, int channel){
@@ -604,15 +659,15 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
         }
         
         for (int i = 0; i < numSamples; i++){
-            //LFPeakFilter
+            //LFFilters
             if (custom.get_LFEnableBool() == true) {
-                parallelChain1 = (LFPeakFilter(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+0;
+                parallelChain1 = (LFPeakFilter(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelfFilter(channelData[i], channel)*custom.get_LFShapeValue());
             } else {
                 parallelChain1 = channelData[i];
             }
-            //LMFPeakFilter
+            //LMFFilters
             if (custom.get_LMFEnableBool() == true) {
-                parallelChain2 = LMFPeakFilter(channelData[i], channel);
+                parallelChain2 = (LMFPeakFilter(channelData[i], channel)*(1 - custom.get_LMFShapeValue()))+(LMFShelfFilter(channelData[i], channel)*custom.get_LMFShapeValue());
             } else {
                 parallelChain2 = channelData[i];
             }
@@ -631,7 +686,7 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
                 parallelChain1 = parallelChain1;
             }
             
-            channelData[i] = parallelChain1+parallelChain2*0.5;
+            channelData[i] = (parallelChain1+parallelChain2)*0.5;
         }
         
         //protect your fucking ears!
