@@ -30,7 +30,6 @@ public:
     void resized() override;
     
 private:
-    Gui custom;
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     NewProjectAudioProcessor& processor;

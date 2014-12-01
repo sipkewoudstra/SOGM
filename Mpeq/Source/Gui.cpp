@@ -300,18 +300,6 @@ Gui::Gui ()
     HPEnable->setClickingTogglesState(true);
     LPEnable->setClickingTogglesState(true);
     
-    LFEnable->setToggleState(false, sendNotification);
-    LFEnable->setState(LFEnable->buttonDown);
-    LMFEnable->setToggleState(false, sendNotification);
-    LMFEnable->setState(LMFEnable->buttonDown);
-    HMFEnable->setToggleState(false, sendNotification);
-    HMFEnable->setState(HMFEnable->buttonDown);
-    HFEnable->setToggleState(false, sendNotification);
-    HFEnable->setState(HFEnable->buttonDown);
-    HPEnable->setToggleState(false, sendNotification);
-    HPEnable->setState(HPEnable->buttonDown);
-    LPEnable->setToggleState(false, sendNotification);
-    LPEnable->setState(LPEnable->buttonDown);
     
     this->LFPosBool = LFPos->getToggleState();
     this->LFPNBool = LFPN->getToggleState();
@@ -327,6 +315,13 @@ Gui::Gui ()
     this->HFEnableBool = HFEnable->getToggleState();
     this->HPEnableBool = HPEnable->getToggleState();
     this->LPEnableBool = LPEnable->getToggleState();
+    
+    this->LPFreqValue = 22000;
+    LPFreq->setValue(22000);
+    this->LPQValue = 0.5;
+    
+    this->HPFreqValue = 20;
+    this->HPQValue = 0.5;
     
     //[/Constructor]
 }
@@ -655,6 +650,109 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+double Gui::get_LFGainValue(){
+    return LFGainValue;
+}
+double Gui::get_LFShapeValue(){
+    return LFShapeValue;
+}
+double Gui::get_LFFreqValue(){
+    return LFFreqValue;
+}
+double Gui::get_LFQValue(){
+    return LFQValue;
+}
+double Gui::get_LMFGainValue(){
+    return LMFGainValue;
+}
+double Gui::get_LMFShapeValue(){
+    return LMFShapeValue;
+}
+double Gui::get_LMFFreqValue(){
+    return LMFFreqValue;
+}
+double Gui::get_LMFQValue(){
+    return LMFQValue;
+}
+double Gui::get_HMFGainValue(){
+    return HMFGainValue;
+}
+double Gui::get_HMFShapeValue(){
+    return HMFShapeValue;
+}
+double Gui::get_HMFFreqValue(){
+    return HMFFreqValue;
+}
+double Gui::get_HMFQValue(){
+    return HMFQValue;
+}
+double Gui::get_HFGainValue(){
+    return HFGainValue;
+}
+double Gui::get_HFShapeValue(){
+    return HFShapeValue;
+}
+double Gui::get_HFFreqValue(){
+    return HFFreqValue;
+}
+double Gui::get_HFQValue(){
+    return HFQValue;
+}
+double Gui::get_HPFreqValue(){
+    return HPFreqValue;
+}
+double Gui::get_HPQValue(){
+    return HPQValue;
+}
+double Gui::get_LPFreqValue(){
+    return LPFreqValue;
+}
+double Gui::get_LPQValue(){
+    return LPQValue;
+}
+
+bool Gui::get_LFPosBool(){
+    return LFPNBool;
+}
+bool Gui::get_LFPNBool(){
+    return LFPNBool;
+}
+bool Gui::get_LFEnableBool(){
+    return LFEnableBool;
+}
+bool Gui::get_LMFPosBool(){
+    return LMFPosBool;
+}
+bool Gui::get_LMFPNBool(){
+    return LMFPNBool;
+}
+bool Gui::get_LMFEnableBool(){
+    return LMFEnableBool;
+}
+bool Gui::get_HMFPosBool(){
+    return HMFPosBool;
+}
+bool Gui::get_HMFPNBool(){
+    return HMFPNBool;
+}
+bool Gui::get_HMFEnableBool(){
+    return  HMFEnableBool;
+}
+bool Gui::get_HFPosBool(){
+    return HFPosBool;
+}
+bool Gui::get_HFPNBool(){
+    return HFPNBool;
+}
+bool Gui::get_HFEnableBool(){
+    return HFEnableBool;
+}
+bool Gui::get_HPEnableBool(){
+    return HPEnableBool;
+}
+bool Gui::get_LPEnableBool(){
+    return LPEnableBool;
+}
 //[/MiscUserCode]
 
 

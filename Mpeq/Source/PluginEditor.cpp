@@ -18,8 +18,8 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioP
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    addAndMakeVisible(&custom);
-    setSize (custom.getWidth(), custom.getHeight());
+    addAndMakeVisible(processor.custom);
+    setSize (processor.custom.getWidth(), processor.custom.getHeight());
 }
 
 NewProjectAudioProcessorEditor::~NewProjectAudioProcessorEditor()

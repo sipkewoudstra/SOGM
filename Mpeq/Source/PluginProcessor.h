@@ -12,7 +12,7 @@
 #define PLUGINPROCESSOR_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
+#include "Gui.h"
 
 //==============================================================================
 /**
@@ -65,8 +65,17 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    float LowPassFilter(float buffer, int channel);
+    float HighPassFilter(float buffer, int channel);
+    //==============================================================================
     
+    Gui custom;
 private:
+    float xLP[2][3];
+    float yLP[2][3];
+    
+    float xHP[2][3];
+    float yHP[2][3];
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };

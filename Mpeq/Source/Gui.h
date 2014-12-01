@@ -45,6 +45,41 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    double get_LFGainValue();
+    double get_LFShapeValue();
+    double get_LFFreqValue();
+    double get_LFQValue();
+    double get_LMFGainValue();
+    double get_LMFShapeValue();
+    double get_LMFFreqValue();
+    double get_LMFQValue();
+    double get_HMFGainValue();
+    double get_HMFShapeValue();
+    double get_HMFFreqValue();
+    double get_HMFQValue();
+    double get_HFGainValue();
+    double get_HFShapeValue();
+    double get_HFFreqValue();
+    double get_HFQValue();
+    double get_HPFreqValue();
+    double get_HPQValue();
+    double get_LPFreqValue();
+    double get_LPQValue();
+    
+    bool get_LFPosBool();
+    bool get_LFPNBool();
+    bool get_LFEnableBool();
+    bool get_LMFPosBool();
+    bool get_LMFPNBool();
+    bool get_LMFEnableBool();
+    bool get_HMFPosBool();
+    bool get_HMFPNBool();
+    bool get_HMFEnableBool();
+    bool get_HFPosBool();
+    bool get_HFPNBool();
+    bool get_HFEnableBool();
+    bool get_HPEnableBool();
+    bool get_LPEnableBool();
     //[/UserMethods]
 
     void paint (Graphics& g);
