@@ -201,6 +201,49 @@ float NewProjectAudioProcessor::HighPassFilter(float buffer, int channel){
     
 }
 
+float NewProjectAudioProcessor::LFPeakFilter(float buffer, int channel){
+    
+    double Fs = getSampleRate();
+    double f0 = custom.get_LFFreqValue();
+    double Q = custom.get_LFQValue();
+    double V = pow(10, fabs(custom.get_LFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    //if (custom.get_LFPosBool() == true) {
+        norm = 1 / (1 + 1/Q * K + K * K);
+        a0 = (1 + V/Q * K + K * K) * norm;
+        a1 = 2 * (K * K -1) * norm;
+        a2 = (1 - V/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - 1/Q * K + K * K) * norm;
+    /*} else {
+        norm = 1 / (1 + V/Q * K + K * K);
+        a0 = (1 + 1/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - 1/Q * K + K * K) * norm;
+        b1 = a1;
+        b2 = (1 - V/Q * K + K * K) * norm;
+    }
+    */
+    
+    xLFPeak[channel][2] = xLFPeak[channel][1];
+    xLFPeak[channel][1] = xLFPeak[channel][0];
+    xLFPeak[channel][0] = buffer;
+    yLFPeak[channel][2] = yLFPeak[channel][1];
+    yLFPeak[channel][1] = yLFPeak[channel][0];
+    
+    buffer = (a0*xLFPeak[channel][0] + a1*xLFPeak[channel][1] + a2*xLFPeak[channel][2] - b1*yLFPeak[channel][1] - b2*yLFPeak[channel][2]);
+    
+    yLFPeak[channel][0] = buffer;
+    
+    return buffer;
+}
+
 
 void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
@@ -232,6 +275,13 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
         if (custom.get_LPEnableBool() == true) {
             for (int i = 0; i < numSamples; i++) {
                 channelData[i] = LowPassFilter(channelData[i], channel);
+            }
+        }
+        
+        //LFPeakFilter
+        if (custom.get_LFEnableBool() == true) {
+            for (int i = 0; i < numSamples; i++){
+                channelData[i] = LFPeakFilter(channelData[i], channel);
             }
         }
         //protect your fucking ears!

@@ -323,6 +323,12 @@ Gui::Gui ()
     this->HPFreqValue = 20;
     this->HPQValue = 0.5;
     
+    this->LFFreqValue = 20;
+    this->LFQValue = 0.5;
+    this->LFShapeValue = 0;
+    this->LFGainValue = 0;
+    
+    
     //[/Constructor]
 }
 

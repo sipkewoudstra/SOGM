@@ -67,6 +67,7 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     float LowPassFilter(float buffer, int channel);
     float HighPassFilter(float buffer, int channel);
+    float LFPeakFilter(float buffer, int channel);
     //==============================================================================
     
     Gui custom;
@@ -76,6 +77,9 @@ private:
     
     float xHP[2][3];
     float yHP[2][3];
+    
+    float xLFPeak[2][3];
+    float yLFPeak[2][3];
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };
