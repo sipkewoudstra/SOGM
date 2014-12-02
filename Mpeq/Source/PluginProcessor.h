@@ -17,14 +17,14 @@
 //==============================================================================
 /**
  */
-class NewProjectAudioProcessor  : public AudioProcessor
+class NewProjectAudioProcessor  : public PluginProcessor
 {
 public:
     //==============================================================================
     NewProjectAudioProcessor();
     ~NewProjectAudioProcessor();
     
-    double dBToAmplitude(double dB);
+
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -38,13 +38,13 @@ public:
     //==============================================================================
     const String getName() const override;
     
-    int getNumParameters() override;
+/*    int getNumParameters() override;
     float getParameter (int index) override;
     void setParameter (int index, float newValue) override;
     
-    const String getParameterName (int index) override;
+    const String getParameterName (int index) override; */
     const String getParameterText (int index) override;
-    
+ 
     const String getInputChannelName (int channelIndex) const override;
     const String getOutputChannelName (int channelIndex) const override;
     bool isInputChannelStereoPair (int index) const override;
@@ -69,11 +69,16 @@ public:
     float HighPassFilter(float buffer, int channel);
     float LFPeakFilter(float buffer, int channel);
     float LFShelfFilter(float buffer, int channel);
+    float LFNotchFilter(float buffer, int channel);
     float LMFPeakFilter(float buffer, int channel);
     float LMFShelfFilter(float buffer, int channel);
+    float LMFNotchFilter(float buffer, int channel);
     float HMFPeakFilter(float buffer, int channel);
     float HMFShelfFilter(float buffer, int channel);
+    float HMFNotchFilter(float buffer, int channel);
     float HFPeakFilter(float buffer, int channel);
+    float HFShelfFilter(float buffer, int channel);
+    float HFNotchFilter(float buffer, int channel);
     //==============================================================================
     
     Gui custom;
@@ -117,6 +122,9 @@ public:
         
         totalNumParams
     };
+    
+    void initParameters();
+    void runAfterParamChange(int paramIndex, UpdateFromFlags updateFromFlags);
 private:
     float xLP[2][3];
     float yLP[2][3];
@@ -128,19 +136,29 @@ private:
     float yLFPeak[2][3];
     float xLFShelf[2][3];
     float yLFShelf[2][3];
+    float xLFNotch[2][3];
+    float yLFNotch[2][3];
     
     float xLMFPeak[2][3];
     float yLMFPeak[2][3];
     float xLMFShelf[2][3];
     float yLMFShelf[2][3];
+    float xLMFNotch[2][3];
+    float yLMFNotch[2][3];
     
     float xHMFPeak[2][3];
     float yHMFPeak[2][3];
     float xHMFShelf[2][3];
     float yHMFShelf[2][3];
+    float xHMFNotch[2][3];
+    float yHMFNotch[2][3];
     
     float xHFPeak[2][3];
     float yHFPeak[2][3];
+    float xHFShelf[2][3];
+    float yHFShelf[2][3];
+    float xHFNotch[2][3];
+    float yHFNotch[2][3];
     
     float parallelChain1;
     float parallelChain2;

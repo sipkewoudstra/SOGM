@@ -23,18 +23,19 @@
                        osxSDK="default" osxCompatibility="default" osxArchitecture="64BitUniversal"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
@@ -58,6 +59,7 @@
         <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
       </MODULEPATHS>
     </VS2005>
     <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
@@ -82,6 +84,7 @@
         <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
       </MODULEPATHS>
     </VS2008>
     <VS2010 targetFolder="Builds/VisualStudio2010" vstFolder="c:\SDKs\vstsdk2.4"
@@ -105,6 +108,7 @@
         <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
       </MODULEPATHS>
     </VS2010>
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK">
@@ -127,6 +131,7 @@
         <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
         <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
@@ -156,5 +161,6 @@
     <MODULE id="juce_graphics" showAllCode="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="PluginParameters" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
 </JUCERPROJECT>

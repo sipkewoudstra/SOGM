@@ -27,19 +27,31 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
             yLFPeak[i][j] = 0;
             xLFShelf[i][j] = 0;
             yLFShelf[i][j] = 0;
+            xLFNotch[i][j] = 0;
+            yLFNotch[i][j] = 0;
             
             xLMFPeak[i][j] = 0;
             yLMFPeak[i][j] = 0;
             xLMFShelf[i][j] = 0;
             yLMFShelf[i][j] = 0;
+            xLMFNotch[i][j] = 0;
+            yLMFNotch[i][j] = 0;
             
             xHMFPeak[i][j] = 0;
             yHMFPeak[i][j] = 0;
             xHMFShelf[i][j] = 0;
             yHMFShelf[i][j] = 0;
+            xHMFNotch[i][j] = 0;
+            yHMFNotch[i][j] = 0;
             
             xHFPeak[i][j] = 0;
             yHFPeak[i][j] = 0;
+            xHFShelf[i][j] = 0;
+            yHFShelf[i][j] = 0;
+            xHFNotch[i][j] = 0;
+            yHFNotch[i][j] = 0;
+            
+            initAllParameters();
         }
     }
 }
@@ -54,179 +66,42 @@ const String NewProjectAudioProcessor::getName() const
     return JucePlugin_Name;
 }
 
-int NewProjectAudioProcessor::getNumParameters()
-{
-    return totalNumParams;
-}
-
-float NewProjectAudioProcessor::getParameter (int index)
-{
-    switch (index)
-    {
-        case LFGain:        return  custom.get_LFGainValue();
-        case LFShape:       return  custom.get_LFShapeValue();
-        case LFFreq:        return  custom.get_LFFreqValue();
-        case LFQ:           return  custom.get_LFQValue();
-        case LFPos:         return  custom.get_LFPosBool();
-        case LFPN:          return  custom.get_LFPNBool();
-        case LFEnable:      return  custom.get_LFEnableBool();
-        case LMFGain:       return  custom.get_LMFGainValue();
-        case LMFShape:      return  custom.get_LMFShapeValue();
-        case LMFFreq:       return  custom.get_LMFFreqValue();
-        case LMFQ:          return  custom.get_LMFQValue();
-        case LMFPos:        return  custom.get_LMFPosBool();
-        case LMFPN:         return  custom.get_LMFPNBool();
-        case LMFEnable:     return  custom.get_LMFEnableBool();
-        case HMFGain:       return  custom.get_HMFGainValue();
-        case HMFShape:      return  custom.get_HMFShapeValue();
-        case HMFFreq:       return  custom.get_HMFFreqValue();
-        case HMFQ:          return  custom.get_HMFQValue();
-        case HMFPos:        return  custom.get_HMFPosBool();
-        case HMFPN:         return  custom.get_HMFPNBool();
-        case HMFEnable:     return  custom.get_HMFEnableBool();
-        case HFGain:        return  custom.get_HFGainValue();
-        case HFShape:       return  custom.get_HFShapeValue();
-        case HFFreq:        return  custom.get_HFFreqValue();
-        case HFQ:           return  custom.get_HFQValue();
-        case HFPos:         return  custom.get_HFPosBool();
-        case HFPN:          return  custom.get_HFPNBool();
-        case HFEnable:      return  custom.get_HFEnableBool();
-        case HPFreq:        return  custom.get_HPFreqValue();
-        case HPQ:           return  custom.get_HPQValue();
-        case HPEnable:      return  custom.get_HPEnableBool();
-        case LPFreq:        return  custom.get_LPFreqValue();
-        case LPQ:           return  custom.get_LPQValue();
-        case LPEnable:      return  custom.get_LPEnableBool();
-        default:            return 0.0f;
-    }
-}
-
-void NewProjectAudioProcessor::setParameter (int index, float newValue)
-{
-    switch (index)
-    {
-        case LFGain:        custom.set_LFGainValue(newValue); break;
-        case LFShape:       custom.set_LFShapeValue(newValue); break;
-        case LFFreq:        custom.set_LFFreqValue(newValue); break;
-        case LFQ:           custom.set_LFQValue(newValue); break;
-        case LFPos:         custom.set_LFPosBool(newValue); break;
-        case LFPN:          custom.set_LFPNBool(newValue); break;
-        case LFEnable:      custom.set_LFEnableBool(newValue); break;
-        case LMFGain:       custom.set_LMFGainValue(newValue); break;
-        case LMFShape:      custom.set_LMFShapeValue(newValue); break;
-        case LMFFreq:       custom.set_LMFFreqValue(newValue); break;
-        case LMFQ:          custom.set_LMFQValue(newValue); break;
-        case LMFPos:        custom.set_LMFPosBool(newValue); break;
-        case LMFPN:         custom.set_LMFPNBool(newValue); break;
-        case LMFEnable:     custom.set_LMFEnableBool(newValue); break;
-        case HMFGain:       custom.set_HMFGainValue(newValue); break;
-        case HMFShape:      custom.set_HMFShapeValue(newValue); break;
-        case HMFFreq:       custom.set_HMFFreqValue(newValue); break;
-        case HMFQ:          custom.set_HMFQValue(newValue); break;
-        case HMFPos:        custom.set_HMFPosBool(newValue); break;
-        case HMFPN:         custom.set_HMFPNBool(newValue); break;
-        case HMFEnable:     custom.set_HMFEnableBool(newValue); break;
-        case HFGain:        custom.set_HFGainValue(newValue); break;
-        case HFShape:       custom.set_HFShapeValue(newValue); break;
-        case HFFreq:        custom.set_HFFreqValue(newValue); break;
-        case HFQ:           custom.set_HFQValue(newValue); break;
-        case HFPos:         custom.set_HFPosBool(newValue); break;
-        case HFPN:          custom.set_HFPNBool(newValue); break;
-        case HFEnable:      custom.set_HFEnableBool(newValue); break;
-        case HPFreq:        custom.set_HPFreqValue(newValue); break;
-        case HPQ:           custom.set_HPQValue(newValue); break;
-        case HPEnable:      custom.set_HPEnableBool(newValue); break;
-        case LPFreq:        custom.set_LPFreqValue(newValue); break;
-        case LPQ:           custom.set_LPQValue(newValue); break;
-        case LPEnable:      custom.set_LPEnableBool(newValue); break;
-        default:            break;
-    }
-}
-
-const String NewProjectAudioProcessor::getParameterName (int index)
-{
-    switch (index)
-    {
-        case LFGain:        return  "LF:Gain";
-        case LFShape:       return  "LF:Shape";
-        case LFFreq:        return  "LF:Freq";
-        case LFQ:           return  "LF:Q";
-        case LFPos:         return  "LF:Gain Pos./Neg.";
-        case LFPN:          return  "LF:Peak/Notch";
-        case LFEnable:      return  "LF:Enable";
-        case LMFGain:       return  "LMF:Gain";
-        case LMFShape:      return  "LMF:Shape";
-        case LMFFreq:       return  "LMF:Freq";
-        case LMFQ:          return  "LMF:Q";
-        case LMFPos:        return  "LMF:Gain Pos./Neg.";
-        case LMFPN:         return  "LMF:Peak/Notch";
-        case LMFEnable:     return  "LMF:Enable";
-        case HMFGain:       return  "HMF:Gain";
-        case HMFShape:      return  "HMF:Shape";
-        case HMFFreq:       return  "HMF:Freq";
-        case HMFQ:          return  "HMF:Q";
-        case HMFPos:        return  "HMF:Gain Pos./Neg.";
-        case HMFPN:         return  "HMF:Peak/Notch";
-        case HMFEnable:     return  "HMFEnable";
-        case HFGain:        return  "HF:Gain";
-        case HFShape:       return  "HF:Shape";
-        case HFFreq:        return  "HF:Freq";
-        case HFQ:           return  "HF:Q";
-        case HFPos:         return  "HF:Gain Pos./Neg.";
-        case HFPN:          return  "HF:Peak/Notch";
-        case HFEnable:      return  "HF:Enable";
-        case HPFreq:        return  "HP:Freq";
-        case HPQ:           return  "HP:Q";
-        case HPEnable:      return  "HP:Enable";
-        case LPFreq:        return  "LP:Freq";
-        case LPQ:           return  "LP:Q";
-        case LPEnable:      return  "LP:Enable";
-        default:            break;
-    }
-    return String::empty;
-}
-
-const String NewProjectAudioProcessor::getParameterText (int index)
-{
-    switch (index)
-    {
-        case LFGain:        return  "LF:Gain";
-        case LFShape:       return  "LF:Shape";
-        case LFFreq:        return  "LF:Freq";
-        case LFQ:           return  "LF:Q";
-        case LFPos:         return  "LF:Gain Pos./Neg.";
-        case LFPN:          return  "LF:Peak/Notch";
-        case LFEnable:      return  "LF:Enable";
-        case LMFGain:       return  "LMF:Gain";
-        case LMFShape:      return  "LMF:Shape";
-        case LMFFreq:       return  "LMF:Freq";
-        case LMFQ:          return  "LMF:Q";
-        case LMFPos:        return  "LMF:Gain Pos./Neg.";
-        case LMFPN:         return  "LMF:Peak/Notch";
-        case LMFEnable:     return  "LMF:Enable";
-        case HMFGain:       return  "HMF:Gain";
-        case HMFShape:      return  "HMF:Shape";
-        case HMFFreq:       return  "HMF:Freq";
-        case HMFQ:          return  "HMF:Q";
-        case HMFPos:        return  "HMF:Gain Pos./Neg.";
-        case HMFPN:         return  "HMF:Peak/Notch";
-        case HMFEnable:     return  "HMFEnable";
-        case HFGain:        return  "HF:Gain";
-        case HFShape:       return  "HF:Shape";
-        case HFFreq:        return  "HF:Freq";
-        case HFQ:           return  "HF:Q";
-        case HFPos:         return  "HF:Gain Pos./Neg.";
-        case HFPN:          return  "HF:Peak/Notch";
-        case HFEnable:      return  "HF:Enable";
-        case HPFreq:        return  "HP:Freq";
-        case HPQ:           return  "HP:Q";
-        case HPEnable:      return  "HP:Enable";
-        case LPFreq:        return  "LP:Freq";
-        case LPQ:           return  "LP:Q";
-        case LPEnable:      return  "LP:Enable";
-        default:            break;
-    }
-    return String::empty;
+void NewProjectAudioProcessor::initParameters(){
+    addFloatParam(LFGain, "LFGain", true, SAVE, &custom.LFGainValue, 0.f, 10.f);
+    addFloatParam(LFShape, "LFShape", true, SAVE, &custom.LFShapeValue, 0.f, 1.f);
+    addFloatParam(LFFreq, "LFFreq", true, SAVE, &custom.LFFreqValue, 20.f, 340.f);
+    addFloatParam(LFQ, "LFQ", true, SAVE, &custom.LFQValue, 0.5, 3.f);
+    addBoolParam(LFPos, "LFPos", true, SAVE, &custom.LFPosBool);
+    addBoolParam(LFPN, "LFPN", true, SAVE, &custom.LFPNBool);
+    addBoolParam(LFEnable, "LFEnable", true, SAVE, &custom.LFEnableBool);
+    addFloatParam(LMFGain, "LMFGain", true, SAVE, &custom.LMFGainValue, 0.f, 10.f);
+    addFloatParam(LMFShape, "LMFShape", true, SAVE, &custom.LMFShapeValue, 0.f, 1.f);
+    addFloatParam(LMFFreq, "LMFFreq", true, SAVE, &custom.LMFFreqValue, 90.f, 1400.f);
+    addFloatParam(LMFQ, "LMFQ", true, SAVE, &custom.LMFQValue, 0.5, 3.f);
+    addBoolParam(LMFPos, "LMFPos", true, SAVE, &custom.LMFPosBool);
+    addBoolParam(LMFPN, "LMFPN", true, SAVE, &custom.LMFPNBool);
+    addBoolParam(LMFEnable, "LMFEnable", true, SAVE, &custom.LMFEnableBool);
+    addFloatParam(HMFGain, "HMFGain", true, SAVE, &custom.HMFGainValue, 0.f, 10.f);
+    addFloatParam(HMFShape, "HMFShape", true, SAVE, &custom.HMFShapeValue, 0.f, 1.f);
+    addFloatParam(HMFFreq, "HMFFreq", true, SAVE, &custom.HMFFreqValue, 400.f, 6000.f);
+    addFloatParam(HMFQ, "HMFQ", true, SAVE, &custom.HMFQValue, 0.5, 3.f);
+    addBoolParam(HMFPos, "HMFPos", true, SAVE, &custom.HMFPosBool);
+    addBoolParam(HMFPN, "HMFPN", true, SAVE, &custom.HMFPNBool);
+    addBoolParam(HMFEnable, "HMFEnable", true, SAVE, &custom.HMFEnableBool);
+    addFloatParam(HFGain, "HFGain", true, SAVE, &custom.HFGainValue, 0.f, 10.f);
+    addFloatParam(HFShape, "HFShape", true, SAVE, &custom.HFShapeValue, 0.f, 1.f);
+    addFloatParam(HFFreq, "HFFreq", true, SAVE, &custom.HFFreqValue, 1500.f, 22000.f);
+    addFloatParam(HFQ, "HFQ", true, SAVE, &custom.HFQValue, 0.5, 3.f);
+    addBoolParam(HFPos, "HFPos", true, SAVE, &custom.HFPosBool);
+    addBoolParam(HFPN, "HFPN", true, SAVE, &custom.HFPNBool);
+    addBoolParam(HFEnable, "HFEnable", true, SAVE, &custom.HFEnableBool);
+    addFloatParam(HPFreq, "HPFreq", true, SAVE, &custom.HPFreqValue, 20.f, 340.f);
+    addFloatParam(HPQ, "HPQ", true, SAVE, &custom.HPQValue, 0.5, 3.f);
+    addBoolParam(HPEnable, "HPEnable", true, SAVE, &custom.HPEnableBool);
+    addFloatParam(LPFreq, "LPFreq", true, SAVE, &custom.LPFreqValue, 1500.f, 22000.f);
+    addFloatParam(LPQ, "LPQ", true, SAVE, &custom.LPQValue, 0.5, 3.f);
+    addBoolParam(LPEnable, "LPEnable", true, SAVE, &custom.LPEnableBool);
+    
 }
 
 const String NewProjectAudioProcessor::getInputChannelName (int channelIndex) const
@@ -314,9 +189,7 @@ void NewProjectAudioProcessor::releaseResources()
     // spare memory, etc.
 }
 
-double NewProjectAudioProcessor::dBToAmplitude(double dB){
-    return pow(10, (dB/20));
-}
+
 
 float NewProjectAudioProcessor::LowPassFilter(float buffer, int channel){
     double Fs = getSampleRate();
@@ -455,6 +328,32 @@ float NewProjectAudioProcessor::LFShelfFilter(float buffer, int channel){
     
 }
 
+float NewProjectAudioProcessor::LFNotchFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_LFFreqValue();
+    double Q = custom.get_LFQValue();
+    double K = tan(M_PI * (f0/Fs));
+    double norm = 1 / (1 + K / Q + K * K);
+    double a0 = (1 + K * K) * norm;
+    double a1 = 2 * (K * K - 1) * norm;
+    double a2 = a0;
+    double b1 = a1;
+    double b2 = (1 - K / Q + K * K) * norm;
+
+    xLFNotch[channel][2] = xLFNotch[channel][1];
+    xLFNotch[channel][1] = xLFNotch[channel][0];
+    xLFNotch[channel][0] = buffer;
+    yLFNotch[channel][2] = yLFNotch[channel][1];
+    yLFNotch[channel][1] = yLFNotch[channel][0];
+    
+    buffer = (a0*xLFNotch[channel][0] + a1*xLFNotch[channel][1] + a2*xLFNotch[channel][2] - b1*yLFNotch[channel][1] - b2*yLFNotch[channel][2]);
+    
+    yLFNotch[channel][0] = buffer;
+    
+    return buffer;
+    
+}
+
 float NewProjectAudioProcessor::LMFPeakFilter(float buffer, int channel){
     double Fs = getSampleRate();
     double f0 = custom.get_LMFFreqValue();
@@ -538,6 +437,32 @@ float NewProjectAudioProcessor::LMFShelfFilter(float buffer, int channel){
     
 }
 
+float NewProjectAudioProcessor::LMFNotchFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_LMFFreqValue();
+    double Q = custom.get_LMFQValue();
+    double K = tan(M_PI * (f0/Fs));
+    double norm = 1 / (1 + K / Q + K * K);
+    double a0 = (1 + K * K) * norm;
+    double a1 = 2 * (K * K - 1) * norm;
+    double a2 = a0;
+    double b1 = a1;
+    double b2 = (1 - K / Q + K * K) * norm;
+    
+    xLMFNotch[channel][2] = xLMFNotch[channel][1];
+    xLMFNotch[channel][1] = xLMFNotch[channel][0];
+    xLMFNotch[channel][0] = buffer;
+    yLMFNotch[channel][2] = yLMFNotch[channel][1];
+    yLMFNotch[channel][1] = yLMFNotch[channel][0];
+    
+    buffer = (a0*xLMFNotch[channel][0] + a1*xLMFNotch[channel][1] + a2*xLMFNotch[channel][2] - b1*yLMFNotch[channel][1] - b2*yLMFNotch[channel][2]);
+    
+    yLMFNotch[channel][0] = buffer;
+    
+    return buffer;
+    
+}
+
 float NewProjectAudioProcessor::HMFPeakFilter(float buffer, int channel){
     
     double Fs = getSampleRate();
@@ -581,6 +506,8 @@ float NewProjectAudioProcessor::HMFPeakFilter(float buffer, int channel){
     return buffer;
 }
 
+
+
 float NewProjectAudioProcessor::HMFShelfFilter(float buffer, int channel){
     
     double Fs = getSampleRate();
@@ -622,6 +549,32 @@ float NewProjectAudioProcessor::HMFShelfFilter(float buffer, int channel){
     yHMFShelf[channel][0] = buffer;
     
     return buffer;
+}
+
+float NewProjectAudioProcessor::HMFNotchFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_HMFFreqValue();
+    double Q = custom.get_HMFQValue();
+    double K = tan(M_PI * (f0/Fs));
+    double norm = 1 / (1 + K / Q + K * K);
+    double a0 = (1 + K * K) * norm;
+    double a1 = 2 * (K * K - 1) * norm;
+    double a2 = a0;
+    double b1 = a1;
+    double b2 = (1 - K / Q + K * K) * norm;
+    
+    xHMFNotch[channel][2] = xHMFNotch[channel][1];
+    xHMFNotch[channel][1] = xHMFNotch[channel][0];
+    xHMFNotch[channel][0] = buffer;
+    yHMFNotch[channel][2] = yHMFNotch[channel][1];
+    yHMFNotch[channel][1] = yHMFNotch[channel][0];
+    
+    buffer = (a0*xHMFNotch[channel][0] + a1*xHMFNotch[channel][1] + a2*xHMFNotch[channel][2] - b1*yHMFNotch[channel][1] - b2*yHMFNotch[channel][2]);
+    
+    yHMFNotch[channel][0] = buffer;
+    
+    return buffer;
+    
 }
 
 float NewProjectAudioProcessor::HFPeakFilter(float buffer, int channel){
@@ -667,6 +620,74 @@ float NewProjectAudioProcessor::HFPeakFilter(float buffer, int channel){
     return buffer;
 }
 
+float NewProjectAudioProcessor::HFShelfFilter(float buffer, int channel){
+    
+    double Fs = getSampleRate();
+    double f0 = custom.get_HFFreqValue();
+    double Q = custom.get_HFQValue();
+    double V = pow(10, fabs(custom.get_HFGainValue())/ 20.0);
+    double K = tan(M_PI * (f0/Fs));
+    double norm;
+    double a0;
+    double a1;
+    double a2;
+    double b1;
+    double b2;
+    if (custom.get_HFPosBool() == false) {
+        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
+        a0 = (V + sqrt(2*V)/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - V) * norm;
+        a2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
+        b1 = 2 * (K * K - 1) * norm;
+        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+    } else {
+        norm = 1 / (V + sqrt(2*V)/Q * K + K * K);
+        a0 = (1 + sqrt(2)/Q * K + K * K) * norm;
+        a1 = 2 * (K * K - 1) * norm;
+        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
+        b1 = 2 * (K * K - V) * norm;
+        b2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
+    }
+    
+    
+    xHFShelf[channel][2] = xHFShelf[channel][1];
+    xHFShelf[channel][1] = xHFShelf[channel][0];
+    xHFShelf[channel][0] = buffer;
+    yHFShelf[channel][2] = yHFShelf[channel][1];
+    yHFShelf[channel][1] = yHFShelf[channel][0];
+    
+    buffer = (a0*xHFShelf[channel][0] + a1*xHFShelf[channel][1] + a2*xHFShelf[channel][2] - b1*yHFShelf[channel][1] - b2*yHFShelf[channel][2]);
+    
+    yHFShelf[channel][0] = buffer;
+    
+    return buffer;
+}
+
+float NewProjectAudioProcessor::HFNotchFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_HFFreqValue();
+    double Q = custom.get_HFQValue();
+    double K = tan(M_PI * (f0/Fs));
+    double norm = 1 / (1 + K / Q + K * K);
+    double a0 = (1 + K * K) * norm;
+    double a1 = 2 * (K * K - 1) * norm;
+    double a2 = a0;
+    double b1 = a1;
+    double b2 = (1 - K / Q + K * K) * norm;
+    
+    xHFNotch[channel][2] = xHFNotch[channel][1];
+    xHFNotch[channel][1] = xHFNotch[channel][0];
+    xHFNotch[channel][0] = buffer;
+    yHFNotch[channel][2] = yHFNotch[channel][1];
+    yHFNotch[channel][1] = yHFNotch[channel][0];
+    
+    buffer = (a0*xHFNotch[channel][0] + a1*xHFNotch[channel][1] + a2*xHFNotch[channel][2] - b1*yHFNotch[channel][1] - b2*yHFNotch[channel][2]);
+    
+    yHFNotch[channel][0] = buffer;
+    
+    return buffer;
+    
+}
 
 
 
@@ -706,27 +727,44 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
         for (int i = 0; i < numSamples; i++){
             //LFFilters
             if (custom.get_LFEnableBool() == true) {
-                parallelChain1 = (LFPeakFilter(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelfFilter(channelData[i], channel)*custom.get_LFShapeValue());
+                if(custom.get_LFPNBool() == false){
+                    parallelChain1 = (LFPeakFilter(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelfFilter(channelData[i], channel)*custom.get_LFShapeValue());
+                } else {
+                    parallelChain1 = LFNotchFilter(channelData[i], channel);
+                }
             } else {
                 parallelChain1 = channelData[i];
             }
             //LMFFilters
             if (custom.get_LMFEnableBool() == true) {
-                parallelChain2 = (LMFPeakFilter(channelData[i], channel)*(1 - custom.get_LMFShapeValue()))+(LMFShelfFilter(channelData[i], channel)*custom.get_LMFShapeValue());
+                if (custom.get_LMFPNBool() == false) {
+                    parallelChain2 = (LMFPeakFilter(channelData[i], channel)*(1 - custom.get_LMFShapeValue()))+(LMFShelfFilter(channelData[i], channel)*custom.get_LMFShapeValue());
+                } else {
+                    parallelChain2 = LMFNotchFilter(channelData[i], channel);
+                }
+                
             } else {
                 parallelChain2 = channelData[i];
             }
             
             //HMFFilters
             if (custom.get_HMFEnableBool() == true) {
+                if (custom.get_HMFPNBool() == false){
                 parallelChain1 = (HMFPeakFilter(parallelChain1, channel)*(1-custom.get_HMFShapeValue()))+(HMFShelfFilter(parallelChain1, channel)*custom.get_HMFShapeValue());
+                } else {
+                    parallelChain1 = HMFNotchFilter(parallelChain1, channel);
+                }
             } else {
                 parallelChain1 = parallelChain1;
             }
             
-            //HFPeakFilter
+            //HFFilters
             if (custom.get_HFEnableBool() == true) {
-                parallelChain2 = HFPeakFilter(parallelChain2, channel);
+                if (custom.get_HFPNBool() == false){
+                parallelChain2 = (HFPeakFilter(parallelChain2, channel)*(1 - custom.get_HFShapeValue())) + (HFShelfFilter(parallelChain2, channel)*custom.get_HFShapeValue());
+                } else {
+                    parallelChain2 = HFNotchFilter(parallelChain2, channel);
+                }
             } else {
                 parallelChain1 = parallelChain1;
             }
@@ -755,6 +793,49 @@ AudioProcessorEditor* NewProjectAudioProcessor::createEditor()
     return new NewProjectAudioProcessorEditor (*this);
 }
 
+void NewProjectAudioProcessor::runAfterParamChange(int paramIndex, PluginParameters::UpdateFromFlags updateFromFlags){
+    switch(paramIndex){
+        case LFGain:    custom.set_LFGainValue(custom.LFGainValue);
+        case LFShape:   custom.set_LFShapeValue(custom.LFShapeValue);
+        case LFFreq:    custom.set_LFFreqValue(custom.LFFreqValue);
+        case LFQ:       custom.set_LFQValue(custom.LFQValue);
+        case LFPos:     custom.set_LFPosBool(custom.LFPosBool);
+        case LFPN:      custom.set_LFPNBool(custom.LFPNBool);
+        case LFEnable:  custom.set_LFEnableBool(custom.LFEnableBool);
+        case LMFGain:   custom.set_LMFGainValue(custom.LMFGainValue);
+        case LMFShape:  custom.set_LMFShapeValue(custom.LMFShapeValue);
+        case LMFFreq:   custom.set_LMFFreqValue(custom.LMFFreqValue);
+        case LMFQ:      custom.set_LMFQValue(custom.LMFQValue);
+        case LMFPos:    custom.set_LMFPosBool(custom.LMFPosBool);
+        case LMFPN:     custom.set_LMFPNBool(custom.LMFPNBool);
+        case LMFEnable: custom.set_LMFEnableBool(custom.LMFEnableBool);
+        case HMFGain:   custom.set_HMFGainValue(custom.HMFGainValue);
+        case HMFShape:  custom.set_HMFShapeValue(custom.HMFShapeValue);
+        case HMFFreq:   custom.set_HMFFreqValue(custom.HMFFreqValue);
+        case HMFQ:      custom.set_HMFQValue(custom.HMFQValue);
+        case HMFPos:    custom.set_HMFPosBool(custom.HMFPosBool);
+        case HMFPN:     custom.set_HMFPNBool(custom.HMFPNBool);
+        case HMFEnable: custom.set_HMFEnableBool(custom.HMFEnableBool);
+        case HFGain:    custom.set_HFGainValue(custom.HFGainValue);
+        case HFShape:   custom.set_HFShapeValue(custom.HFShapeValue);
+        case HFFreq:    custom.set_HFFreqValue(custom.HFFreqValue);
+        case HFQ:       custom.set_HFQValue(custom.HFQValue);
+        case HFPos:     custom.set_HFPosBool(custom.HFPosBool);
+        case HFPN:      custom.set_HFPNBool(custom.HFPNBool);
+        case HFEnable:  custom.set_HFEnableBool(custom.HFEnableBool);
+        case HPFreq:    custom.set_HPFreqValue(custom.HPFreqValue);
+        case HPQ:       custom.set_HPQValue(custom.HPQValue);
+        case HPEnable:  custom.set_HPEnableBool(custom.HPEnableBool);
+        case LPFreq:    custom.set_LPFreqValue(custom.LPFreqValue);
+        case LPQ:       custom.set_LPQValue(custom.LPQValue);
+        case LPEnable:  custom.set_LPEnableBool(custom.LPEnableBool);
+        default: break;
+    }
+}
+
+const String NewProjectAudioProcessor::getParameterText (int index){
+    return String (getParameter (index), 2);
+}
 //==============================================================================
 void NewProjectAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
@@ -818,7 +899,39 @@ void NewProjectAudioProcessor::setStateInformation (const void* data, int sizeIn
             gain  = (float) xmlState->getDoubleAttribute ("gain", gain);
             delay = (float) xmlState->getDoubleAttribute ("delay", delay);
              */
-            
+            custom.set_LFGainValue(xmlState->getDoubleAttribute("LFGain"));
+            custom.set_LFShapeValue(xmlState->getDoubleAttribute("LFShape"));
+            custom.set_LFFreqValue(xmlState->getDoubleAttribute("LFFreq"));
+            custom.set_LFQValue(xmlState->getDoubleAttribute("LFQ"));
+            custom.set_LMFGainValue(xmlState->getDoubleAttribute("LMFGain"));
+            custom.set_LMFShapeValue(xmlState->getDoubleAttribute("LMFShape"));
+            custom.set_LMFFreqValue(xmlState->getDoubleAttribute("LMFFreq"));
+            custom.set_LMFQValue(xmlState->getDoubleAttribute("LMFQ"));
+            custom.set_HMFGainValue(xmlState->getDoubleAttribute("HMFGain"));
+            custom.set_HMFShapeValue(xmlState->getDoubleAttribute("HMFShape"));
+            custom.set_HMFFreqValue(xmlState->getDoubleAttribute("HMFFreq"));
+            custom.set_HMFQValue(xmlState->getDoubleAttribute("HMFQ"));
+            custom.set_HFGainValue(xmlState->getDoubleAttribute("HFGain"));
+            custom.set_HFShapeValue(xmlState->getDoubleAttribute("HFShape"));
+            custom.set_HFFreqValue(xmlState->getDoubleAttribute("HFFreq"));
+            custom.set_HFQValue(xmlState->getDoubleAttribute("HFQ"));
+            custom.set_HPFreqValue(xmlState->getDoubleAttribute("HPFreq"));
+            custom.set_HPQValue(xmlState->getDoubleAttribute("HPQ"));
+            custom.set_LPFreqValue(xmlState->getDoubleAttribute("LPFreq"));
+            custom.set_LPQValue(xmlState->getDoubleAttribute("LPQ"));
+            custom.set_LFPosBool(xmlState->getBoolAttribute("LFPos"));
+            custom.set_LFPNBool(xmlState->getBoolAttribute("LFPN"));
+            custom.set_LFEnableBool(xmlState->getBoolAttribute("LFEnable"));
+            custom.set_LMFPosBool(xmlState->getBoolAttribute("LMFPos"));
+            custom.set_LMFPNBool(xmlState->getBoolAttribute("LMFPN"));
+            custom.set_LMFEnableBool(xmlState->getBoolAttribute("LMFEnable"));
+            custom.set_HMFPosBool(xmlState->getBoolAttribute("HMFPos"));
+            custom.set_HMFPNBool(xmlState->getBoolAttribute("HMFPN"));
+            custom.set_HMFEnableBool(xmlState->getBoolAttribute("HMFEnable"));
+            custom.set_HFPosBool(xmlState->getBoolAttribute("HFPos"));
+            custom.set_HFPNBool(xmlState->getBoolAttribute("HFPN"));
+            custom.set_HFEnableBool(xmlState->getBoolAttribute("HFEnable"));
+            custom.set_HPEnableBool(xmlState->getBoolAttribute("HPEnable"));
             custom.set_LPEnableBool(xmlState->getBoolAttribute("LPEnable"));
         }
     }

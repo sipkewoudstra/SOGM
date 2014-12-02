@@ -39,3 +39,4 @@ private:
 
 
 #endif  // PLUGINEDITOR_H_INCLUDED
+

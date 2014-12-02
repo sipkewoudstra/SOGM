@@ -31,7 +31,7 @@
             Optimization="0"
             BufferSecurityCheck=""
             DebugInformationFormat="4"
-            AdditionalIncludeDirectories="..\..\JuceLibraryCode;\Users\sipkewoudstra\Downloads\JUCE-OSX\modules;c:\SDKs\vstsdk2.4;c:\SDKs\VST3 SDK"
+            AdditionalIncludeDirectories="..\..\JuceLibraryCode;\Users\sipkewoudstra\Downloads\JUCE-OSX\modules;c:\SDKs\vstsdk2.4;c:\SDKs\VST3 SDK;..\..\..\..\JUCE-OSX\modules"
             PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000"
             RuntimeLibrary="3"
             RuntimeTypeInfo="true"
@@ -90,7 +90,7 @@
             Optimization="1"
             InlineFunctionExpansion="1"
             StringPooling="true"
-            AdditionalIncludeDirectories="..\..\JuceLibraryCode;\Users\sipkewoudstra\Downloads\JUCE-OSX\modules;c:\SDKs\vstsdk2.4;c:\SDKs\VST3 SDK"
+            AdditionalIncludeDirectories="..\..\JuceLibraryCode;\Users\sipkewoudstra\Downloads\JUCE-OSX\modules;c:\SDKs\vstsdk2.4;c:\SDKs\VST3 SDK;..\..\..\..\JUCE-OSX\modules"
             PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;JUCER_VS2008_78A5006=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000"
             RuntimeLibrary="2"
             RuntimeTypeInfo="true"
@@ -354,7 +354,7 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\synthesisers\juce_Synthesiser.h"/>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_basics\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -364,7 +364,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.h"/>
       </Filter>
       <Filter Name="juce_audio_devices">
         <Filter Name="audio_io">
@@ -631,7 +631,7 @@
             </FileConfiguration>
           </File>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_devices\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -641,7 +641,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.h"/>
       </Filter>
       <Filter Name="juce_audio_formats">
         <Filter Name="format">
@@ -838,7 +838,7 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\sampler\juce_Sampler.h"/>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_formats\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -848,7 +848,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.h"/>
       </Filter>
       <Filter Name="juce_audio_plugin_client">
         <Filter Name="AU">
@@ -876,7 +876,7 @@
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_PluginHostType.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_WindowsHooks.h"/>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -886,7 +886,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\juce_audio_plugin_client.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\juce_audio_plugin_client.h"/>
       </Filter>
       <Filter Name="juce_audio_processors">
         <Filter Name="processors">
@@ -926,7 +926,6 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorGraph.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorListener.h"/>
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorParameter.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_GenericAudioProcessorEditor.cpp">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
@@ -1049,7 +1048,7 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\scanning\juce_PluginListComponent.h"/>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_processors\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -1059,21 +1058,10 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.h"/>
       </Filter>
       <Filter Name="juce_audio_utils">
         <Filter Name="gui">
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioAppComponent.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioAppComponent.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.cpp">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
@@ -1133,7 +1121,7 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.h"/>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_utils\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -1143,7 +1131,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.h"/>
       </Filter>
       <Filter Name="juce_core">
         <Filter Name="text">
@@ -1266,7 +1254,6 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_Expression.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_MathsFunctions.h"/>
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_NormalisableRange.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_Random.cpp">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
@@ -1738,7 +1725,6 @@
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\logging\juce_Logger.h"/>
         </Filter>
         <Filter Name="system">
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\system\juce_CompilerSupport.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\system\juce_PlatformDefs.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\system\juce_StandardHeader.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\system\juce_SystemStats.cpp">
@@ -2047,7 +2033,7 @@
             </FileConfiguration>
           </File>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_core\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -2057,7 +2043,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\juce_core.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_core\juce_core.h"/>
       </Filter>
       <Filter Name="juce_data_structures">
         <Filter Name="values">
@@ -2122,7 +2108,7 @@
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\app_properties\juce_PropertiesFile.h"/>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_data_structures\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -2132,7 +2118,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\juce_data_structures.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_data_structures\juce_data_structures.h"/>
       </Filter>
       <Filter Name="juce_events">
         <Filter Name="messages">
@@ -2183,7 +2169,6 @@
             </FileConfiguration>
           </File>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_MessageManager.h"/>
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_MountedVolumeListChangeDetector.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_NotificationType.h"/>
         </Filter>
         <Filter Name="timers">
@@ -2320,7 +2305,7 @@
             </FileConfiguration>
           </File>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_events\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -2330,7 +2315,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\juce_events.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_events\juce_events.h"/>
       </Filter>
       <Filter Name="juce_graphics">
         <Filter Name="colour">
@@ -2750,7 +2735,7 @@
             </FileConfiguration>
           </File>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_graphics\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -2760,7 +2745,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\juce_graphics.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_graphics\juce_graphics.h"/>
       </Filter>
       <Filter Name="juce_gui_basics">
         <Filter Name="components">
@@ -4111,7 +4096,7 @@
             </FileConfiguration>
           </File>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_gui_basics\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -4121,7 +4106,7 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.h"/>
       </Filter>
       <Filter Name="juce_gui_extra">
         <Filter Name="code_editor">
@@ -4202,17 +4187,6 @@
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\embedding\juce_UIViewComponent.h"/>
         </Filter>
         <Filter Name="misc">
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.cpp">
-            <FileConfiguration Name="Debug|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-            <FileConfiguration Name="Release|Win32"
-                               ExcludedFromBuild="true">
-              <Tool Name="VCCLCompilerTool"/>
-            </FileConfiguration>
-          </File>
-          <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_AppleRemote.h"/>
           <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_BubbleMessageComponent.cpp">
             <FileConfiguration Name="Debug|Win32"
@@ -4381,7 +4355,7 @@
             </FileConfiguration>
           </File>
         </Filter>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\juce_module_info">
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_gui_extra\juce_module_info">
           <FileConfiguration Name="Debug|Win32"
                              ExcludedFromBuild="true">
             <Tool Name="VCCLCompilerTool"/>
@@ -4391,25 +4365,73 @@
             <Tool Name="VCCLCompilerTool"/>
           </FileConfiguration>
         </File>
-        <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.h"/>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.h"/>
+      </Filter>
+      <Filter Name="PluginParameters">
+        <Filter Name="sources">
+          <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\ParamGroups.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\ParamGroups.h"/>
+          <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\Params.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\Params.h"/>
+          <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\PluginProcessor.cpp">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\PluginProcessor.h"/>
+        </Filter>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\juce_module_info">
+          <FileConfiguration Name="Debug|Win32"
+                             ExcludedFromBuild="true">
+            <Tool Name="VCCLCompilerTool"/>
+          </FileConfiguration>
+          <FileConfiguration Name="Release|Win32"
+                             ExcludedFromBuild="true">
+            <Tool Name="VCCLCompilerTool"/>
+          </FileConfiguration>
+        </File>
+        <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\PluginParameters.h"/>
       </Filter>
     </Filter>
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\AAX\juce_AAX_Wrapper.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\juce_core.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\juce_data_structures.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\juce_events.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\juce_graphics.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_PluginUtilities.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode1.cpp">
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\AAX\juce_AAX_Wrapper.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_core\juce_core.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_data_structures\juce_data_structures.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_events\juce_events.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_graphics\juce_graphics.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_PluginUtilities.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode1.cpp">
         <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool"
                 CallingConvention="2"/>
@@ -4419,7 +4441,7 @@
                 CallingConvention="2"/>
         </FileConfiguration>
       </File>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode2.cpp">
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode2.cpp">
         <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool"
                 CallingConvention="2"/>
@@ -4429,7 +4451,7 @@
                 CallingConvention="2"/>
         </FileConfiguration>
       </File>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode3.cpp">
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode3.cpp">
         <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool"
                 CallingConvention="2"/>
@@ -4439,7 +4461,7 @@
                 CallingConvention="2"/>
         </FileConfiguration>
       </File>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinResources.rsr">
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinResources.rsr">
         <FileConfiguration Name="Debug|Win32"
                            ExcludedFromBuild="true">
           <Tool Name="VCCLCompilerTool"/>
@@ -4449,7 +4471,7 @@
           <Tool Name="VCCLCompilerTool"/>
         </FileConfiguration>
       </File>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinUtilities.cpp">
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinUtilities.cpp">
         <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool"
                 CallingConvention="2"/>
@@ -4459,7 +4481,7 @@
                 CallingConvention="2"/>
         </FileConfiguration>
       </File>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_Wrapper.cpp">
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_Wrapper.cpp">
         <FileConfiguration Name="Debug|Win32">
           <Tool Name="VCCLCompilerTool"
                 CallingConvention="2"/>
@@ -4469,9 +4491,10 @@
                 CallingConvention="2"/>
         </FileConfiguration>
       </File>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp"/>
-      <File RelativePath="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\VST3\juce_VST3_Wrapper.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\VST3\juce_VST3_Wrapper.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="..\..\..\..\JUCE-OSX\modules\PluginParameters\PluginParameters.cpp"/>
       <File RelativePath="resources.rc"/>
     </Filter>
   </Files>

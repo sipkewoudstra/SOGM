@@ -44,13 +44,6 @@ Gui::Gui ()
     LFShape->setColour (Slider::textBoxHighlightColourId, Colour (0x40ee1111));
     LFShape->addListener (this);
 
-    addAndMakeVisible (LFPos = new ImageButton ("LFPos"));
-    LFPos->addListener (this);
-
-    LFPos->setImages (false, true, true,
-                      ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
-                      ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
-                      ImageCache::getFromMemory (switcherDown_png, switcherDown_pngSize), 1.000f, Colour (0x00000000));
     addAndMakeVisible (LFFreq = new Slider ("LFFreq"));
     LFFreq->setRange (20, 340, 0);
     LFFreq->setSliderStyle (Slider::Rotary);
@@ -277,6 +270,13 @@ Gui::Gui ()
                          ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
                          ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
                          ImageCache::getFromMemory (switcherDown_png, switcherDown_pngSize), 1.000f, Colour (0x00000000));
+    addAndMakeVisible (LFPos2 = new ImageButton ("LFPos2"));
+    LFPos2->addListener (this);
+
+    LFPos2->setImages (false, true, true,
+                       ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
+                       ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
+                       ImageCache::getFromMemory (switcherDown_png, switcherDown_pngSize), 1.000f, Colour (0x00000000));
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -285,7 +285,7 @@ Gui::Gui ()
 
 
     //[Constructor] You can add your own custom stuff here..
-    LFPos->setClickingTogglesState(true);
+    LFPos2->setClickingTogglesState(true);
     LFPN->setClickingTogglesState(true);
     LFEnable->setClickingTogglesState(true);
     LMFPos->setClickingTogglesState(true);
@@ -301,10 +301,10 @@ Gui::Gui ()
     LPEnable->setClickingTogglesState(true);
 
 
-    this->LFPosBool = LFPos->getToggleState();
+    this->LFPosBool = LFPos2->getToggleState();
     this->LFPNBool = LFPN->getToggleState();
     this->LFEnableBool = LFEnable->getToggleState();
-    this->LMFPosBool = LFPos->getToggleState();
+    this->LMFPosBool = LFPos2->getToggleState();
     this->LMFPNBool = LMFPN->getToggleState();
     this->LMFEnableBool = LMFEnable->getToggleState();
     this->HMFPosBool = HMFPos->getToggleState();
@@ -327,7 +327,7 @@ Gui::Gui ()
     this->LFQValue = 0.5;
     this->LFShapeValue = 0;
     this->LFGainValue = 0;
-    
+
     this->LMFFreqValue = 90;
     this->LMFQValue = 0.5;
     this->LMFShapeValue = 0;
@@ -337,7 +337,7 @@ Gui::Gui ()
     this->HMFQValue = 0.5;
     this->HMFShapeValue = 0;
     this->HMFGainValue = 0;
-    
+
     this->HFFreqValue = 1500;
     this->HFQValue = 0.5;
     this->HFShapeValue = 0;
@@ -353,7 +353,6 @@ Gui::~Gui()
 
     LFGain = nullptr;
     LFShape = nullptr;
-    LFPos = nullptr;
     LFFreq = nullptr;
     LFQ = nullptr;
     LMFGain = nullptr;
@@ -385,6 +384,7 @@ Gui::~Gui()
     HFEnable = nullptr;
     HPEnable = nullptr;
     LPEnable = nullptr;
+    LFPos2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -418,26 +418,25 @@ void Gui::paint (Graphics& g)
 void Gui::resized()
 {
     LFGain->setBounds (46 - (75 / 2), 46 - (75 / 2), 75, 75);
-    LFShape->setBounds ((46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
-    LFPos->setBounds (16, 88, 24, 40);
+    LFShape->setBounds ((46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LFFreq->setBounds (126 - (75 / 2), 110 - (75 / 2), 75, 75);
-    LFQ->setBounds ((126 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    LFQ->setBounds ((126 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LMFGain->setBounds (230 - (75 / 2), 46 - (75 / 2), 75, 75);
-    LMFShape->setBounds ((230 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    LMFShape->setBounds ((230 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LMFFreq->setBounds (310 - (75 / 2), 110 - (75 / 2), 75, 75);
-    LMFQ->setBounds ((310 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    LMFQ->setBounds ((310 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HMFGain->setBounds (414 - (75 / 2), 46 - (75 / 2), 75, 75);
-    HMFShape->setBounds ((414 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    HMFShape->setBounds ((414 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HMFFreq->setBounds (494 - (75 / 2), 110 - (75 / 2), 75, 75);
-    HMFQ->setBounds ((494 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    HMFQ->setBounds ((494 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HFGain->setBounds (598 - (75 / 2), 46 - (75 / 2), 75, 75);
-    HFShape->setBounds ((598 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    HFShape->setBounds ((598 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HFFreq->setBounds (678 - (75 / 2), 110 - (75 / 2), 75, 75);
-    HFQ->setBounds ((678 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    HFQ->setBounds ((678 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     HPFreq->setBounds (790 - (75 / 2), 46 - (75 / 2), 75, 75);
-    HPQ->setBounds ((790 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    HPQ->setBounds ((790 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LPFreq->setBounds (870 - (75 / 2), 46 - (75 / 2), 75, 75);
-    LPQ->setBounds ((870 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.5000f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
+    LPQ->setBounds ((870 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (46 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
     LFPN->setBounds (48, 88, 24, 40);
     LFEnable->setBounds (112, 16, 24, 40);
     LMFPos->setBounds (200, 88, 24, 40);
@@ -451,6 +450,7 @@ void Gui::resized()
     HFEnable->setBounds (664, 16, 24, 40);
     HPEnable->setBounds (776, 88, 24, 40);
     LPEnable->setBounds (856, 88, 24, 40);
+    LFPos2->setBounds (16, 88, 24, 40);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -590,13 +590,7 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
 
-    if (buttonThatWasClicked == LFPos)
-    {
-        //[UserButtonCode_LFPos] -- add your button handler code here..
-        this->LFPosBool = LFPos->getToggleState();
-        //[/UserButtonCode_LFPos]
-    }
-    else if (buttonThatWasClicked == LFPN)
+    if (buttonThatWasClicked == LFPN)
     {
         //[UserButtonCode_LFPN] -- add your button handler code here..
         this->LFPNBool = LFPN->getToggleState();
@@ -674,6 +668,12 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
         this->LPEnableBool = LPEnable->getToggleState();
         //[/UserButtonCode_LPEnable]
     }
+    else if (buttonThatWasClicked == LFPos2)
+    {
+        //[UserButtonCode_LFPos2] -- add your button handler code here..
+        this->LFPosBool = LFPos2->getToggleState();
+        //[/UserButtonCode_LFPos2]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -682,69 +682,69 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-double Gui::get_LFGainValue(){
+float Gui::get_LFGainValue(){
     return LFGainValue;
 }
-double Gui::get_LFShapeValue(){
+float Gui::get_LFShapeValue(){
     return LFShapeValue;
 }
-double Gui::get_LFFreqValue(){
+float Gui::get_LFFreqValue(){
     return LFFreqValue;
 }
-double Gui::get_LFQValue(){
+float Gui::get_LFQValue(){
     return LFQValue;
 }
-double Gui::get_LMFGainValue(){
+float Gui::get_LMFGainValue(){
     return LMFGainValue;
 }
-double Gui::get_LMFShapeValue(){
+float Gui::get_LMFShapeValue(){
     return LMFShapeValue;
 }
-double Gui::get_LMFFreqValue(){
+float Gui::get_LMFFreqValue(){
     return LMFFreqValue;
 }
-double Gui::get_LMFQValue(){
+float Gui::get_LMFQValue(){
     return LMFQValue;
 }
-double Gui::get_HMFGainValue(){
+float Gui::get_HMFGainValue(){
     return HMFGainValue;
 }
-double Gui::get_HMFShapeValue(){
+float Gui::get_HMFShapeValue(){
     return HMFShapeValue;
 }
-double Gui::get_HMFFreqValue(){
+float Gui::get_HMFFreqValue(){
     return HMFFreqValue;
 }
-double Gui::get_HMFQValue(){
+float Gui::get_HMFQValue(){
     return HMFQValue;
 }
-double Gui::get_HFGainValue(){
+float Gui::get_HFGainValue(){
     return HFGainValue;
 }
-double Gui::get_HFShapeValue(){
+float Gui::get_HFShapeValue(){
     return HFShapeValue;
 }
-double Gui::get_HFFreqValue(){
+float Gui::get_HFFreqValue(){
     return HFFreqValue;
 }
-double Gui::get_HFQValue(){
+float Gui::get_HFQValue(){
     return HFQValue;
 }
-double Gui::get_HPFreqValue(){
+float Gui::get_HPFreqValue(){
     return HPFreqValue;
 }
-double Gui::get_HPQValue(){
+float Gui::get_HPQValue(){
     return HPQValue;
 }
-double Gui::get_LPFreqValue(){
+float Gui::get_LPFreqValue(){
     return LPFreqValue;
 }
-double Gui::get_LPQValue(){
+float Gui::get_LPQValue(){
     return LPQValue;
 }
 
 bool Gui::get_LFPosBool(){
-    return LFPNBool;
+    return LFPosBool;
 }
 bool Gui::get_LFPNBool(){
     return LFPNBool;
@@ -786,91 +786,91 @@ bool Gui::get_LPEnableBool(){
     return LPEnableBool;
 }
 
-void Gui::set_LFGainValue(double input){
+void Gui::set_LFGainValue(float input){
     this->LFGainValue = input;
     LFGain->setValue(input);
 
 }
-void Gui::set_LFShapeValue(double input){
+void Gui::set_LFShapeValue(float input){
     this->LFShapeValue = input;
     LFShape->setValue(input);
 }
-void Gui::set_LFFreqValue(double input){
+void Gui::set_LFFreqValue(float input){
     this->LFFreqValue = input;
     LFFreq->setValue(input);
 }
-void Gui::set_LFQValue(double input){
+void Gui::set_LFQValue(float input){
     this->LFQValue = input;
     LFQ->setValue(input);
 }
-void Gui::set_LMFGainValue(double input){
+void Gui::set_LMFGainValue(float input){
     this->LMFGainValue = input;
     LMFGain->setValue(input);
 }
-void Gui::set_LMFShapeValue(double input){
+void Gui::set_LMFShapeValue(float input){
     this->LMFShapeValue = input;
     LMFShape->setValue(input);
 }
-void Gui::set_LMFFreqValue(double input){
+void Gui::set_LMFFreqValue(float input){
     this->LMFFreqValue = input;
     LMFFreq->setValue(input);
 }
-void Gui::set_LMFQValue(double input){
+void Gui::set_LMFQValue(float input){
     this->LMFQValue = input;
     LMFQ->setValue(input);
 }
-void Gui::set_HMFGainValue(double input){
+void Gui::set_HMFGainValue(float input){
     this->HMFGainValue = input;
     HMFGain->setValue(input);
 }
-void Gui::set_HMFShapeValue(double input){
+void Gui::set_HMFShapeValue(float input){
     this->HMFShapeValue = input;
     HMFShape->setValue(input);
 }
-void Gui::set_HMFFreqValue(double input){
+void Gui::set_HMFFreqValue(float input){
     this->HMFFreqValue = input;
     HMFFreq->setValue(input);
 }
-void Gui::set_HMFQValue(double input){
+void Gui::set_HMFQValue(float input){
     this->HMFQValue = input;
     HMFQ->setValue(input);
 }
-void Gui::set_HFGainValue(double input){
+void Gui::set_HFGainValue(float input){
     this->HFGainValue = input;
     HFGain->setValue(input);
 }
-void Gui::set_HFShapeValue(double input){
+void Gui::set_HFShapeValue(float input){
     this->HFShapeValue = input;
     HFShape->setValue(input);
 }
-void Gui::set_HFFreqValue(double input){
+void Gui::set_HFFreqValue(float input){
     this->HFFreqValue = input;
     HFFreq->setValue(input);
 }
-void Gui::set_HFQValue(double input){
+void Gui::set_HFQValue(float input){
     this->HFQValue = input;
     HFQ->setValue(input);
 }
-void Gui::set_HPFreqValue(double input){
+void Gui::set_HPFreqValue(float input){
     this->HPFreqValue = input;
     HPFreq->setValue(input);
 }
-void Gui::set_HPQValue(double input){
+void Gui::set_HPQValue(float input){
     this->HPQValue = input;
     HPQ->setValue(input);
 }
-void Gui::set_LPFreqValue(double input){
+void Gui::set_LPFreqValue(float input){
     this->LPFreqValue = input;
     LPFreq->setValue(input);
 }
-void Gui::set_LPQValue(double input){
+void Gui::set_LPQValue(float input){
     this->LPQValue = input;
     LPQ->setValue(input);
 }
 
 void Gui::set_LFPosBool(bool input){
     this->LFPosBool = input;
-    LFPos->setToggleState(input, sendNotification);
+    LFPos2->setToggleState(input, sendNotification);
 }
 void Gui::set_LFPNBool(bool input){
     this->LFPNBool = input;
@@ -958,12 +958,6 @@ BEGIN_JUCER_METADATA
           thumbcol="ffffbbbb" rotarysliderfill="7f1100ff" textboxhighlight="40ee1111"
           min="0" max="1" int="0" style="Rotary" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
-  <IMAGEBUTTON name="LFPos" id="f89c37fbfe8b4695" memberName="LFPos" virtualName=""
-               explicitFocusOrder="0" pos="16 88 24 40" buttonText="LFPos" connectedEdges="0"
-               needsCallback="1" radioGroupId="0" keepProportions="1" resourceNormal="switcherUp_png"
-               opacityNormal="1" colourNormal="0" resourceOver="switcherUp_png"
-               opacityOver="1" colourOver="0" resourceDown="switcherDown_png"
-               opacityDown="1" colourDown="0"/>
   <SLIDER name="LFFreq" id="8d1838f73a6a2fa4" memberName="LFFreq" virtualName=""
           explicitFocusOrder="0" pos="125.5c 109.5c 75 75" min="20" max="340"
           int="0" style="Rotary" textBoxPos="NoTextBox" textBoxEditable="1"
@@ -1137,6 +1131,12 @@ BEGIN_JUCER_METADATA
                resourceDown="switcherDown_png" opacityDown="1" colourDown="0"/>
   <IMAGEBUTTON name="LPEnable" id="68df17046bba20f9" memberName="LPEnable" virtualName=""
                explicitFocusOrder="0" pos="856 88 24 40" buttonText="LPEnable"
+               connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
+               resourceNormal="switcherUp_png" opacityNormal="1" colourNormal="0"
+               resourceOver="switcherUp_png" opacityOver="1" colourOver="0"
+               resourceDown="switcherDown_png" opacityDown="1" colourDown="0"/>
+  <IMAGEBUTTON name="LFPos2" id="44b4cf231a5279ee" memberName="LFPos2" virtualName=""
+               explicitFocusOrder="0" pos="16 88 24 40" buttonText="LFPos2"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
                resourceNormal="switcherUp_png" opacityNormal="1" colourNormal="0"
                resourceOver="switcherUp_png" opacityOver="1" colourOver="0"

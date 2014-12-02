@@ -45,26 +45,26 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    double get_LFGainValue();
-    double get_LFShapeValue();
-    double get_LFFreqValue();
-    double get_LFQValue();
-    double get_LMFGainValue();
-    double get_LMFShapeValue();
-    double get_LMFFreqValue();
-    double get_LMFQValue();
-    double get_HMFGainValue();
-    double get_HMFShapeValue();
-    double get_HMFFreqValue();
-    double get_HMFQValue();
-    double get_HFGainValue();
-    double get_HFShapeValue();
-    double get_HFFreqValue();
-    double get_HFQValue();
-    double get_HPFreqValue();
-    double get_HPQValue();
-    double get_LPFreqValue();
-    double get_LPQValue();
+    float get_LFGainValue();
+    float get_LFShapeValue();
+    float get_LFFreqValue();
+    float get_LFQValue();
+    float get_LMFGainValue();
+    float get_LMFShapeValue();
+    float get_LMFFreqValue();
+    float get_LMFQValue();
+    float get_HMFGainValue();
+    float get_HMFShapeValue();
+    float get_HMFFreqValue();
+    float get_HMFQValue();
+    float get_HFGainValue();
+    float get_HFShapeValue();
+    float get_HFFreqValue();
+    float get_HFQValue();
+    float get_HPFreqValue();
+    float get_HPQValue();
+    float get_LPFreqValue();
+    float get_LPQValue();
 
     bool get_LFPosBool();
     bool get_LFPNBool();
@@ -81,26 +81,26 @@ public:
     bool get_HPEnableBool();
     bool get_LPEnableBool();
 
-    void set_LFGainValue(double input);
-    void set_LFShapeValue(double input);
-    void set_LFFreqValue(double input);
-    void set_LFQValue(double input);
-    void set_LMFGainValue(double input);
-    void set_LMFShapeValue(double input);
-    void set_LMFFreqValue(double input);
-    void set_LMFQValue(double input);
-    void set_HMFGainValue(double input);
-    void set_HMFShapeValue(double input);
-    void set_HMFFreqValue(double input);
-    void set_HMFQValue(double input);
-    void set_HFGainValue(double input);
-    void set_HFShapeValue(double input);
-    void set_HFFreqValue(double input);
-    void set_HFQValue(double input);
-    void set_HPFreqValue(double input);
-    void set_HPQValue(double input);
-    void set_LPFreqValue(double input);
-    void set_LPQValue(double input);
+    void set_LFGainValue(float input);
+    void set_LFShapeValue(float input);
+    void set_LFFreqValue(float input);
+    void set_LFQValue(float input);
+    void set_LMFGainValue(float input);
+    void set_LMFShapeValue(float input);
+    void set_LMFFreqValue(float input);
+    void set_LMFQValue(float input);
+    void set_HMFGainValue(float input);
+    void set_HMFShapeValue(float input);
+    void set_HMFFreqValue(float input);
+    void set_HMFQValue(float input);
+    void set_HFGainValue(float input);
+    void set_HFShapeValue(float input);
+    void set_HFFreqValue(float input);
+    void set_HFQValue(float input);
+    void set_HPFreqValue(float input);
+    void set_HPQValue(float input);
+    void set_LPFreqValue(float input);
+    void set_LPQValue(float input);
 
     void set_LFPosBool(bool input);
     void set_LFPNBool(bool input);
@@ -116,6 +116,42 @@ public:
     void set_HFEnableBool(bool input);
     void set_HPEnableBool(bool input);
     void set_LPEnableBool(bool input);
+    
+    float LFGainValue;
+    float LFShapeValue;
+    float LFFreqValue;
+    float LFQValue;
+    float LMFGainValue;
+    float LMFShapeValue;
+    float LMFFreqValue;
+    float LMFQValue;
+    float HMFGainValue;
+    float HMFShapeValue;
+    float HMFFreqValue;
+    float HMFQValue;
+    float HFGainValue;
+    float HFShapeValue;
+    float HFFreqValue;
+    float HFQValue;
+    float HPFreqValue;
+    float HPQValue;
+    float LPFreqValue;
+    float LPQValue;
+    
+    bool LFPosBool;
+    bool LFPNBool;
+    bool LFEnableBool;
+    bool LMFPosBool;
+    bool LMFPNBool;
+    bool LMFEnableBool;
+    bool HMFPosBool;
+    bool HMFPNBool;
+    bool HMFEnableBool;
+    bool HFPosBool;
+    bool HFPNBool;
+    bool HFEnableBool;
+    bool HPEnableBool;
+    bool LPEnableBool;
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -134,47 +170,11 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    double LFGainValue;
-    double LFShapeValue;
-    double LFFreqValue;
-    double LFQValue;
-    double LMFGainValue;
-    double LMFShapeValue;
-    double LMFFreqValue;
-    double LMFQValue;
-    double HMFGainValue;
-    double HMFShapeValue;
-    double HMFFreqValue;
-    double HMFQValue;
-    double HFGainValue;
-    double HFShapeValue;
-    double HFFreqValue;
-    double HFQValue;
-    double HPFreqValue;
-    double HPQValue;
-    double LPFreqValue;
-    double LPQValue;
-
-    bool LFPosBool;
-    bool LFPNBool;
-    bool LFEnableBool;
-    bool LMFPosBool;
-    bool LMFPNBool;
-    bool LMFEnableBool;
-    bool HMFPosBool;
-    bool HMFPNBool;
-    bool HMFEnableBool;
-    bool HFPosBool;
-    bool HFPNBool;
-    bool HFEnableBool;
-    bool HPEnableBool;
-    bool LPEnableBool;
     //[/UserVariables]
 
     //==============================================================================
     ScopedPointer<Slider> LFGain;
     ScopedPointer<Slider> LFShape;
-    ScopedPointer<ImageButton> LFPos;
     ScopedPointer<Slider> LFFreq;
     ScopedPointer<Slider> LFQ;
     ScopedPointer<Slider> LMFGain;
@@ -206,6 +206,7 @@ private:
     ScopedPointer<ImageButton> HFEnable;
     ScopedPointer<ImageButton> HPEnable;
     ScopedPointer<ImageButton> LPEnable;
+    ScopedPointer<ImageButton> LFPos2;
 
 
     //==============================================================================

@@ -287,6 +287,12 @@
     <Filter Include="Juce Modules\juce_gui_extra\native">
       <UniqueIdentifier>{C413328B-5D81-89EE-F4F3-75752E700DE4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Juce Modules\PluginParameters">
+      <UniqueIdentifier>{5F0CB337-BE1D-5C5D-F0FA-84BB8B4CA2DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Modules\PluginParameters\sources">
+      <UniqueIdentifier>{22AC1CF5-69DE-F83F-4F1E-A92CC99217C4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Library Code">
       <UniqueIdentifier>{8B4D1BAA-6DB4-CAEC-A0FA-271F354D5C61}</UniqueIdentifier>
     </Filter>
@@ -540,9 +546,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\scanning\juce_PluginListComponent.cpp">
       <Filter>Juce Modules\juce_audio_processors\scanning</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioAppComponent.cpp">
-      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.cpp">
       <Filter>Juce Modules\juce_audio_utils\gui</Filter>
@@ -1372,9 +1375,6 @@
     <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\documents\juce_FileBasedDocument.cpp">
       <Filter>Juce Modules\juce_gui_extra\documents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.cpp">
-      <Filter>Juce Modules\juce_gui_extra\misc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_BubbleMessageComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClCompile>
@@ -1432,64 +1432,76 @@
     <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\AAX\juce_AAX_Wrapper.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\ParamGroups.cpp">
+      <Filter>Juce Modules\PluginParameters\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\Params.cpp">
+      <Filter>Juce Modules\PluginParameters\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\PluginProcessor.cpp">
+      <Filter>Juce Modules\PluginParameters\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\AAX\juce_AAX_Wrapper.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\juce_core.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_core\juce_core.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\juce_data_structures.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_data_structures\juce_data_structures.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\juce_events.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_events\juce_events.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\juce_graphics.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_graphics\juce_graphics.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_PluginUtilities.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_PluginUtilities.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode1.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode1.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode2.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode2.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode3.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode3.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinUtilities.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinUtilities.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_Wrapper.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_Wrapper.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\VST3\juce_VST3_Wrapper.cpp">
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\VST3\juce_VST3_Wrapper.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\PluginParameters.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1569,7 +1581,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\synthesisers\juce_Synthesiser.h">
       <Filter>Juce Modules\juce_audio_basics\synthesisers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_audio_basics\juce_audio_basics.h">
       <Filter>Juce Modules\juce_audio_basics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\audio_io\juce_AudioDeviceManager.h">
@@ -1608,7 +1620,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\native\juce_MidiDataConcatenator.h">
       <Filter>Juce Modules\juce_audio_devices\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_audio_devices\juce_audio_devices.h">
       <Filter>Juce Modules\juce_audio_devices</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\format\juce_AudioFormat.h">
@@ -1665,7 +1677,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\sampler\juce_Sampler.h">
       <Filter>Juce Modules\juce_audio_formats\sampler</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_audio_formats\juce_audio_formats.h">
       <Filter>Juce Modules\juce_audio_formats</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode_Header.h">
@@ -1692,7 +1704,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\utility\juce_WindowsHooks.h">
       <Filter>Juce Modules\juce_audio_plugin_client\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\juce_audio_plugin_client.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\juce_audio_plugin_client.h">
       <Filter>Juce Modules\juce_audio_plugin_client</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioPlayHead.h">
@@ -1711,9 +1723,6 @@
       <Filter>Juce Modules\juce_audio_processors\processors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorListener.h">
-      <Filter>Juce Modules\juce_audio_processors\processors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorParameter.h">
       <Filter>Juce Modules\juce_audio_processors\processors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\processors\juce_GenericAudioProcessorEditor.h">
@@ -1758,11 +1767,8 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\scanning\juce_PluginListComponent.h">
       <Filter>Juce Modules\juce_audio_processors\scanning</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.h">
       <Filter>Juce Modules\juce_audio_processors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioAppComponent.h">
-      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.h">
       <Filter>Juce Modules\juce_audio_utils\gui</Filter>
@@ -1782,7 +1788,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.h">
       <Filter>Juce Modules\juce_audio_utils\players</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_audio_utils\juce_audio_utils.h">
       <Filter>Juce Modules\juce_audio_utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\text\juce_CharacterFunctions.h">
@@ -1834,9 +1840,6 @@
       <Filter>Juce Modules\juce_core\maths</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_MathsFunctions.h">
-      <Filter>Juce Modules\juce_core\maths</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_NormalisableRange.h">
       <Filter>Juce Modules\juce_core\maths</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\maths\juce_Random.h">
@@ -2058,9 +2061,6 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\logging\juce_Logger.h">
       <Filter>Juce Modules\juce_core\logging</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\system\juce_CompilerSupport.h">
-      <Filter>Juce Modules\juce_core\system</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\system\juce_PlatformDefs.h">
       <Filter>Juce Modules\juce_core\system</Filter>
     </ClInclude>
@@ -2121,7 +2121,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\native\juce_win32_ComSmartPtr.h">
       <Filter>Juce Modules\juce_core\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\juce_core.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_core\juce_core.h">
       <Filter>Juce Modules\juce_core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\values\juce_Value.h">
@@ -2142,7 +2142,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\app_properties\juce_PropertiesFile.h">
       <Filter>Juce Modules\juce_data_structures\app_properties</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\juce_data_structures.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_data_structures\juce_data_structures.h">
       <Filter>Juce Modules\juce_data_structures</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_ApplicationBase.h">
@@ -2164,9 +2164,6 @@
       <Filter>Juce Modules\juce_events\messages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_MessageManager.h">
-      <Filter>Juce Modules\juce_events\messages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_MountedVolumeListChangeDetector.h">
       <Filter>Juce Modules\juce_events\messages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\messages\juce_NotificationType.h">
@@ -2214,7 +2211,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\native\juce_win32_HiddenMessageWindow.h">
       <Filter>Juce Modules\juce_events\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\juce_events.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_events\juce_events.h">
       <Filter>Juce Modules\juce_events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\colour\juce_Colour.h">
@@ -2328,7 +2325,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\native\juce_RenderingHelpers.h">
       <Filter>Juce Modules\juce_graphics\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\juce_graphics.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_graphics\juce_graphics.h">
       <Filter>Juce Modules\juce_graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\components\juce_CachedComponentImage.h">
@@ -2712,7 +2709,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\native\juce_MultiTouchMapper.h">
       <Filter>Juce Modules\juce_gui_basics\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_gui_basics\juce_gui_basics.h">
       <Filter>Juce Modules\juce_gui_basics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\code_editor\juce_CodeDocument.h">
@@ -2748,9 +2745,6 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\embedding\juce_UIViewComponent.h">
       <Filter>Juce Modules\juce_gui_extra\embedding</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.h">
-      <Filter>Juce Modules\juce_gui_extra\misc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\misc\juce_AppleRemote.h">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClInclude>
@@ -2784,8 +2778,20 @@
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\native\juce_mac_CarbonViewWrapperComponent.h">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.h">
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>Juce Modules\juce_gui_extra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\ParamGroups.h">
+      <Filter>Juce Modules\PluginParameters\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\Params.h">
+      <Filter>Juce Modules\PluginParameters\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\sources\PluginProcessor.h">
+      <Filter>Juce Modules\PluginParameters\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\PluginParameters.h">
+      <Filter>Juce Modules\PluginParameters</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>
@@ -2795,43 +2801,46 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_basics\juce_module_info">
       <Filter>Juce Modules\juce_audio_basics</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_devices\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_devices\juce_module_info">
       <Filter>Juce Modules\juce_audio_devices</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_formats\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_formats\juce_module_info">
       <Filter>Juce Modules\juce_audio_formats</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\juce_module_info">
       <Filter>Juce Modules\juce_audio_plugin_client</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_processors\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_processors\juce_module_info">
       <Filter>Juce Modules\juce_audio_processors</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_utils\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_utils\juce_module_info">
       <Filter>Juce Modules\juce_audio_utils</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_core\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_core\juce_module_info">
       <Filter>Juce Modules\juce_core</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_data_structures\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_data_structures\juce_module_info">
       <Filter>Juce Modules\juce_data_structures</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_events\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_events\juce_module_info">
       <Filter>Juce Modules\juce_events</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_graphics\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_graphics\juce_module_info">
       <Filter>Juce Modules\juce_graphics</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_basics\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_gui_basics\juce_module_info">
       <Filter>Juce Modules\juce_gui_basics</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_gui_extra\juce_module_info">
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_gui_extra\juce_module_info">
       <Filter>Juce Modules\juce_gui_extra</Filter>
     </None>
-    <None Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinResources.rsr">
+    <None Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\juce_module_info">
+      <Filter>Juce Modules\PluginParameters</Filter>
+    </None>
+    <None Include="..\..\..\..\JUCE-OSX\modules\juce_audio_plugin_client\RTAS\juce_RTAS_WinResources.rsr">
       <Filter>Juce Library Code</Filter>
     </None>
   </ItemGroup>
