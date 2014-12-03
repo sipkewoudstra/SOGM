@@ -159,8 +159,6 @@ public:
     void buttonClicked (Button* buttonThatWasClicked);
 
     // Binary resources:
-    static const char* switcher2_png;
-    static const int switcher2_pngSize;
     static const char* switcherUp_png;
     static const int switcherUp_pngSize;
     static const char* switcherDown_png;
@@ -179,6 +177,12 @@ public:
     static const int eqouterDialFreqLmf_pngSize;
     static const char* eqouterDialGain_png;
     static const int eqouterDialGain_pngSize;
+    static const char* background_png;
+    static const int background_pngSize;
+    static const char* switcherSideDown_png;
+    static const int switcherSideDown_pngSize;
+    static const char* switcherSideUp_png;
+    static const int switcherSideUp_pngSize;
 
 
 private:
@@ -231,8 +235,7 @@ private:
     ScopedPointer<ImageButton> HPEnable;
     ScopedPointer<ImageButton> LPEnable;
     ScopedPointer<ImageButton> LFPos2;
-    Image cachedImage_filterInnerDial_png;
-    Image cachedImage_eqouterDialFreqLf_png;
+    Image cachedImage_background_png;
 
 
     //==============================================================================
