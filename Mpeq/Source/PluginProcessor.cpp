@@ -29,6 +29,8 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
             yLFShelf[i][j] = 0;
             xLFNotch[i][j] = 0;
             yLFNotch[i][j] = 0;
+            xLFAllpass[i][j] = 0;
+            yLFAllpass[i][j] = 0;
             
             xLMFPeak[i][j] = 0;
             yLMFPeak[i][j] = 0;
@@ -353,6 +355,35 @@ float NewProjectAudioProcessor::LFNotchFilter(float buffer, int channel){
     return buffer;
     
 }
+
+float NewProjectAudioProcessor::LFAllpassFilter(float buffer, int channel){
+    double Fs = getSampleRate();
+    double f0 = custom.get_LFFreqValue();
+    double Q = custom.get_LFQValue();
+    double w0 = 2*M_PI*(f0/Fs);
+    double alpha = sin(w0)/(2*Q);
+    double b0 =   1.0 - alpha;
+    double b1 =  (-2.0)*cos(w0);
+    double b2 =   1.0 + alpha;
+    double a0 =   1.0 + alpha;
+    double a1 =  (-2.0)*cos(w0);
+    double a2 =   1.0 - alpha;
+    
+    xLFAllpass[channel][2] = xLFAllpass[channel][1];
+    xLFAllpass[channel][1] = xLFAllpass[channel][0];
+    xLFAllpass[channel][0] = buffer;
+    yLFAllpass[channel][2] = yLFAllpass[channel][1];
+    yLFAllpass[channel][1] = yLFAllpass[channel][0];
+    
+    buffer = (b0/a0)*xLFAllpass[channel][0] + (b1/a0)*xLFAllpass[channel][1] + (b2/a0)*xLFAllpass[channel][2]
+    - (a1/a0)*yLFAllpass[channel][1] - (a2/a0)*yLFAllpass[channel][2];
+    
+    yLFAllpass[channel][0] = buffer;
+    
+    return buffer;
+}
+
+
 
 float NewProjectAudioProcessor::LMFPeakFilter(float buffer, int channel){
     double Fs = getSampleRate();
@@ -730,7 +761,8 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
                 if(custom.get_LFPNBool() == false){
                     parallelChain1 = (LFPeakFilter(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelfFilter(channelData[i], channel)*custom.get_LFShapeValue());
                 } else {
-                    parallelChain1 = LFNotchFilter(channelData[i], channel);
+                    //parallelChain1 = LFNotchFilter(channelData[i], channel);
+                    parallelChain1 = LFAllpassFilter(channelData[i], channel);
                 }
             } else {
                 parallelChain1 = channelData[i];

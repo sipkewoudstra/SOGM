@@ -133,7 +133,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp"/>
     <ClCompile Include="..\..\Source\Gui.cpp"/>
+    <ClCompile Include="..\..\Source\AllpassFilter.cpp"/>
+    <ClCompile Include="..\..\Source\NotchFilter.cpp"/>
+    <ClCompile Include="..\..\Source\PeakFilter.cpp"/>
+    <ClCompile Include="..\..\Source\HighShelfFilter.cpp"/>
+    <ClCompile Include="..\..\Source\LowShelfFilter.cpp"/>
+    <ClCompile Include="..\..\Source\LowpassFilter.cpp"/>
+    <ClCompile Include="..\..\Source\HighpassFilter.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
     <ClCompile Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1219,7 +1227,15 @@
     <ClCompile Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\PluginParameters.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\FilmstripSliderClass\FilmstripSlider.h"/>
     <ClInclude Include="..\..\Source\Gui.h"/>
+    <ClInclude Include="..\..\Source\AllpassFilter.h"/>
+    <ClInclude Include="..\..\Source\NotchFilter.h"/>
+    <ClInclude Include="..\..\Source\PeakFilter.h"/>
+    <ClInclude Include="..\..\Source\HighShelfFilter.h"/>
+    <ClInclude Include="..\..\Source\LowShelfFilter.h"/>
+    <ClInclude Include="..\..\Source\LowpassFilter.h"/>
+    <ClInclude Include="..\..\Source\HighpassFilter.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
     <ClInclude Include="..\..\..\..\..\Downloads\JUCE-OSX\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

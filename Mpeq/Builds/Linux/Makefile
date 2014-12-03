@@ -18,7 +18,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I "~/SDKs/VST3 SDK" -I ~/SDKs/vstsdk2.4 -I ../../JuceLibraryCode -I /Users/sipkewoudstra/Downloads/JUCE-OSX/modules -I ../../../../JUCE-OSX/modules
+  CPPFLAGS := $(DEPFLAGS) -std=c++11 -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I "~/SDKs/VST3 SDK" -I ~/SDKs/vstsdk2.4 -I ../../JuceLibraryCode -I /Users/sipkewoudstra/Downloads/JUCE-OSX/modules -I ../../../../JUCE-OSX/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -fPIC -O0
   CXXFLAGS += $(CFLAGS)
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -shared -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
@@ -39,7 +39,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I "~/SDKs/VST3 SDK" -I ~/SDKs/vstsdk2.4 -I ../../JuceLibraryCode -I /Users/sipkewoudstra/Downloads/JUCE-OSX/modules -I ../../../../JUCE-OSX/modules
+  CPPFLAGS := $(DEPFLAGS) -std=c++11 -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I "~/SDKs/VST3 SDK" -I ~/SDKs/vstsdk2.4 -I ../../JuceLibraryCode -I /Users/sipkewoudstra/Downloads/JUCE-OSX/modules -I ../../../../JUCE-OSX/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -fPIC -Os
   CXXFLAGS += $(CFLAGS)
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -shared -fvisibility=hidden -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
@@ -51,7 +51,15 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/FilmstripSlider_11396c6d.o \
   $(OBJDIR)/Gui_2b5c821c.o \
+  $(OBJDIR)/AllpassFilter_9db559ab.o \
+  $(OBJDIR)/NotchFilter_4d005e71.o \
+  $(OBJDIR)/PeakFilter_e16ee740.o \
+  $(OBJDIR)/HighShelfFilter_7183e3a1.o \
+  $(OBJDIR)/LowShelfFilter_2e55ead7.o \
+  $(OBJDIR)/LowpassFilter_96250e1e.o \
+  $(OBJDIR)/HighpassFilter_984fd414.o \
   $(OBJDIR)/PluginProcessor_a059e380.o \
   $(OBJDIR)/PluginEditor_94d4fb09.o \
   $(OBJDIR)/juce_audio_basics_3af1e7e3.o \
@@ -87,9 +95,49 @@ strip:
 	@echo Stripping Mpeq
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
 
+$(OBJDIR)/FilmstripSlider_11396c6d.o: ../../../FilmstripSliderClass/FilmstripSlider.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling FilmstripSlider.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
 $(OBJDIR)/Gui_2b5c821c.o: ../../Source/Gui.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling Gui.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/AllpassFilter_9db559ab.o: ../../Source/AllpassFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling AllpassFilter.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/NotchFilter_4d005e71.o: ../../Source/NotchFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling NotchFilter.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/PeakFilter_e16ee740.o: ../../Source/PeakFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling PeakFilter.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/HighShelfFilter_7183e3a1.o: ../../Source/HighShelfFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling HighShelfFilter.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LowShelfFilter_2e55ead7.o: ../../Source/LowShelfFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LowShelfFilter.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LowpassFilter_96250e1e.o: ../../Source/LowpassFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LowpassFilter.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/HighpassFilter_984fd414.o: ../../Source/HighpassFilter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling HighpassFilter.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/PluginProcessor_a059e380.o: ../../Source/PluginProcessor.cpp

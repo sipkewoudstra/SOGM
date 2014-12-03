@@ -136,8 +136,38 @@
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP id="dYAMo6Ykd" name="Mpeq">
-    <FILE id="Zqj2xp" name="Gui.cpp" compile="1" resource="0" file="Source/Gui.cpp"/>
-    <FILE id="GebXvn" name="Gui.h" compile="0" resource="0" file="Source/Gui.h"/>
+    <GROUP id="{B2C0D2F3-76BE-4B4B-0D99-06AF9AD4EF99}" name="Gui">
+      <FILE id="OJGgkb" name="FilmstripSlider.h" compile="0" resource="0"
+            file="../FilmstripSliderClass/FilmstripSlider.h"/>
+      <FILE id="p5xGkv" name="FilmstripSlider.cpp" compile="1" resource="0"
+            file="../FilmstripSliderClass/FilmstripSlider.cpp"/>
+      <FILE id="Zqj2xp" name="Gui.cpp" compile="1" resource="0" file="Source/Gui.cpp"/>
+      <FILE id="GebXvn" name="Gui.h" compile="0" resource="0" file="Source/Gui.h"/>
+    </GROUP>
+    <GROUP id="{1EB228CF-4153-F0D4-E4E2-81FADCBAA295}" name="Filters">
+      <FILE id="IjOqtW" name="AllpassFilter.cpp" compile="1" resource="0"
+            file="Source/AllpassFilter.cpp"/>
+      <FILE id="DwfqtD" name="AllpassFilter.h" compile="0" resource="0" file="Source/AllpassFilter.h"/>
+      <FILE id="CajZ58" name="NotchFilter.cpp" compile="1" resource="0" file="Source/NotchFilter.cpp"/>
+      <FILE id="Ctvhz5" name="NotchFilter.h" compile="0" resource="0" file="Source/NotchFilter.h"/>
+      <FILE id="cY8Wl9" name="PeakFilter.cpp" compile="1" resource="0" file="Source/PeakFilter.cpp"/>
+      <FILE id="ebQBCO" name="PeakFilter.h" compile="0" resource="0" file="Source/PeakFilter.h"/>
+      <FILE id="HCVGN1" name="HighShelfFilter.cpp" compile="1" resource="0"
+            file="Source/HighShelfFilter.cpp"/>
+      <FILE id="Ci9zSq" name="HighShelfFilter.h" compile="0" resource="0"
+            file="Source/HighShelfFilter.h"/>
+      <FILE id="hSTUzr" name="LowShelfFilter.cpp" compile="1" resource="0"
+            file="Source/LowShelfFilter.cpp"/>
+      <FILE id="teNwlZ" name="LowShelfFilter.h" compile="0" resource="0"
+            file="Source/LowShelfFilter.h"/>
+      <FILE id="EO7oYI" name="LowpassFilter.cpp" compile="1" resource="0"
+            file="Source/LowpassFilter.cpp"/>
+      <FILE id="b6EWiW" name="LowpassFilter.h" compile="0" resource="0" file="Source/LowpassFilter.h"/>
+      <FILE id="As9ECq" name="HighpassFilter.cpp" compile="1" resource="0"
+            file="Source/HighpassFilter.cpp"/>
+      <FILE id="C8hNKa" name="HighpassFilter.h" compile="0" resource="0"
+            file="Source/HighpassFilter.h"/>
+    </GROUP>
     <FILE id="gFFr0hbSp" name="PluginProcessor.cpp" compile="1" resource="0"
           file="Source/PluginProcessor.cpp"/>
     <FILE id="PkpMNdnIr" name="PluginProcessor.h" compile="0" resource="0"

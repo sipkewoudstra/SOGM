@@ -133,8 +133,28 @@
   <References/>
   <Files>
     <Filter Name="Mpeq">
-      <File RelativePath="..\..\Source\Gui.cpp"/>
-      <File RelativePath="..\..\Source\Gui.h"/>
+      <Filter Name="Gui">
+        <File RelativePath="..\..\..\FilmstripSliderClass\FilmstripSlider.h"/>
+        <File RelativePath="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp"/>
+        <File RelativePath="..\..\Source\Gui.cpp"/>
+        <File RelativePath="..\..\Source\Gui.h"/>
+      </Filter>
+      <Filter Name="Filters">
+        <File RelativePath="..\..\Source\AllpassFilter.cpp"/>
+        <File RelativePath="..\..\Source\AllpassFilter.h"/>
+        <File RelativePath="..\..\Source\NotchFilter.cpp"/>
+        <File RelativePath="..\..\Source\NotchFilter.h"/>
+        <File RelativePath="..\..\Source\PeakFilter.cpp"/>
+        <File RelativePath="..\..\Source\PeakFilter.h"/>
+        <File RelativePath="..\..\Source\HighShelfFilter.cpp"/>
+        <File RelativePath="..\..\Source\HighShelfFilter.h"/>
+        <File RelativePath="..\..\Source\LowShelfFilter.cpp"/>
+        <File RelativePath="..\..\Source\LowShelfFilter.h"/>
+        <File RelativePath="..\..\Source\LowpassFilter.cpp"/>
+        <File RelativePath="..\..\Source\LowpassFilter.h"/>
+        <File RelativePath="..\..\Source\HighpassFilter.cpp"/>
+        <File RelativePath="..\..\Source\HighpassFilter.h"/>
+      </Filter>
       <File RelativePath="..\..\Source\PluginProcessor.cpp"/>
       <File RelativePath="..\..\Source\PluginProcessor.h"/>
       <File RelativePath="..\..\Source\PluginEditor.cpp"/>

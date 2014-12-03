@@ -22,6 +22,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
+#include "FilmstripSlider.h"
 //[/Headers]
 
 
@@ -35,7 +36,6 @@
                                                                     //[/Comments]
 */
 class Gui  : public Component,
-             public SliderListener,
              public ButtonListener
 {
 public:
@@ -116,7 +116,7 @@ public:
     void set_HFEnableBool(bool input);
     void set_HPEnableBool(bool input);
     void set_LPEnableBool(bool input);
-    
+
     float LFGainValue;
     float LFShapeValue;
     float LFFreqValue;
@@ -137,7 +137,7 @@ public:
     float HPQValue;
     float LPFreqValue;
     float LPQValue;
-    
+
     bool LFPosBool;
     bool LFPNBool;
     bool LFEnableBool;
@@ -156,7 +156,6 @@ public:
 
     void paint (Graphics& g);
     void resized();
-    void sliderValueChanged (Slider* sliderThatWasMoved);
     void buttonClicked (Button* buttonThatWasClicked);
 
     // Binary resources:
@@ -166,33 +165,58 @@ public:
     static const int switcherUp_pngSize;
     static const char* switcherDown_png;
     static const int switcherDown_pngSize;
+    static const char* eqinnerDial_png;
+    static const int eqinnerDial_pngSize;
+    static const char* filterInnerDial_png;
+    static const int filterInnerDial_pngSize;
+    static const char* eqouterDialFreqLf_png;
+    static const int eqouterDialFreqLf_pngSize;
+    static const char* eqouterDialFreqHf_png;
+    static const int eqouterDialFreqHf_pngSize;
+    static const char* eqouterDialFreqHmf_png;
+    static const int eqouterDialFreqHmf_pngSize;
+    static const char* eqouterDialFreqLmf_png;
+    static const int eqouterDialFreqLmf_pngSize;
+    static const char* eqouterDialGain_png;
+    static const int eqouterDialGain_pngSize;
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    //Image Dials
+    FilmstripSlider LFShape;
+    FilmstripSlider LFQ;
+    FilmstripSlider LMFShape;
+    FilmstripSlider LMFQ;
+    FilmstripSlider HMFShape;
+    FilmstripSlider HMFQ;
+    FilmstripSlider HFShape;
+    FilmstripSlider HFQ;
+    FilmstripSlider HPQ;
+    FilmstripSlider LPQ;
+    FilmstripSlider LFFreq;
+    FilmstripSlider LMFFreq;
+    FilmstripSlider HMFFreq;
+    FilmstripSlider HFFreq;
+    FilmstripSlider HPFreq;
+    FilmstripSlider LPFreq;
+    FilmstripSlider LFGain;
+    FilmstripSlider LMFGain;
+    FilmstripSlider HMFGain;
+    FilmstripSlider HFGain;
+
+
+    //Dial Images
+    Image EQInnerDial;
+    Image FilterInnerDial;
+    Image EQOuterDialLF;
+    Image EQOuterDialLMF;
+    Image EQOuterDialHMF;
+    Image EQOuterDialHF;
+    Image EQOuterDialGain;
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<Slider> LFGain;
-    ScopedPointer<Slider> LFShape;
-    ScopedPointer<Slider> LFFreq;
-    ScopedPointer<Slider> LFQ;
-    ScopedPointer<Slider> LMFGain;
-    ScopedPointer<Slider> LMFShape;
-    ScopedPointer<Slider> LMFFreq;
-    ScopedPointer<Slider> LMFQ;
-    ScopedPointer<Slider> HMFGain;
-    ScopedPointer<Slider> HMFShape;
-    ScopedPointer<Slider> HMFFreq;
-    ScopedPointer<Slider> HMFQ;
-    ScopedPointer<Slider> HFGain;
-    ScopedPointer<Slider> HFShape;
-    ScopedPointer<Slider> HFFreq;
-    ScopedPointer<Slider> HFQ;
-    ScopedPointer<Slider> HPFreq;
-    ScopedPointer<Slider> HPQ;
-    ScopedPointer<Slider> LPFreq;
-    ScopedPointer<Slider> LPQ;
     ScopedPointer<ImageButton> LFPN;
     ScopedPointer<ImageButton> LFEnable;
     ScopedPointer<ImageButton> LMFPos;
@@ -207,6 +231,8 @@ private:
     ScopedPointer<ImageButton> HPEnable;
     ScopedPointer<ImageButton> LPEnable;
     ScopedPointer<ImageButton> LFPos2;
+    Image cachedImage_filterInnerDial_png;
+    Image cachedImage_eqouterDialFreqLf_png;
 
 
     //==============================================================================

@@ -70,6 +70,7 @@ public:
     float LFPeakFilter(float buffer, int channel);
     float LFShelfFilter(float buffer, int channel);
     float LFNotchFilter(float buffer, int channel);
+    float LFAllpassFilter(float buffer, int channel);
     float LMFPeakFilter(float buffer, int channel);
     float LMFShelfFilter(float buffer, int channel);
     float LMFNotchFilter(float buffer, int channel);
@@ -138,6 +139,8 @@ private:
     float yLFShelf[2][3];
     float xLFNotch[2][3];
     float yLFNotch[2][3];
+    float xLFAllpass[2][3];
+    float yLFAllpass[2][3];
     
     float xLMFPeak[2][3];
     float yLMFPeak[2][3];

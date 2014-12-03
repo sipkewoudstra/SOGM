@@ -5,6 +5,12 @@
     <Filter Include="Mpeq">
       <UniqueIdentifier>{C4BA0115-D9D7-4AA6-8204-F6EB50D14331}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mpeq\Gui">
+      <UniqueIdentifier>{DEC2582D-330F-2C15-CEA4-C61236C20BDE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mpeq\Filters">
+      <UniqueIdentifier>{C9F2E399-B1EB-D5C6-0B41-D2E7EA957AC8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules">
       <UniqueIdentifier>{422C46B7-0467-2DB0-BF3C-16DFCAFD69AC}</UniqueIdentifier>
     </Filter>
@@ -298,8 +304,32 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp">
+      <Filter>Mpeq\Gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Gui.cpp">
-      <Filter>Mpeq</Filter>
+      <Filter>Mpeq\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AllpassFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NotchFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PeakFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HighShelfFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\LowShelfFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\LowpassFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HighpassFilter.cpp">
+      <Filter>Mpeq\Filters</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>Mpeq</Filter>
@@ -1506,8 +1536,32 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\FilmstripSliderClass\FilmstripSlider.h">
+      <Filter>Mpeq\Gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Gui.h">
-      <Filter>Mpeq</Filter>
+      <Filter>Mpeq\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AllpassFilter.h">
+      <Filter>Mpeq\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NotchFilter.h">
+      <Filter>Mpeq\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PeakFilter.h">
+      <Filter>Mpeq\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HighShelfFilter.h">
+      <Filter>Mpeq\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\LowShelfFilter.h">
+      <Filter>Mpeq\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\LowpassFilter.h">
+      <Filter>Mpeq\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HighpassFilter.h">
+      <Filter>Mpeq\Filters</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>Mpeq</Filter>

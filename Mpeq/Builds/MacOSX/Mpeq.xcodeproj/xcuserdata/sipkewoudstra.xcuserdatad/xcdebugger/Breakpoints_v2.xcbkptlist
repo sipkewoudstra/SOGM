@@ -29,7 +29,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
             endingLineNumber = "473"
-            landmarkName = "NewProjectAudioProcessor::LFNotchFilter(float buffer, int channel)"
+            landmarkName = "NewProjectAudioProcessor::LMFNotchFilter(float buffer, int channel)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -45,7 +45,23 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "901"
             endingLineNumber = "901"
-            landmarkName = "NewProjectAudioProcessor::setStateInformation (const void* data, int sizeInBytes)"
+            landmarkName = "NewProjectAudioProcessor::getStateInformation (MemoryBlock&amp; destData)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/Gui.cpp"
+            timestampString = "439329541.660867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "Gui::Gui ()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
