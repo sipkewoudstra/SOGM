@@ -36,7 +36,9 @@
                                                                     //[/Comments]
 */
 class Gui  : public Component,
-             public ButtonListener
+             public ButtonListener,
+            public Timer//,
+            //public FilmstripSlider
 {
 public:
     //==============================================================================
@@ -45,6 +47,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    void timerCallback(); //change timercallback to sliderValueChanged;
+    //void sliderValueChanged (Slider* slider);
     float get_LFGainValue();
     float get_LFShapeValue();
     float get_LFFreqValue();

@@ -148,51 +148,61 @@ Gui::Gui ()
     //Outer Eq Sliders
 
     addAndMakeVisible (&LFFreq);
+    LFFreq.setRange(20.f, 340.f);
     LFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     LFFreq.setImage(EQOuterDialLF, (int) (EQOuterDialLF.getWidth()/ EQOuterDialLF.getHeight()));
     LFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LMFFreq);
+    LMFFreq.setRange(90.f, 1400.f);
     LMFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     LMFFreq.setImage(EQOuterDialLMF, (int) (EQOuterDialLMF.getWidth()/ EQOuterDialLMF.getHeight()));
     LMFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HMFFreq);
+    HMFFreq.setRange(400.f, 6000.f);
     HMFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     HMFFreq.setImage(EQOuterDialHMF, (int) (EQOuterDialHMF.getWidth()/ EQOuterDialHMF.getHeight()));
     HMFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HFFreq);
+    HFFreq.setRange(1500.f, 22000.f);
     HFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     HFFreq.setImage(EQOuterDialHF, (int) (EQOuterDialHF.getWidth()/ EQOuterDialHF.getHeight()));
     HFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HPFreq);
+    HPFreq.setRange(20.f, 340.f);
     HPFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     HPFreq.setImage(EQOuterDialLF, (int) (EQOuterDialLF.getWidth()/ EQOuterDialLF.getHeight()));
     HPFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LPFreq);
+    LPFreq.setRange(1500.f, 22000.f);
     LPFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     LPFreq.setImage(EQOuterDialHF, (int) (EQOuterDialHF.getWidth()/ EQOuterDialHF.getHeight()));
     LPFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LFGain);
+    LFGain.setRange(0.f, 10.f);
     LFGain.setSliderStyle(Slider::RotaryVerticalDrag);
     LFGain.setImage(EQOuterDialGain, (int) (EQOuterDialGain.getWidth()/ EQOuterDialGain.getHeight()));
     LFGain.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LMFGain);
+    LMFGain.setRange(0.f, 10.f);
     LMFGain.setSliderStyle(Slider::RotaryVerticalDrag);
     LMFGain.setImage(EQOuterDialGain, (int) (EQOuterDialGain.getWidth()/ EQOuterDialGain.getHeight()));
     LMFGain.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HMFGain);
+    HMFGain.setRange(0.f, 10.f);
     HMFGain.setSliderStyle(Slider::RotaryVerticalDrag);
     HMFGain.setImage(EQOuterDialGain, (int) (EQOuterDialGain.getWidth()/ EQOuterDialGain.getHeight()));
     HMFGain.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HFGain);
+    HFGain.setRange(0.f, 10.f);
     HFGain.setSliderStyle(Slider::RotaryVerticalDrag);
     HFGain.setImage(EQOuterDialGain, (int) (EQOuterDialGain.getWidth()/ EQOuterDialGain.getHeight()));
     HFGain.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -204,6 +214,7 @@ Gui::Gui ()
     LFShape.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LFQ);
+    LFQ.setRange(0.5, 3.f);
     LFQ.setSliderStyle(Slider::RotaryVerticalDrag);
     LFQ.setImage(EQInnerDial, (int) (EQInnerDial.getWidth()/ EQInnerDial.getHeight()));
     LFQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -214,6 +225,7 @@ Gui::Gui ()
     LMFShape.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LMFQ);
+    LMFQ.setRange(0.5, 3.f);
     LMFQ.setSliderStyle(Slider::RotaryVerticalDrag);
     LMFQ.setImage(EQInnerDial, (int) (EQInnerDial.getWidth()/ EQInnerDial.getHeight()));
     LMFQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -224,6 +236,7 @@ Gui::Gui ()
     HMFShape.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HMFQ);
+    HMFQ.setRange(0.5, 3.f);
     HMFQ.setSliderStyle(Slider::RotaryVerticalDrag);
     HMFQ.setImage(EQInnerDial, (int) (EQInnerDial.getWidth()/ EQInnerDial.getHeight()));
     HMFQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -234,17 +247,20 @@ Gui::Gui ()
     HFShape.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&HFQ);
+    HFQ.setRange(0.5, 3.f);
     HFQ.setSliderStyle(Slider::RotaryVerticalDrag);
     HFQ.setImage(EQInnerDial, (int) (EQInnerDial.getWidth()/ EQInnerDial.getHeight()));
     HFQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     //Filter Inner Sliders
     addAndMakeVisible (&HPQ);
+    HPQ.setRange(0.5, 3.f);
     HPQ.setSliderStyle(Slider::RotaryVerticalDrag);
     HPQ.setImage(FilterInnerDial, (int) (FilterInnerDial.getWidth()/ FilterInnerDial.getHeight()));
     HPQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 
     addAndMakeVisible (&LPQ);
+    LPQ.setRange(0.5, 3.f);
     LPQ.setSliderStyle(Slider::RotaryVerticalDrag);
     LPQ.setImage(FilterInnerDial, (int) (FilterInnerDial.getWidth()/ FilterInnerDial.getHeight()));
     LPQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -307,7 +323,7 @@ Gui::Gui ()
     this->HFShapeValue = 0;
     this->HFGainValue = 0;
 
-
+    startTimer(5);
     //[/Constructor]
 }
 
@@ -359,7 +375,9 @@ void Gui::paint (Graphics& g)
                  0, 0, 1000, 155,
                  0, 0, cachedImage_background_png.getWidth(), cachedImage_background_png.getHeight());
 
+    
     //[UserPaint] Add your own custom painting code here..
+    
     //[/UserPaint]
 }
 
@@ -504,6 +522,35 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+
+void Gui::timerCallback(){
+    LFGainValue = LFGain.getValue();
+    LFShapeValue = LFShape.getValue();
+    LFQValue = LFQ.getValue();
+    LFFreqValue = LFFreq.getValue();
+    LMFGainValue = LMFGain.getValue();
+    LMFShapeValue = LMFShape.getValue();
+    LMFQValue = LMFQ.getValue();
+    LMFFreqValue = LMFFreq.getValue();
+    HMFGainValue = HMFGain.getValue();
+    HMFShapeValue = HMFShape.getValue();
+    HMFQValue = HMFQ.getValue();
+    HMFFreqValue = HMFFreq.getValue();
+    HFGainValue = HFGain.getValue();
+    HFShapeValue = HFShape.getValue();
+    HFQValue = HFQ.getValue();
+    HFFreqValue = HFFreq.getValue();
+    HPFreqValue = HPFreq.getValue();
+    HPQValue = HPQ.getValue();
+    LPFreqValue = LPFreq.getValue();
+    LPQValue = LPQ.getValue();
+}
+
+//void sliderValueChanged (Slider* slider){
+    
+    
+//}
+
 float Gui::get_LFGainValue(){
     return LFGainValue;
 }
