@@ -322,8 +322,7 @@ Gui::Gui ()
     this->HFQValue = 0.5;
     this->HFShapeValue = 0;
     this->HFGainValue = 0;
-
-    startTimer(5);
+ 
     //[/Constructor]
 }
 
@@ -523,93 +522,71 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-void Gui::timerCallback(){
-    LFGainValue = LFGain.getValue();
-    LFShapeValue = LFShape.getValue();
-    LFQValue = LFQ.getValue();
-    LFFreqValue = LFFreq.getValue();
-    LMFGainValue = LMFGain.getValue();
-    LMFShapeValue = LMFShape.getValue();
-    LMFQValue = LMFQ.getValue();
-    LMFFreqValue = LMFFreq.getValue();
-    HMFGainValue = HMFGain.getValue();
-    HMFShapeValue = HMFShape.getValue();
-    HMFQValue = HMFQ.getValue();
-    HMFFreqValue = HMFFreq.getValue();
-    HFGainValue = HFGain.getValue();
-    HFShapeValue = HFShape.getValue();
-    HFQValue = HFQ.getValue();
-    HFFreqValue = HFFreq.getValue();
-    HPFreqValue = HPFreq.getValue();
-    HPQValue = HPQ.getValue();
-    LPFreqValue = LPFreq.getValue();
-    LPQValue = LPQ.getValue();
-}
 
 //void sliderValueChanged (Slider* slider){
-    
-    
+//    
+//    
 //}
 
 float Gui::get_LFGainValue(){
-    return LFGainValue;
+    return LFGain.getValue();
 }
 float Gui::get_LFShapeValue(){
-    return LFShapeValue;
+    return LFShape.getValue();
 }
 float Gui::get_LFFreqValue(){
-    return LFFreqValue;
+    return LFFreq.getValue();
 }
 float Gui::get_LFQValue(){
-    return LFQValue;
+    return LFQ.getValue();
 }
 float Gui::get_LMFGainValue(){
-    return LMFGainValue;
+    return LMFGain.getValue();
 }
 float Gui::get_LMFShapeValue(){
-    return LMFShapeValue;
+    return LMFShape.getValue();
 }
 float Gui::get_LMFFreqValue(){
-    return LMFFreqValue;
+    return LMFFreq.getValue();
 }
 float Gui::get_LMFQValue(){
-    return LMFQValue;
+    return LMFQ.getValue();
 }
 float Gui::get_HMFGainValue(){
-    return HMFGainValue;
+    return HMFGain.getValue();
 }
 float Gui::get_HMFShapeValue(){
-    return HMFShapeValue;
+    return HMFShape.getValue();
 }
 float Gui::get_HMFFreqValue(){
-    return HMFFreqValue;
+    return HMFFreq.getValue();
 }
 float Gui::get_HMFQValue(){
-    return HMFQValue;
+    return HMFQ.getValue();
 }
 float Gui::get_HFGainValue(){
-    return HFGainValue;
+    return HFGain.getValue();
 }
 float Gui::get_HFShapeValue(){
-    return HFShapeValue;
+    return HFShape.getValue();
 }
 float Gui::get_HFFreqValue(){
-    return HFFreqValue;
+    return HFFreq.getValue();
 }
 float Gui::get_HFQValue(){
-    return HFQValue;
+    return HFQ.getValue();
 }
 float Gui::get_HPFreqValue(){
-    return HPFreqValue;
+    return HPFreq.getValue();
 }
 float Gui::get_HPQValue(){
-    return HPQValue;
+    return HPQ.getValue();
 }
 float Gui::get_LPFreqValue(){
-    return LPFreqValue;
+    return LPFreq.getValue();
 }
 float Gui::get_LPQValue(){
-    return LPQValue;
+    return LPQ.getValue();
 }
 
 bool Gui::get_LFPosBool(){
@@ -656,84 +633,64 @@ bool Gui::get_LPEnableBool(){
 }
 
 void Gui::set_LFGainValue(float input){
-    this->LFGainValue = input;
     LFGain.setValue(input);
 
 }
 void Gui::set_LFShapeValue(float input){
-    this->LFShapeValue = input;
     LFShape.setValue(input);
 }
 void Gui::set_LFFreqValue(float input){
-    this->LFFreqValue = input;
     LFFreq.setValue(input);
 }
 void Gui::set_LFQValue(float input){
-    this->LFQValue = input;
     LFQ.setValue(input);
 }
 void Gui::set_LMFGainValue(float input){
-    this->LMFGainValue = input;
     LMFGain.setValue(input);
 }
 void Gui::set_LMFShapeValue(float input){
-    this->LMFShapeValue = input;
     LMFShape.setValue(input);
 }
 void Gui::set_LMFFreqValue(float input){
-    this->LMFFreqValue = input;
     LMFFreq.setValue(input);
 }
 void Gui::set_LMFQValue(float input){
-    this->LMFQValue = input;
     LMFQ.setValue(input);
 }
 void Gui::set_HMFGainValue(float input){
-    this->HMFGainValue = input;
     HMFGain.setValue(input);
 }
 void Gui::set_HMFShapeValue(float input){
-    this->HMFShapeValue = input;
     HMFShape.setValue(input);
 }
 void Gui::set_HMFFreqValue(float input){
-    this->HMFFreqValue = input;
     HMFFreq.setValue(input);
 }
 void Gui::set_HMFQValue(float input){
-    this->HMFQValue = input;
     HMFQ.setValue(input);
 }
 void Gui::set_HFGainValue(float input){
-    this->HFGainValue = input;
     HFGain.setValue(input);
 }
 void Gui::set_HFShapeValue(float input){
-    this->HFShapeValue = input;
     HFShape.setValue(input);
 }
 void Gui::set_HFFreqValue(float input){
-    this->HFFreqValue = input;
     HFFreq.setValue(input);
 }
 void Gui::set_HFQValue(float input){
-    this->HFQValue = input;
     HFQ.setValue(input);
 }
 void Gui::set_HPFreqValue(float input){
-    this->HPFreqValue = input;
     HPFreq.setValue(input);
 }
 void Gui::set_HPQValue(float input){
-    this->HPQValue = input;
     HPQ.setValue(input);
 }
 void Gui::set_LPFreqValue(float input){
-    this->LPFreqValue = input;
     LPFreq.setValue(input);
 }
 void Gui::set_LPQValue(float input){
-    this->LPQValue = input;
     LPQ.setValue(input);
 }
 
