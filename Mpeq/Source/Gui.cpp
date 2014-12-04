@@ -322,7 +322,7 @@ Gui::Gui ()
     this->HFQValue = 0.5;
     this->HFShapeValue = 0;
     this->HFGainValue = 0;
- 
+
     //[/Constructor]
 }
 
@@ -374,9 +374,8 @@ void Gui::paint (Graphics& g)
                  0, 0, 1000, 155,
                  0, 0, cachedImage_background_png.getWidth(), cachedImage_background_png.getHeight());
 
-    
     //[UserPaint] Add your own custom painting code here..
-    
+
     //[/UserPaint]
 }
 
@@ -524,8 +523,8 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
 
 
 //void sliderValueChanged (Slider* slider){
-//    
-//    
+//
+//
 //}
 
 float Gui::get_LFGainValue(){

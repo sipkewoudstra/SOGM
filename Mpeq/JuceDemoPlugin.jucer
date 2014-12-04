@@ -145,6 +145,8 @@
       <FILE id="GebXvn" name="Gui.h" compile="0" resource="0" file="Source/Gui.h"/>
     </GROUP>
     <GROUP id="{1EB228CF-4153-F0D4-E4E2-81FADCBAA295}" name="Filters">
+      <FILE id="ZMqXDX" name="Filter.cpp" compile="1" resource="0" file="Source/Filter.cpp"/>
+      <FILE id="q2pyDR" name="Filter.h" compile="0" resource="0" file="Source/Filter.h"/>
       <FILE id="IjOqtW" name="AllpassFilter.cpp" compile="1" resource="0"
             file="Source/AllpassFilter.cpp"/>
       <FILE id="DwfqtD" name="AllpassFilter.h" compile="0" resource="0" file="Source/AllpassFilter.h"/>

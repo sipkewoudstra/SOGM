@@ -140,6 +140,8 @@
         <File RelativePath="..\..\Source\Gui.h"/>
       </Filter>
       <Filter Name="Filters">
+        <File RelativePath="..\..\Source\Filter.cpp"/>
+        <File RelativePath="..\..\Source\Filter.h"/>
         <File RelativePath="..\..\Source\AllpassFilter.cpp"/>
         <File RelativePath="..\..\Source\AllpassFilter.h"/>
         <File RelativePath="..\..\Source\NotchFilter.cpp"/>

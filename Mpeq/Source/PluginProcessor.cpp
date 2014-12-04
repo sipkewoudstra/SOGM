@@ -16,12 +16,15 @@
 //==============================================================================
 NewProjectAudioProcessor::NewProjectAudioProcessor()
 {
+    LP.set_Frequency(custom.get_LPFreqValue());
+    LP.set_Q(custom.get_LPQValue());
+    HP.set_Frequency(custom.get_HPFreqValue());
+    HP.set_Q(custom.get_HPQValue());
+    
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
-            xLP[i][j] = 0;
-            yLP[i][j] = 0;
-            xHP[i][j] = 0;
-            yHP[i][j] = 0;
+            //xHP[i][j] = 0;
+            //yHP[i][j] = 0;
             
             xLFPeak[i][j] = 0;
             yLFPeak[i][j] = 0;
@@ -191,60 +194,31 @@ void NewProjectAudioProcessor::releaseResources()
     // spare memory, etc.
 }
 
-
-
-float NewProjectAudioProcessor::LowPassFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_LPFreqValue();
-    double Q = custom.get_LPQValue();
-    double K = tan(M_PI * (f0/Fs));
-    double norm = 1 / (1 + K / Q + K * K);
-    double a0 = K * K * norm;
-    double a1 = 2 * a0;
-    double a2 = a0;
-    double b1 = 2 * (K * K -1) * norm;
-    double b2 = (1 -K / Q + K * K) * norm;
-    
-    
-        xLP[channel][2] = xLP[channel][1];
-        xLP[channel][1] = xLP[channel][0];
-        xLP[channel][0] = buffer;
-        yLP[channel][2] = yLP[channel][1];
-        yLP[channel][1] = yLP[channel][0];
-        
-        buffer = (a0*xLP[channel][0] + a1*xLP[channel][1] + a2*xLP[channel][2] - b1*yLP[channel][1] - b2*yLP[channel][2]);
-        
-    yLP[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-float NewProjectAudioProcessor::HighPassFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_HPFreqValue();
-    double Q = custom.get_HPQValue();
-    double K = tan(M_PI * (f0/Fs));
-    double norm = 1 / (1 + K/ Q + K * K);
-    double a0 = 1 * norm;
-    double a1 = -2 * a0;
-    double a2 = a0;
-    double b1 = 2 * (K * K - 1) * norm;
-    double b2 = (1 - K / Q + K * K) * norm;
-    
-    xHP[channel][2] = xHP[channel][1];
-    xHP[channel][1] = xHP[channel][0];
-    xHP[channel][0] = buffer;
-    yHP[channel][2] = yHP[channel][1];
-    yHP[channel][1] = yHP[channel][0];
-    
-    buffer = (a0*xHP[channel][0] + a1*xHP[channel][1] + a2*xHP[channel][2] - b1*yHP[channel][1] - b2*yHP[channel][2]);
-
-    yHP[channel][0] = buffer;
-    
-    return buffer;
-    
-}
+//float NewProjectAudioProcessor::HighPassFilter(float buffer, int channel){
+//    double Fs = getSampleRate();
+//    double f0 = custom.get_HPFreqValue();
+//    double Q = custom.get_HPQValue();
+//    double K = tan(M_PI * (f0/Fs));
+//    double norm = 1 / (1 + K/ Q + K * K);
+//    double a0 = 1 * norm;
+//    double a1 = -2 * a0;
+//    double a2 = a0;
+//    double b1 = 2 * (K * K - 1) * norm;
+//    double b2 = (1 - K / Q + K * K) * norm;
+//    
+//    xHP[channel][2] = xHP[channel][1];
+//    xHP[channel][1] = xHP[channel][0];
+//    xHP[channel][0] = buffer;
+//    yHP[channel][2] = yHP[channel][1];
+//    yHP[channel][1] = yHP[channel][0];
+//    
+//    buffer = (a0*xHP[channel][0] + a1*xHP[channel][1] + a2*xHP[channel][2] - b1*yHP[channel][1] - b2*yHP[channel][2]);
+//
+//    yHP[channel][0] = buffer;
+//    
+//    return buffer;
+//    
+//}
 
 float NewProjectAudioProcessor::LFPeakFilter(float buffer, int channel){
     
@@ -725,6 +699,8 @@ float NewProjectAudioProcessor::HFNotchFilter(float buffer, int channel){
 void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     const int numSamples = buffer.getNumSamples();
+    LP.set_Samplerate(getSampleRate());
+    HP.set_Samplerate(getSampleRate());
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
@@ -745,13 +721,19 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
         //Highpass Filter
         for (int i = 0; i < numSamples; i++) {
             if (custom.get_HPEnableBool() == true) {
-                channelData[i] = HighPassFilter(channelData[i], channel);
+                HP.set_Frequency(custom.get_HPFreqValue());
+                HP.set_Q(custom.get_HPQValue());
+                HP.calculateVariables();
+                channelData[i] = HP.processSample(channelData[i], channel);
             }
         }
         //Lowpass Filter
         for (int i = 0; i < numSamples; i++) {
             if (custom.get_LPEnableBool() == true) {
-                channelData[i] = LowPassFilter(channelData[i], channel);
+                LP.set_Frequency(custom.get_LPFreqValue());
+                LP.set_Q(custom.get_LPQValue());
+                LP.calculateVariables();
+                channelData[i] = LP.processSample(channelData[i], channel);
             }
         }
         

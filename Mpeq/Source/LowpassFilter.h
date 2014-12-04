@@ -10,7 +10,16 @@
 
 #ifndef LOWPASSFILTER_H_INCLUDED
 #define LOWPASSFILTER_H_INCLUDED
+#include "Filter.h"
 
+class LowpassFilter : public Filter
+{
+public:
+    void calculateVariables();
+private:
+    double K;
+    double norm;
+};
 
 
 

@@ -53,6 +53,7 @@ endif
 OBJECTS := \
   $(OBJDIR)/FilmstripSlider_11396c6d.o \
   $(OBJDIR)/Gui_2b5c821c.o \
+  $(OBJDIR)/Filter_cccb6f01.o \
   $(OBJDIR)/AllpassFilter_9db559ab.o \
   $(OBJDIR)/NotchFilter_4d005e71.o \
   $(OBJDIR)/PeakFilter_e16ee740.o \
@@ -103,6 +104,11 @@ $(OBJDIR)/FilmstripSlider_11396c6d.o: ../../../FilmstripSliderClass/FilmstripSli
 $(OBJDIR)/Gui_2b5c821c.o: ../../Source/Gui.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling Gui.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/Filter_cccb6f01.o: ../../Source/Filter.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling Filter.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/AllpassFilter_9db559ab.o: ../../Source/AllpassFilter.cpp

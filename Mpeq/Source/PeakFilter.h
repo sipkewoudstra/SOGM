@@ -10,8 +10,19 @@
 
 #ifndef PEAKFILTER_H_INCLUDED
 #define PEAKFILTER_H_INCLUDED
+#include "Filter.h"
 
-
+class PeakFilter : public Filter
+{
+public:
+    void calculateVariables();
+    void set_PositiveNegative(bool posneg);
+private:
+    double K;
+    double norm;
+    double V;
+    bool posneg;
+};
 
 
 

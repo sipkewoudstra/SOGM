@@ -310,6 +310,9 @@
     <ClCompile Include="..\..\Source\Gui.cpp">
       <Filter>Mpeq\Gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Filter.cpp">
+      <Filter>Mpeq\Filters</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\AllpassFilter.cpp">
       <Filter>Mpeq\Filters</Filter>
     </ClCompile>
@@ -1541,6 +1544,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Gui.h">
       <Filter>Mpeq\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Filter.h">
+      <Filter>Mpeq\Filters</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AllpassFilter.h">
       <Filter>Mpeq\Filters</Filter>

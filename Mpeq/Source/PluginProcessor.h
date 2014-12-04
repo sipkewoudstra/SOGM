@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Gui.h"
+#include "LowpassFilter.h"
+#include "HighpassFilter.h"
 
 //==============================================================================
 /**
@@ -38,11 +40,6 @@ public:
     //==============================================================================
     const String getName() const override;
     
-/*    int getNumParameters() override;
-    float getParameter (int index) override;
-    void setParameter (int index, float newValue) override;
-    
-    const String getParameterName (int index) override; */
     const String getParameterText (int index) override;
  
     const String getInputChannelName (int channelIndex) const override;
@@ -65,8 +62,8 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    float LowPassFilter(float buffer, int channel);
-    float HighPassFilter(float buffer, int channel);
+    //float LowPassFilter(float buffer, int channel);
+    //float HighPassFilter(float buffer, int channel);
     float LFPeakFilter(float buffer, int channel);
     float LFShelfFilter(float buffer, int channel);
     float LFNotchFilter(float buffer, int channel);
@@ -127,11 +124,12 @@ public:
     void initParameters();
     void runAfterParamChange(int paramIndex, UpdateFromFlags updateFromFlags);
 private:
-    float xLP[2][3];
-    float yLP[2][3];
     
-    float xHP[2][3];
-    float yHP[2][3];
+    LowpassFilter LP;
+    HighpassFilter HP;
+    
+    //float xHP[2][3];
+    //float yHP[2][3];
     
     float xLFPeak[2][3];
     float yLFPeak[2][3];

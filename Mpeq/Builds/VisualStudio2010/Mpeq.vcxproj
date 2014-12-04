@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp"/>
     <ClCompile Include="..\..\Source\Gui.cpp"/>
+    <ClCompile Include="..\..\Source\Filter.cpp"/>
     <ClCompile Include="..\..\Source\AllpassFilter.cpp"/>
     <ClCompile Include="..\..\Source\NotchFilter.cpp"/>
     <ClCompile Include="..\..\Source\PeakFilter.cpp"/>
@@ -1229,6 +1230,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\FilmstripSliderClass\FilmstripSlider.h"/>
     <ClInclude Include="..\..\Source\Gui.h"/>
+    <ClInclude Include="..\..\Source\Filter.h"/>
     <ClInclude Include="..\..\Source\AllpassFilter.h"/>
     <ClInclude Include="..\..\Source\NotchFilter.h"/>
     <ClInclude Include="..\..\Source\PeakFilter.h"/>
