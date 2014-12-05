@@ -23,19 +23,19 @@
                        osxSDK="default" osxCompatibility="default" osxArchitecture="64BitUniversal"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Desktop/JUCE-OSX/modules"/>
-        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
@@ -47,19 +47,19 @@
                        winWarningLevel="4" generateManifest="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
       </MODULEPATHS>
     </VS2005>
     <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
@@ -72,19 +72,19 @@
                        winWarningLevel="4" generateManifest="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
       </MODULEPATHS>
     </VS2008>
     <VS2010 targetFolder="Builds/VisualStudio2010" vstFolder="c:\SDKs\vstsdk2.4"
@@ -96,19 +96,19 @@
                        isDebug="0" optimisation="2" targetName="JuceDemoPlugin"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
       </MODULEPATHS>
     </VS2010>
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK">
@@ -119,32 +119,32 @@
                        libraryPath="/usr/X11R6/lib/"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Downloads/JUCE-OSX/modules"/>
-        <MODULEPATH id="PluginParameters" path="../../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
+        <MODULEPATH id="PluginParameters" path="/Users/sipkewoudstra/Documents/Informatica/C++ /JUCE-OSX/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP id="dYAMo6Ykd" name="Mpeq">
     <GROUP id="{B2C0D2F3-76BE-4B4B-0D99-06AF9AD4EF99}" name="Gui">
+      <FILE id="f89WDr" name="FilmstripSlider.cpp" compile="1" resource="0"
+            file="Source/FilmstripSlider.cpp"/>
+      <FILE id="VXMovZ" name="FilmstripSlider.h" compile="0" resource="0"
+            file="Source/FilmstripSlider.h"/>
       <FILE id="ABj8kr" name="scaleParameter.cpp" compile="1" resource="0"
             file="Source/scaleParameter.cpp"/>
       <FILE id="yi6KDX" name="scaleParameter.h" compile="0" resource="0"
             file="Source/scaleParameter.h"/>
-      <FILE id="OJGgkb" name="FilmstripSlider.h" compile="0" resource="0"
-            file="../FilmstripSliderClass/FilmstripSlider.h"/>
-      <FILE id="p5xGkv" name="FilmstripSlider.cpp" compile="1" resource="0"
-            file="../FilmstripSliderClass/FilmstripSlider.cpp"/>
       <FILE id="Zqj2xp" name="Gui.cpp" compile="1" resource="0" file="Source/Gui.cpp"/>
       <FILE id="GebXvn" name="Gui.h" compile="0" resource="0" file="Source/Gui.h"/>
     </GROUP>

@@ -59,7 +59,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "657"
             endingLineNumber = "657"
-            landmarkName = "Gui::get_LMFPNBool()"
+            landmarkName = "Gui::get_LPFreqValue()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
