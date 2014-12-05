@@ -304,6 +304,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\scaleParameter.cpp">
+      <Filter>Mpeq\Gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp">
       <Filter>Mpeq\Gui</Filter>
     </ClCompile>
@@ -1539,6 +1542,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\scaleParameter.h">
+      <Filter>Mpeq\Gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\FilmstripSliderClass\FilmstripSlider.h">
       <Filter>Mpeq\Gui</Filter>
     </ClInclude>

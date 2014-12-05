@@ -33,10 +33,12 @@
     An auto-generated component, created by the Introjucer.
 
     Describe your class and how it works here!
-                                                                    //[/Comments]
+ 
 */
 class Gui  : public Component,
-             public ButtonListener
+             public ButtonListener,
+             public SliderListener
+//[/Comments]
 {
 public:
     //==============================================================================
@@ -117,27 +119,6 @@ public:
     void set_HPEnableBool(bool input);
     void set_LPEnableBool(bool input);
 
-    float LFGainValue;
-    float LFShapeValue;
-    float LFFreqValue;
-    float LFQValue;
-    float LMFGainValue;
-    float LMFShapeValue;
-    float LMFFreqValue;
-    float LMFQValue;
-    float HMFGainValue;
-    float HMFShapeValue;
-    float HMFFreqValue;
-    float HMFQValue;
-    float HFGainValue;
-    float HFShapeValue;
-    float HFFreqValue;
-    float HFQValue;
-    float HPFreqValue;
-    float HPQValue;
-    float LPFreqValue;
-    float LPQValue;
-
     bool LFPosBool;
     bool LFPNBool;
     bool LFEnableBool;
@@ -152,6 +133,11 @@ public:
     bool HFEnableBool;
     bool HPEnableBool;
     bool LPEnableBool;
+
+    bool sliderDragged[20];
+    void startedDragging();
+    void stoppedDragging();
+    void sliderValueChanged (Slider* slider);
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -218,6 +204,8 @@ private:
     Image EQOuterDialHMF;
     Image EQOuterDialHF;
     Image EQOuterDialGain;
+
+
     //[/UserVariables]
 
     //==============================================================================

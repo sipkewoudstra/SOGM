@@ -134,6 +134,8 @@
   <Files>
     <Filter Name="Mpeq">
       <Filter Name="Gui">
+        <File RelativePath="..\..\Source\scaleParameter.cpp"/>
+        <File RelativePath="..\..\Source\scaleParameter.h"/>
         <File RelativePath="..\..\..\FilmstripSliderClass\FilmstripSlider.h"/>
         <File RelativePath="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp"/>
         <File RelativePath="..\..\Source\Gui.cpp"/>

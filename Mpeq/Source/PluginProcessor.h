@@ -15,22 +15,22 @@
 #include "Gui.h"
 #include "LowpassFilter.h"
 #include "HighpassFilter.h"
+#include "PeakFilter.h"
+#include "scaleParameter.h"
 
 //==============================================================================
 /**
  */
-class NewProjectAudioProcessor  : public PluginProcessor
+class NewProjectAudioProcessor  : public AudioProcessor, public scaleParameter
 {
 public:
     //==============================================================================
     NewProjectAudioProcessor();
     ~NewProjectAudioProcessor();
     
-
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
-    
     void processBlock (AudioSampleBuffer&, MidiBuffer&) override;
     
     //==============================================================================
@@ -38,10 +38,13 @@ public:
     bool hasEditor() const override;
     
     //==============================================================================
-    const String getName() const override;
-    
+    int getNumParameters();
+    const String getParameterName (int parameterIndex);
+    float getParameter (int parameterIndex);
+    void setParameter (int parameterIndex, float newValue);
     const String getParameterText (int index) override;
- 
+    //==============================================================================
+    const String getName() const override;
     const String getInputChannelName (int channelIndex) const override;
     const String getOutputChannelName (int channelIndex) const override;
     bool isInputChannelStereoPair (int index) const override;
@@ -62,19 +65,13 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    //float LowPassFilter(float buffer, int channel);
-    //float HighPassFilter(float buffer, int channel);
-    float LFPeakFilter(float buffer, int channel);
+    //==============================================================================
     float LFShelfFilter(float buffer, int channel);
     float LFNotchFilter(float buffer, int channel);
-    float LFAllpassFilter(float buffer, int channel);
-    float LMFPeakFilter(float buffer, int channel);
     float LMFShelfFilter(float buffer, int channel);
     float LMFNotchFilter(float buffer, int channel);
-    float HMFPeakFilter(float buffer, int channel);
     float HMFShelfFilter(float buffer, int channel);
     float HMFNotchFilter(float buffer, int channel);
-    float HFPeakFilter(float buffer, int channel);
     float HFShelfFilter(float buffer, int channel);
     float HFNotchFilter(float buffer, int channel);
     //==============================================================================
@@ -117,22 +114,19 @@ public:
         LPFreq,
         LPQ,
         LPEnable,
-        
         totalNumParams
     };
     
-    void initParameters();
-    void runAfterParamChange(int paramIndex, UpdateFromFlags updateFromFlags);
 private:
     
     LowpassFilter LP;
     HighpassFilter HP;
+    PeakFilter LFPeak;
+    PeakFilter LMFPeak;
+    PeakFilter HMFPeak;
+    PeakFilter HFPeak;
     
-    //float xHP[2][3];
-    //float yHP[2][3];
     
-    float xLFPeak[2][3];
-    float yLFPeak[2][3];
     float xLFShelf[2][3];
     float yLFShelf[2][3];
     float xLFNotch[2][3];
@@ -140,22 +134,16 @@ private:
     float xLFAllpass[2][3];
     float yLFAllpass[2][3];
     
-    float xLMFPeak[2][3];
-    float yLMFPeak[2][3];
     float xLMFShelf[2][3];
     float yLMFShelf[2][3];
     float xLMFNotch[2][3];
     float yLMFNotch[2][3];
     
-    float xHMFPeak[2][3];
-    float yHMFPeak[2][3];
     float xHMFShelf[2][3];
     float yHMFShelf[2][3];
     float xHMFNotch[2][3];
     float yHMFNotch[2][3];
     
-    float xHFPeak[2][3];
-    float yHFPeak[2][3];
     float xHFShelf[2][3];
     float yHFShelf[2][3];
     float xHFNotch[2][3];

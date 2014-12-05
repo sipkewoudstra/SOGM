@@ -137,6 +137,10 @@
   </EXPORTFORMATS>
   <MAINGROUP id="dYAMo6Ykd" name="Mpeq">
     <GROUP id="{B2C0D2F3-76BE-4B4B-0D99-06AF9AD4EF99}" name="Gui">
+      <FILE id="ABj8kr" name="scaleParameter.cpp" compile="1" resource="0"
+            file="Source/scaleParameter.cpp"/>
+      <FILE id="yi6KDX" name="scaleParameter.h" compile="0" resource="0"
+            file="Source/scaleParameter.h"/>
       <FILE id="OJGgkb" name="FilmstripSlider.h" compile="0" resource="0"
             file="../FilmstripSliderClass/FilmstripSlider.h"/>
       <FILE id="p5xGkv" name="FilmstripSlider.cpp" compile="1" resource="0"

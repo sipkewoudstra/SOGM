@@ -133,6 +133,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\scaleParameter.cpp"/>
     <ClCompile Include="..\..\..\FilmstripSliderClass\FilmstripSlider.cpp"/>
     <ClCompile Include="..\..\Source\Gui.cpp"/>
     <ClCompile Include="..\..\Source\Filter.cpp"/>
@@ -1228,6 +1229,7 @@
     <ClCompile Include="..\..\..\..\JUCE-OSX\modules\PluginParameters\PluginParameters.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\scaleParameter.h"/>
     <ClInclude Include="..\..\..\FilmstripSliderClass\FilmstripSlider.h"/>
     <ClInclude Include="..\..\Source\Gui.h"/>
     <ClInclude Include="..\..\Source\Filter.h"/>
