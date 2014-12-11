@@ -34,11 +34,11 @@ bool scaleParameter::scaleBoolFromHost(float input){
 }
 
 float scaleParameter::scaleLogToHost(float input, float min, float max){
-    return log10f(input-min)/(max-min);
+    return log10f((input-min)/(max-min))/10;
 }
 
 float scaleParameter::scaleLogFromHost(float input, float min, float max){
-    return (powf(10, input)*(max-min)) + min;
+    return ((((powf(10, input)- 1)/9)*10)*((max-min)/10)) + min;
 }
 
 

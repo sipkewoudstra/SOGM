@@ -128,6 +128,15 @@ Gui::Gui ()
                        ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
                        ImageCache::getFromMemory (switcherUp_png, switcherUp_pngSize), 1.000f, Colour (0x00000000),
                        ImageCache::getFromMemory (switcherDown_png, switcherDown_pngSize), 1.000f, Colour (0x00000000));
+    addAndMakeVisible (Temp = new Label ("Temp",
+                                         TRANS("Bliep")));
+    Temp->setFont (Font (15.00f, Font::plain));
+    Temp->setJustificationType (Justification::centredLeft);
+    Temp->setEditable (false, false, false);
+    Temp->setColour (Label::textColourId, Colours::white);
+    Temp->setColour (TextEditor::textColourId, Colours::black);
+    Temp->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
     cachedImage_background_png = ImageCache::getFromMemory (background_png, background_pngSize);
 
     //[UserPreSize]
@@ -137,6 +146,9 @@ Gui::Gui ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    //Keylisten shizzle
+    addKeyListener(this);
+    setWantsKeyboardFocus(true);
 
     //Knob Image Files
     EQInnerDial = ImageFileFormat::loadFrom (Gui::eqinnerDial_png, Gui::eqinnerDial_pngSize);
@@ -146,11 +158,10 @@ Gui::Gui ()
     EQOuterDialHMF = ImageFileFormat::loadFrom(Gui::eqouterDialFreqHmf_png, Gui::eqouterDialFreqHmf_pngSize);
     EQOuterDialHF = ImageFileFormat::loadFrom(Gui::eqouterDialFreqHf_png, Gui::eqouterDialFreqHf_pngSize);
     EQOuterDialGain = ImageFileFormat::loadFrom(Gui::eqouterDialGain_png, Gui::eqouterDialGain_pngSize);
-    //Outer Eq Sliders
 
+    //Outer Eq Sliders
     addAndMakeVisible (&LFFreq);
     LFFreq.setRange(20.f, 340.f);
-    LFFreq.setSkewFactor(10);
     LFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     LFFreq.setImage(EQOuterDialLF, (int) (EQOuterDialLF.getWidth()/ EQOuterDialLF.getHeight()));
     LFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -158,7 +169,6 @@ Gui::Gui ()
 
     addAndMakeVisible (&LMFFreq);
     LMFFreq.setRange(90.f, 1400.f);
-    LMFFreq.setSkewFactor(10);
     LMFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     LMFFreq.setImage(EQOuterDialLMF, (int) (EQOuterDialLMF.getWidth()/ EQOuterDialLMF.getHeight()));
     LMFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -166,7 +176,6 @@ Gui::Gui ()
 
     addAndMakeVisible (&HMFFreq);
     HMFFreq.setRange(400.f, 6000.f);
-    HMFFreq.setSkewFactor(10);
     HMFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     HMFFreq.setImage(EQOuterDialHMF, (int) (EQOuterDialHMF.getWidth()/ EQOuterDialHMF.getHeight()));
     HMFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -174,7 +183,6 @@ Gui::Gui ()
 
     addAndMakeVisible (&HFFreq);
     HFFreq.setRange(1500.f, 22000.f);
-    HFFreq.setSkewFactor(10);
     HFFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     HFFreq.setImage(EQOuterDialHF, (int) (EQOuterDialHF.getWidth()/ EQOuterDialHF.getHeight()));
     HFFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -182,7 +190,6 @@ Gui::Gui ()
 
     addAndMakeVisible (&HPFreq);
     HPFreq.setRange(20.f, 340.f);
-    HPFreq.setSkewFactor(10);
     HPFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     HPFreq.setImage(EQOuterDialLF, (int) (EQOuterDialLF.getWidth()/ EQOuterDialLF.getHeight()));
     HPFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -190,7 +197,6 @@ Gui::Gui ()
 
     addAndMakeVisible (&LPFreq);
     LPFreq.setRange(1500.f, 22000.f);
-    LPFreq.setSkewFactor(10);
     LPFreq.setSliderStyle(Slider::RotaryVerticalDrag);
     LPFreq.setImage(EQOuterDialHF, (int) (EQOuterDialHF.getWidth()/ EQOuterDialHF.getHeight()));
     LPFreq.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
@@ -296,7 +302,7 @@ Gui::Gui ()
     LPQ.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
     LPQ.addListener(this);
 
-
+    //set buttons to toggle's
     LFPos2->setClickingTogglesState(true);
     LFPN->setClickingTogglesState(true);
     LFEnable->setClickingTogglesState(true);
@@ -312,7 +318,7 @@ Gui::Gui ()
     HPEnable->setClickingTogglesState(true);
     LPEnable->setClickingTogglesState(true);
 
-
+    //Extract value
     this->LFPosBool = LFPos2->getToggleState();
     this->LFPNBool = LFPN->getToggleState();
     this->LFEnableBool = LFEnable->getToggleState();
@@ -328,7 +334,9 @@ Gui::Gui ()
     this->HPEnableBool = HPEnable->getToggleState();
     this->LPEnableBool = LPEnable->getToggleState();
 
+    //Set Lowpass frequemcy dial
     LPFreq.setValue(22000);
+
     //[/Constructor]
 }
 
@@ -351,6 +359,7 @@ Gui::~Gui()
     HPEnable = nullptr;
     LPEnable = nullptr;
     LFPos2 = nullptr;
+    Temp = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -401,7 +410,9 @@ void Gui::resized()
     HPEnable->setBounds (776, 104, 24, 40);
     LPEnable->setBounds (856, 104, 24, 40);
     LFPos2->setBounds (16, 104, 24, 40);
+    Temp->setBounds (656, 80, 150, 24);
     //[UserResized] Add your own custom resize handling here..
+
     //Inner EQ Dials
     LFShape.setBounds ((46 - (75 / 2)) + 75 / 2 - (50 / 2), (46 - (75 / 2)) + 75 / 2 - (50 / 2), 50, 50);
     LFQ.setBounds ((126 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), (110 - (75 / 2)) + roundFloatToInt (75 * 0.4933f) - ((roundFloatToInt (75 * 0.6667f)) / 2), roundFloatToInt (75 * 0.6667f), roundFloatToInt (75 * 0.6667f));
@@ -527,10 +538,61 @@ void Gui::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
+//fix scrollwheel shizzzle
+void mouseWheelMove (const MouseEvent& event,
+                     const MouseWheelDetails& wheel){
+    
+    
+    
+}
 
+bool Gui::keyPressed (const KeyPress& key,
+                 Component* originatingComponent){
+    return false;
+}
+bool Gui::keyStateChanged (bool isKeyDown, Component* originatingComponent){
+    if (isCommandDown() == true) {
+        LFFreq.setMouseDragSensitivity(1000);
+        LFShape.setMouseDragSensitivity(1000);
+        LFQ.setMouseDragSensitivity(1000);
+        LFGain.setMouseDragSensitivity(1000);
+        LMFFreq.setMouseDragSensitivity(1000);
+        LMFShape.setMouseDragSensitivity(1000);
+        LMFQ.setMouseDragSensitivity(1000);
+        LMFGain.setMouseDragSensitivity(1000);
+        HMFFreq.setMouseDragSensitivity(1000);
+        HMFShape.setMouseDragSensitivity(1000);
+        HMFQ.setMouseDragSensitivity(1000);
+        HMFGain.setMouseDragSensitivity(1000);
+        HFFreq.setMouseDragSensitivity(1000);
+        HFShape.setMouseDragSensitivity(1000);
+        HFQ.setMouseDragSensitivity(1000);
+        HFGain.setMouseDragSensitivity(1000);
+    } else if (isCommandDown() == false){
+        LFFreq.setMouseDragSensitivity(250);
+        LFShape.setMouseDragSensitivity(250);
+        LFQ.setMouseDragSensitivity(250);
+        LFGain.setMouseDragSensitivity(250);
+        LMFFreq.setMouseDragSensitivity(250);
+        LMFShape.setMouseDragSensitivity(250);
+        LMFQ.setMouseDragSensitivity(250);
+        LMFGain.setMouseDragSensitivity(250);
+        HMFFreq.setMouseDragSensitivity(250);
+        HMFShape.setMouseDragSensitivity(250);
+        HMFQ.setMouseDragSensitivity(250);
+        HMFGain.setMouseDragSensitivity(250);
+        HFFreq.setMouseDragSensitivity(250);
+        HFShape.setMouseDragSensitivity(250);
+        HFQ.setMouseDragSensitivity(250);
+        HFGain.setMouseDragSensitivity(250);
+    }
+    return true;
+}
+
+//report dial dragged to filter calculations and daw
 void Gui::stoppedDragging(){
     for (int i = 0; i < 20; i++) {
-        if (sliderDragged[i] = true) {
+        if (sliderDragged[i] == true) {
             sliderDragged[i] = false;
         }
     }
@@ -599,6 +661,7 @@ void Gui::sliderValueChanged (Slider* slider){
     }
 }
 
+//get functions
 float Gui::get_LFGainValue(){
     return LFGain.getValue();
 }
@@ -649,12 +712,14 @@ float Gui::get_HFQValue(){
 }
 float Gui::get_HPFreqValue(){
     return HPFreq.getValue();
+    //return HPFreq.getValue();
 }
 float Gui::get_HPQValue(){
     return HPQ.getValue();
 }
 float Gui::get_LPFreqValue(){
     return LPFreq.getValue();
+    //return LPFreq.getValue();
 }
 float Gui::get_LPQValue(){
     return LPQ.getValue();
@@ -703,9 +768,9 @@ bool Gui::get_LPEnableBool(){
     return LPEnableBool;
 }
 
+//set functions
 void Gui::set_LFGainValue(float input){
     LFGain.setValue(input);
-
 }
 void Gui::set_LFShapeValue(float input){
     LFShape.setValue(input);
@@ -929,6 +994,11 @@ BEGIN_JUCER_METADATA
                resourceNormal="switcherUp_png" opacityNormal="1" colourNormal="0"
                resourceOver="switcherUp_png" opacityOver="1" colourOver="0"
                resourceDown="switcherDown_png" opacityDown="1" colourDown="0"/>
+  <LABEL name="Temp" id="b6ba88cbb4065e3d" memberName="Temp" virtualName=""
+         explicitFocusOrder="0" pos="656 80 150 24" textCol="ffffffff"
+         edTextCol="ff000000" edBkgCol="0" labelText="Bliep" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15" bold="0" italic="0" justification="33"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

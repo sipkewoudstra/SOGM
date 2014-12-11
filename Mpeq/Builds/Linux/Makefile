@@ -51,6 +51,7 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/scaleLinToLog_cfe668a3.o \
   $(OBJDIR)/FilmstripSlider_182eb7f6.o \
   $(OBJDIR)/scaleParameter_69e31568.o \
   $(OBJDIR)/Gui_2b5c821c.o \
@@ -96,6 +97,11 @@ clean:
 strip:
 	@echo Stripping Mpeq
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
+
+$(OBJDIR)/scaleLinToLog_cfe668a3.o: ../../Source/scaleLinToLog.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling scaleLinToLog.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/FilmstripSlider_182eb7f6.o: ../../Source/FilmstripSlider.cpp
 	-@mkdir -p $(OBJDIR)

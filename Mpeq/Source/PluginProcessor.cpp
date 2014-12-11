@@ -32,56 +32,60 @@ NewProjectAudioProcessor::NewProjectAudioProcessor()
     LFPeak.set_Gain(custom.get_LFGainValue());
     LFPeak.set_PositiveNegative(custom.get_LFPosBool());
     LFPeak.calculateVariables();
+    LFShelf.set_Frequency(custom.get_LFFreqValue());
+    LFShelf.set_Q(custom.get_LFQValue());
+    LFShelf.set_Gain(custom.get_LFGainValue());
+    LFShelf.set_PositiveNegative(custom.get_LFPosBool());
+    LFShelf.calculateVariables();
+    LFNotch.set_Frequency(custom.get_LFFreqValue());
+    LFNotch.set_Q(custom.get_LFQValue());
+    LFNotch.calculateVariables();
     
     //LMF
-    LMFPeak.set_Frequency(custom.get_LFFreqValue());
-    LMFPeak.set_Q(custom.get_LFQValue());
-    LMFPeak.set_Gain(custom.get_LFGainValue());
+    LMFPeak.set_Frequency(custom.get_LMFFreqValue());
+    LMFPeak.set_Q(custom.get_LMFQValue());
+    LMFPeak.set_Gain(custom.get_LMFGainValue());
     LMFPeak.set_PositiveNegative(custom.get_LMFPosBool());
     LMFPeak.calculateVariables();
+    LMFShelf.set_Frequency(custom.get_LMFFreqValue());
+    LMFShelf.set_Q(custom.get_LMFQValue());
+    LMFShelf.set_Gain(custom.get_LMFGainValue());
+    LMFShelf.set_PositiveNegative(custom.get_LMFPosBool());
+    LMFShelf.calculateVariables();
+    LMFNotch.set_Frequency(custom.get_LMFFreqValue());
+    LMFNotch.set_Q(custom.get_LMFQValue());
+    LMFNotch.calculateVariables();
     
     //HMF
-    HMFPeak.set_Frequency(custom.get_LFFreqValue());
-    HMFPeak.set_Q(custom.get_LFQValue());
-    HMFPeak.set_Gain(custom.get_LFGainValue());
+    HMFPeak.set_Frequency(custom.get_HMFFreqValue());
+    HMFPeak.set_Q(custom.get_HMFQValue());
+    HMFPeak.set_Gain(custom.get_HMFGainValue());
     HMFPeak.set_PositiveNegative(custom.get_HMFPosBool());
     HMFPeak.calculateVariables();
+    HMFShelf.set_Frequency(custom.get_HMFFreqValue());
+    HMFShelf.set_Q(custom.get_HMFQValue());
+    HMFShelf.set_Gain(custom.get_HMFGainValue());
+    HMFShelf.set_PositiveNegative(custom.get_HMFPosBool());
+    HMFShelf.calculateVariables();
+    HMFNotch.set_Frequency(custom.get_HMFFreqValue());
+    HMFNotch.set_Q(custom.get_HMFQValue());
+    HMFNotch.calculateVariables();
     
     //HF
-    HFPeak.set_Frequency(custom.get_LFFreqValue());
-    HFPeak.set_Q(custom.get_LFQValue());
-    HFPeak.set_Gain(custom.get_LFGainValue());
+    HFPeak.set_Frequency(custom.get_HFFreqValue());
+    HFPeak.set_Q(custom.get_HFQValue());
+    HFPeak.set_Gain(custom.get_HFGainValue());
     HFPeak.set_PositiveNegative(custom.get_HFPosBool());
     HFPeak.calculateVariables();
+    HFShelf.set_Frequency(custom.get_HFFreqValue());
+    HFShelf.set_Q(custom.get_HFQValue());
+    HFShelf.set_Gain(custom.get_HFGainValue());
+    HFShelf.set_PositiveNegative(custom.get_HFPosBool());
+    HFShelf.calculateVariables();
+    HFNotch.set_Frequency(custom.get_HFFreqValue());
+    HFNotch.set_Q(custom.get_HFQValue());
+    HFNotch.calculateVariables();
     
-    
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
-
-            xLFShelf[i][j] = 0;
-            yLFShelf[i][j] = 0;
-            xLFNotch[i][j] = 0;
-            yLFNotch[i][j] = 0;
-            xLFAllpass[i][j] = 0;
-            yLFAllpass[i][j] = 0;
-            
-            xLMFShelf[i][j] = 0;
-            yLMFShelf[i][j] = 0;
-            xLMFNotch[i][j] = 0;
-            yLMFNotch[i][j] = 0;
-            
-            xHMFShelf[i][j] = 0;
-            yHMFShelf[i][j] = 0;
-            xHMFNotch[i][j] = 0;
-            yHMFNotch[i][j] = 0;
-            
-            xHFShelf[i][j] = 0;
-            yHFShelf[i][j] = 0;
-            xHFNotch[i][j] = 0;
-            yHFNotch[i][j] = 0;
-            
-        }
-    }
 }
 
 
@@ -182,280 +186,6 @@ void NewProjectAudioProcessor::releaseResources()
 }
 
 
-float NewProjectAudioProcessor::LFShelfFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_LFFreqValue();
-    double Q = custom.get_LFQValue();
-    double V = pow(10, fabs(custom.get_LFGainValue())/ 20.0);
-    double K = tan(M_PI * (f0/Fs));
-    double norm;
-    double a0;
-    double a1;
-    double a2;
-    double b1;
-    double b2;
-    if (custom.get_LFPosBool() == false) {
-        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
-        a0 = (1 + sqrt(2*V)/Q * K + V * K * K) * norm;
-        a1 = 2 * (V * K * K - 1) * norm;
-        a2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
-        b1 = 2 * (K * K - 1) * norm;
-        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-    } else {
-        norm = 1 / (1 + sqrt(2*V)/Q * K + V * K * K);
-        a0 = (1+ sqrt(2)/Q * K + K * K) * norm;
-        a1 = 2 * (K * K - 1) * norm;
-        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-        b1 = 2 * (V * K * K - 1) * norm;
-        b2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
-    }
-    xLFShelf[channel][2] = xLFShelf[channel][1];
-    xLFShelf[channel][1] = xLFShelf[channel][0];
-    xLFShelf[channel][0] = buffer;
-    yLFShelf[channel][2] = yLFShelf[channel][1];
-    yLFShelf[channel][1] = yLFShelf[channel][0];
-    
-    buffer = (a0*xLFShelf[channel][0] + a1*xLFShelf[channel][1] + a2*xLFShelf[channel][2] - b1*yLFShelf[channel][1] - b2*yLFShelf[channel][2]);
-    
-    yLFShelf[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-float NewProjectAudioProcessor::LFNotchFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_LFFreqValue();
-    double Q = custom.get_LFQValue();
-    double K = tan(M_PI * (f0/Fs));
-    double norm = 1 / (1 + K / Q + K * K);
-    double a0 = (1 + K * K) * norm;
-    double a1 = 2 * (K * K - 1) * norm;
-    double a2 = a0;
-    double b1 = a1;
-    double b2 = (1 - K / Q + K * K) * norm;
-
-    xLFNotch[channel][2] = xLFNotch[channel][1];
-    xLFNotch[channel][1] = xLFNotch[channel][0];
-    xLFNotch[channel][0] = buffer;
-    yLFNotch[channel][2] = yLFNotch[channel][1];
-    yLFNotch[channel][1] = yLFNotch[channel][0];
-    
-    buffer = (a0*xLFNotch[channel][0] + a1*xLFNotch[channel][1] + a2*xLFNotch[channel][2] - b1*yLFNotch[channel][1] - b2*yLFNotch[channel][2]);
-    
-    yLFNotch[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-float NewProjectAudioProcessor::LMFShelfFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_LMFFreqValue();
-    double Q = custom.get_LMFQValue();
-    double V = pow(10, fabs(custom.get_LMFGainValue())/ 20.0);
-    double K = tan(M_PI * (f0/Fs));
-    double norm;
-    double a0;
-    double a1;
-    double a2;
-    double b1;
-    double b2;
-    if (custom.get_LMFPosBool() == false) {
-        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
-        a0 = (1 + sqrt(2*V)/Q * K + V * K * K) * norm;
-        a1 = 2 * (V * K * K - 1) * norm;
-        a2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
-        b1 = 2 * (K * K - 1) * norm;
-        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-    } else {
-        norm = 1 / (1 + sqrt(2*V)/Q * K + V * K * K);
-        a0 = (1+ sqrt(2)/Q * K + K * K) * norm;
-        a1 = 2 * (K * K - 1) * norm;
-        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-        b1 = 2 * (V * K * K - 1) * norm;
-        b2 = (1 - sqrt(2*V)/Q * K + V * K * K) * norm;
-    }
-    xLMFShelf[channel][2] = xLMFShelf[channel][1];
-    xLMFShelf[channel][1] = xLMFShelf[channel][0];
-    xLMFShelf[channel][0] = buffer;
-    yLMFShelf[channel][2] = yLMFShelf[channel][1];
-    yLMFShelf[channel][1] = yLMFShelf[channel][0];
-    
-    buffer = (a0*xLMFShelf[channel][0] + a1*xLMFShelf[channel][1] + a2*xLMFShelf[channel][2] - b1*yLMFShelf[channel][1] - b2*yLMFShelf[channel][2]);
-    
-    yLMFShelf[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-float NewProjectAudioProcessor::LMFNotchFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_LMFFreqValue();
-    double Q = custom.get_LMFQValue();
-    double K = tan(M_PI * (f0/Fs));
-    double norm = 1 / (1 + K / Q + K * K);
-    double a0 = (1 + K * K) * norm;
-    double a1 = 2 * (K * K - 1) * norm;
-    double a2 = a0;
-    double b1 = a1;
-    double b2 = (1 - K / Q + K * K) * norm;
-    
-    xLMFNotch[channel][2] = xLMFNotch[channel][1];
-    xLMFNotch[channel][1] = xLMFNotch[channel][0];
-    xLMFNotch[channel][0] = buffer;
-    yLMFNotch[channel][2] = yLMFNotch[channel][1];
-    yLMFNotch[channel][1] = yLMFNotch[channel][0];
-    
-    buffer = (a0*xLMFNotch[channel][0] + a1*xLMFNotch[channel][1] + a2*xLMFNotch[channel][2] - b1*yLMFNotch[channel][1] - b2*yLMFNotch[channel][2]);
-    
-    yLMFNotch[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-float NewProjectAudioProcessor::HMFShelfFilter(float buffer, int channel){
-    
-    double Fs = getSampleRate();
-    double f0 = custom.get_HMFFreqValue();
-    double Q = custom.get_HMFQValue();
-    double V = pow(10, fabs(custom.get_HMFGainValue())/ 20.0);
-    double K = tan(M_PI * (f0/Fs));
-    double norm;
-    double a0;
-    double a1;
-    double a2;
-    double b1;
-    double b2;
-    if (custom.get_HMFPosBool() == false) {
-        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
-        a0 = (V + sqrt(2*V)/Q * K + K * K) * norm;
-        a1 = 2 * (K * K - V) * norm;
-        a2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
-        b1 = 2 * (K * K - 1) * norm;
-        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-    } else {
-        norm = 1 / (V + sqrt(2*V)/Q * K + K * K);
-        a0 = (1 + sqrt(2)/Q * K + K * K) * norm;
-        a1 = 2 * (K * K - 1) * norm;
-        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-        b1 = 2 * (K * K - V) * norm;
-        b2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
-    }
-    
-    
-    xHMFShelf[channel][2] = xHMFShelf[channel][1];
-    xHMFShelf[channel][1] = xHMFShelf[channel][0];
-    xHMFShelf[channel][0] = buffer;
-    yHMFShelf[channel][2] = yHMFShelf[channel][1];
-    yHMFShelf[channel][1] = yHMFShelf[channel][0];
-    
-    buffer = (a0*xHMFShelf[channel][0] + a1*xHMFShelf[channel][1] + a2*xHMFShelf[channel][2] - b1*yHMFShelf[channel][1] - b2*yHMFShelf[channel][2]);
-    
-    yHMFShelf[channel][0] = buffer;
-    
-    return buffer;
-}
-
-float NewProjectAudioProcessor::HMFNotchFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_HMFFreqValue();
-    double Q = custom.get_HMFQValue();
-    double K = tan(M_PI * (f0/Fs));
-    double norm = 1 / (1 + K / Q + K * K);
-    double a0 = (1 + K * K) * norm;
-    double a1 = 2 * (K * K - 1) * norm;
-    double a2 = a0;
-    double b1 = a1;
-    double b2 = (1 - K / Q + K * K) * norm;
-    
-    xHMFNotch[channel][2] = xHMFNotch[channel][1];
-    xHMFNotch[channel][1] = xHMFNotch[channel][0];
-    xHMFNotch[channel][0] = buffer;
-    yHMFNotch[channel][2] = yHMFNotch[channel][1];
-    yHMFNotch[channel][1] = yHMFNotch[channel][0];
-    
-    buffer = (a0*xHMFNotch[channel][0] + a1*xHMFNotch[channel][1] + a2*xHMFNotch[channel][2] - b1*yHMFNotch[channel][1] - b2*yHMFNotch[channel][2]);
-    
-    yHMFNotch[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-float NewProjectAudioProcessor::HFShelfFilter(float buffer, int channel){
-    
-    double Fs = getSampleRate();
-    double f0 = custom.get_HFFreqValue();
-    double Q = custom.get_HFQValue();
-    double V = pow(10, fabs(custom.get_HFGainValue())/ 20.0);
-    double K = tan(M_PI * (f0/Fs));
-    double norm;
-    double a0;
-    double a1;
-    double a2;
-    double b1;
-    double b2;
-    if (custom.get_HFPosBool() == false) {
-        norm = 1 / (1 + sqrt(2)/Q * K + K * K);
-        a0 = (V + sqrt(2*V)/Q * K + K * K) * norm;
-        a1 = 2 * (K * K - V) * norm;
-        a2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
-        b1 = 2 * (K * K - 1) * norm;
-        b2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-    } else {
-        norm = 1 / (V + sqrt(2*V)/Q * K + K * K);
-        a0 = (1 + sqrt(2)/Q * K + K * K) * norm;
-        a1 = 2 * (K * K - 1) * norm;
-        a2 = (1 - sqrt(2)/Q * K + K * K) * norm;
-        b1 = 2 * (K * K - V) * norm;
-        b2 = (V - sqrt(2*V)/Q * K + K * K) * norm;
-    }
-    
-    
-    xHFShelf[channel][2] = xHFShelf[channel][1];
-    xHFShelf[channel][1] = xHFShelf[channel][0];
-    xHFShelf[channel][0] = buffer;
-    yHFShelf[channel][2] = yHFShelf[channel][1];
-    yHFShelf[channel][1] = yHFShelf[channel][0];
-    
-    buffer = (a0*xHFShelf[channel][0] + a1*xHFShelf[channel][1] + a2*xHFShelf[channel][2] - b1*yHFShelf[channel][1] - b2*yHFShelf[channel][2]);
-    
-    yHFShelf[channel][0] = buffer;
-    
-    return buffer;
-}
-
-float NewProjectAudioProcessor::HFNotchFilter(float buffer, int channel){
-    double Fs = getSampleRate();
-    double f0 = custom.get_HFFreqValue();
-    double Q = custom.get_HFQValue();
-    double K = tan(M_PI * (f0/Fs));
-    double norm = 1 / (1 + K / Q + K * K);
-    double a0 = (1 + K * K) * norm;
-    double a1 = 2 * (K * K - 1) * norm;
-    double a2 = a0;
-    double b1 = a1;
-    double b2 = (1 - K / Q + K * K) * norm;
-    
-    xHFNotch[channel][2] = xHFNotch[channel][1];
-    xHFNotch[channel][1] = xHFNotch[channel][0];
-    xHFNotch[channel][0] = buffer;
-    yHFNotch[channel][2] = yHFNotch[channel][1];
-    yHFNotch[channel][1] = yHFNotch[channel][0];
-    
-    buffer = (a0*xHFNotch[channel][0] + a1*xHFNotch[channel][1] + a2*xHFNotch[channel][2] - b1*yHFNotch[channel][1] - b2*yHFNotch[channel][2]);
-    
-    yHFNotch[channel][0] = buffer;
-    
-    return buffer;
-    
-}
-
-
-
 void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     const int numSamples = buffer.getNumSamples();
@@ -467,6 +197,15 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
     LMFPeak.set_Samplerate(getSampleRate());
     HMFPeak.set_Samplerate(getSampleRate());
     HFPeak.set_Samplerate(getSampleRate());
+    LFShelf.set_Samplerate(getSampleRate());
+    LMFShelf.set_Samplerate(getSampleRate());
+    HMFShelf.set_Samplerate(getSampleRate());
+    HFShelf.set_Samplerate(getSampleRate());
+    LFNotch.set_Samplerate(getSampleRate());
+    LMFNotch.set_Samplerate(getSampleRate());
+    HMFNotch.set_Samplerate(getSampleRate());
+    HFNotch.set_Samplerate(getSampleRate());
+    
     
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
@@ -482,9 +221,7 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
     for (int channel = 0; channel < getNumInputChannels(); ++channel)
     {
         float* channelData = buffer.getWritePointer (channel);
-        
-        // ..do something to the data...
-        
+                
         //Highpass Filter
         for (int i = 0; i < numSamples; i++) {
             if (custom.get_HPEnableBool() == true) {
@@ -516,15 +253,45 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
             //LFFilters
             if (custom.get_LFEnableBool() == true) {
                 if(custom.get_LFPNBool() == false){
-                    LFPeak.set_Frequency(custom.get_LFFreqValue());
-                    LFPeak.set_Q(custom.get_LFQValue());
-                    LFPeak.set_Gain(custom.get_LFGainValue());
-                    LFPeak.set_PositiveNegative(custom.get_LFPosBool());
-                    LFPeak.calculateVariables();
-                    parallelChain1 = (LFPeak.processSample(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelfFilter(channelData[i], channel)*custom.get_LFShapeValue());
+                    if (custom.sliderDragged[0] == true || custom.sliderDragged[2] == true || custom.sliderDragged[3] == true)
+                    {
+                        LFPeak.set_Frequency(custom.get_LFFreqValue());
+                        LFPeak.set_Q(custom.get_LFQValue());
+                        LFPeak.set_Gain(custom.get_LFGainValue());
+                        LFPeak.set_PositiveNegative(custom.get_LFPosBool());
+                        LFPeak.calculateVariables();
+                        LFShelf.set_Frequency(custom.get_LFFreqValue());
+                        LFShelf.set_Q(custom.get_LFQValue());
+                        LFShelf.set_Gain(custom.get_LFGainValue());
+                        LFShelf.set_PositiveNegative(custom.get_LFPosBool());
+                        LFShelf.calculateVariables();
+                        LFNotch.set_Frequency(custom.get_LFFreqValue());
+                        LFNotch.set_Q(custom.get_LFQValue());
+                        LFNotch.calculateVariables();
+                        parallelChain1 = (LFPeak.processSample(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelf.processSample(channelData[i], channel)*custom.get_LFShapeValue());
+                    } else {
+                        parallelChain1 = (LFPeak.processSample(channelData[i], channel)*(1 - custom.get_LFShapeValue()))+(LFShelf.processSample(channelData[i], channel)*custom.get_LFShapeValue());
+                    }
                 } else {
-                    parallelChain1 = LFNotchFilter(channelData[i], channel);
-                    //parallelChain1 = LFAllpassFilter(channelData[i], channel);
+                    if (custom.sliderDragged[0] == true || custom.sliderDragged[2] == true || custom.sliderDragged[3] == true)
+                    {
+                        LFPeak.set_Frequency(custom.get_LFFreqValue());
+                        LFPeak.set_Q(custom.get_LFQValue());
+                        LFPeak.set_Gain(custom.get_LFGainValue());
+                        LFPeak.set_PositiveNegative(custom.get_LFPosBool());
+                        LFPeak.calculateVariables();
+                        LFShelf.set_Frequency(custom.get_LFFreqValue());
+                        LFShelf.set_Q(custom.get_LFQValue());
+                        LFShelf.set_Gain(custom.get_LFGainValue());
+                        LFShelf.set_PositiveNegative(custom.get_LFPosBool());
+                        LFShelf.calculateVariables();
+                        LFNotch.set_Frequency(custom.get_LFFreqValue());
+                        LFNotch.set_Q(custom.get_LFQValue());
+                        LFNotch.calculateVariables();
+                        parallelChain1 = LFNotch.processSample(channelData[i], channel);
+                    } else {
+                        parallelChain1 = LFNotch.processSample(channelData[i], channel);
+                    }
                 }
             } else {
                 parallelChain1 = channelData[i];
@@ -532,14 +299,43 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
             //LMFFilters
             if (custom.get_LMFEnableBool() == true) {
                 if (custom.get_LMFPNBool() == false) {
-                    LMFPeak.set_Frequency(custom.get_LMFFreqValue());
-                    LMFPeak.set_Q(custom.get_LMFQValue());
-                    LMFPeak.set_Gain(custom.get_LMFGainValue());
-                    LMFPeak.set_PositiveNegative(custom.get_LMFPosBool());
-                    LMFPeak.calculateVariables();
-                    parallelChain2 = (LMFPeak.processSample(channelData[i], channel)*(1 - custom.get_LMFShapeValue()))+(LMFShelfFilter(channelData[i], channel)*custom.get_LMFShapeValue());
+                    if (custom.sliderDragged[4] == true || custom.sliderDragged[6] == true || custom.sliderDragged[7] == true) {
+                        LMFPeak.set_Frequency(custom.get_LMFFreqValue());
+                        LMFPeak.set_Q(custom.get_LMFQValue());
+                        LMFPeak.set_Gain(custom.get_LMFGainValue());
+                        LMFPeak.set_PositiveNegative(custom.get_LMFPosBool());
+                        LMFPeak.calculateVariables();
+                        LMFShelf.set_Frequency(custom.get_LMFFreqValue());
+                        LMFShelf.set_Q(custom.get_LMFQValue());
+                        LMFShelf.set_Gain(custom.get_LMFGainValue());
+                        LMFShelf.set_PositiveNegative(custom.get_LMFPosBool());
+                        LMFShelf.calculateVariables();
+                        LMFNotch.set_Frequency(custom.get_LMFFreqValue());
+                        LMFNotch.set_Q(custom.get_LMFQValue());
+                        LMFNotch.calculateVariables();
+                        parallelChain2 = (LMFPeak.processSample(channelData[i], channel)*(1 - custom.get_LMFShapeValue()))+(LMFShelf.processSample(channelData[i], channel)*custom.get_LMFShapeValue());
+                    } else {
+                        parallelChain2 = (LMFPeak.processSample(channelData[i], channel)*(1 - custom.get_LMFShapeValue()))+(LMFShelf.processSample(channelData[i], channel)*custom.get_LMFShapeValue());
+                    }
                 } else {
-                    parallelChain2 = LMFNotchFilter(channelData[i], channel);
+                    if (custom.sliderDragged[4] == true || custom.sliderDragged[6] == true || custom.sliderDragged[7] == true) {
+                        LMFPeak.set_Frequency(custom.get_LMFFreqValue());
+                        LMFPeak.set_Q(custom.get_LMFQValue());
+                        LMFPeak.set_Gain(custom.get_LMFGainValue());
+                        LMFPeak.set_PositiveNegative(custom.get_LMFPosBool());
+                        LMFPeak.calculateVariables();
+                        LMFShelf.set_Frequency(custom.get_LMFFreqValue());
+                        LMFShelf.set_Q(custom.get_LMFQValue());
+                        LMFShelf.set_Gain(custom.get_LMFGainValue());
+                        LMFShelf.set_PositiveNegative(custom.get_LMFPosBool());
+                        LMFShelf.calculateVariables();
+                        LMFNotch.set_Frequency(custom.get_LMFFreqValue());
+                        LMFNotch.set_Q(custom.get_LMFQValue());
+                        LMFNotch.calculateVariables();
+                        parallelChain2 = LMFNotch.processSample(channelData[i], channel);
+                    } else {
+                        parallelChain2 = LMFNotch.processSample(channelData[i], channel);
+                    }
                 }
                 
             } else {
@@ -549,14 +345,43 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
             //HMFFilters
             if (custom.get_HMFEnableBool() == true) {
                 if (custom.get_HMFPNBool() == false){
-                    HMFPeak.set_Frequency(custom.get_HMFFreqValue());
-                    HMFPeak.set_Q(custom.get_HMFQValue());
-                    HMFPeak.set_Gain(custom.get_HMFGainValue());
-                    HMFPeak.set_PositiveNegative(custom.get_HMFPosBool());
-                    HMFPeak.calculateVariables();
-                parallelChain1 = (HMFPeak.processSample(parallelChain1, channel)*(1-custom.get_HMFShapeValue()))+(HMFShelfFilter(parallelChain1, channel)*custom.get_HMFShapeValue());
+                    if (custom.sliderDragged[8] == true || custom.sliderDragged[10] == true || custom.sliderDragged[11] == true) {
+                        HMFPeak.set_Frequency(custom.get_HMFFreqValue());
+                        HMFPeak.set_Q(custom.get_HMFQValue());
+                        HMFPeak.set_Gain(custom.get_HMFGainValue());
+                        HMFPeak.set_PositiveNegative(custom.get_HMFPosBool());
+                        HMFPeak.calculateVariables();
+                        HMFShelf.set_Frequency(custom.get_HMFFreqValue());
+                        HMFShelf.set_Q(custom.get_HMFQValue());
+                        HMFShelf.set_Gain(custom.get_HMFGainValue());
+                        HMFShelf.set_PositiveNegative(custom.get_HMFPosBool());
+                        HMFShelf.calculateVariables();
+                        HMFNotch.set_Frequency(custom.get_HMFFreqValue());
+                        HMFNotch.set_Q(custom.get_HMFQValue());
+                        HMFNotch.calculateVariables();
+                        parallelChain1 = (HMFPeak.processSample(parallelChain1, channel)*(1-custom.get_HMFShapeValue()))+(HMFShelf.processSample(parallelChain1, channel)*custom.get_HMFShapeValue());
+                    } else {
+                        parallelChain1 = (HMFPeak.processSample(parallelChain1, channel)*(1-custom.get_HMFShapeValue()))+(HMFShelf.processSample(parallelChain1, channel)*custom.get_HMFShapeValue());
+                    }
                 } else {
-                    parallelChain1 = HMFNotchFilter(parallelChain1, channel);
+                    if (custom.sliderDragged[8] == true || custom.sliderDragged[10] == true || custom.sliderDragged[11] == true) {
+                        HMFPeak.set_Frequency(custom.get_HMFFreqValue());
+                        HMFPeak.set_Q(custom.get_HMFQValue());
+                        HMFPeak.set_Gain(custom.get_HMFGainValue());
+                        HMFPeak.set_PositiveNegative(custom.get_HMFPosBool());
+                        HMFPeak.calculateVariables();
+                        HMFShelf.set_Frequency(custom.get_HMFFreqValue());
+                        HMFShelf.set_Q(custom.get_HMFQValue());
+                        HMFShelf.set_Gain(custom.get_HMFGainValue());
+                        HMFShelf.set_PositiveNegative(custom.get_HMFPosBool());
+                        HMFShelf.calculateVariables();
+                        HMFNotch.set_Frequency(custom.get_HMFFreqValue());
+                        HMFNotch.set_Q(custom.get_HMFQValue());
+                        HMFNotch.calculateVariables();
+                        parallelChain1 = HMFNotch.processSample(parallelChain1, channel);
+                    } else {
+                        parallelChain1 = HMFNotch.processSample(parallelChain1, channel);
+                    }
                 }
             } else {
                 parallelChain1 = parallelChain1;
@@ -565,14 +390,43 @@ void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
             //HFFilters
             if (custom.get_HFEnableBool() == true) {
                 if (custom.get_HFPNBool() == false){
-                    HFPeak.set_Frequency(custom.get_HFFreqValue());
-                    HFPeak.set_Q(custom.get_HFQValue());
-                    HFPeak.set_Gain(custom.get_HFGainValue());
-                    HFPeak.set_PositiveNegative(custom.get_HFPosBool());
-                    HFPeak.calculateVariables();
-                    parallelChain2 = (HFPeak.processSample(parallelChain2, channel)*(1 - custom.get_HFShapeValue())) + (HFShelfFilter(parallelChain2, channel)*custom.get_HFShapeValue());
+                    if (custom.sliderDragged[12] == true || custom.sliderDragged[14] == true || custom.sliderDragged[15] == true) {
+                        HFPeak.set_Frequency(custom.get_HFFreqValue());
+                        HFPeak.set_Q(custom.get_HFQValue());
+                        HFPeak.set_Gain(custom.get_HFGainValue());
+                        HFPeak.set_PositiveNegative(custom.get_HFPosBool());
+                        HFPeak.calculateVariables();
+                        HFShelf.set_Frequency(custom.get_HFFreqValue());
+                        HFShelf.set_Q(custom.get_HFQValue());
+                        HFShelf.set_Gain(custom.get_HFGainValue());
+                        HFShelf.set_PositiveNegative(custom.get_HFPosBool());
+                        HFShelf.calculateVariables();
+                        HFNotch.set_Frequency(custom.get_HFFreqValue());
+                        HFNotch.set_Q(custom.get_HFQValue());
+                        HFNotch.calculateVariables();
+                        parallelChain2 = (HFPeak.processSample(parallelChain2, channel)*(1 - custom.get_HFShapeValue())) + (HFShelf.processSample(parallelChain2, channel)*custom.get_HFShapeValue());
+                    } else {
+                        parallelChain2 = (HFPeak.processSample(parallelChain2, channel)*(1 - custom.get_HFShapeValue())) + (HFShelf.processSample(parallelChain2, channel)*custom.get_HFShapeValue());
+                    }
                 } else {
-                    parallelChain2 = HFNotchFilter(parallelChain2, channel);
+                    if (custom.sliderDragged[12] == true || custom.sliderDragged[14] == true || custom.sliderDragged[15] == true) {
+                        HFPeak.set_Frequency(custom.get_HFFreqValue());
+                        HFPeak.set_Q(custom.get_HFQValue());
+                        HFPeak.set_Gain(custom.get_HFGainValue());
+                        HFPeak.set_PositiveNegative(custom.get_HFPosBool());
+                        HFPeak.calculateVariables();
+                        HFShelf.set_Frequency(custom.get_HFFreqValue());
+                        HFShelf.set_Q(custom.get_HFQValue());
+                        HFShelf.set_Gain(custom.get_HFGainValue());
+                        HFShelf.set_PositiveNegative(custom.get_HFPosBool());
+                        HFShelf.calculateVariables();
+                        HFNotch.set_Frequency(custom.get_HFFreqValue());
+                        HFNotch.set_Q(custom.get_HFQValue());
+                        HFNotch.calculateVariables();
+                        parallelChain2 = HFNotch.processSample(parallelChain2, channel);
+                    } else {
+                        parallelChain2 = HFNotch.processSample(parallelChain2, channel);
+                    }
                 }
             } else {
                 parallelChain1 = parallelChain1;
@@ -828,6 +682,7 @@ void NewProjectAudioProcessor::setStateInformation (const void* data, int sizeIn
         }
     }
 }
+
 
 //==============================================================================
 // This creates new instances of the plugin..

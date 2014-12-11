@@ -10,7 +10,19 @@
 
 #ifndef HIGHSHELFFILTER_H_INCLUDED
 #define HIGHSHELFFILTER_H_INCLUDED
+#include "Filter.h"
 
+class HighShelfFilter : public Filter
+{
+public:
+    void calculateVariables();
+    void set_PositiveNegative(bool posneg);
+private:
+    double K;
+    double norm;
+    double V;
+    bool posneg;
+};
 
 
 

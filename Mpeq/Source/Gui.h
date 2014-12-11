@@ -23,6 +23,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
 #include "FilmstripSlider.h"
+#include "scaleLinToLog.h"
 //[/Headers]
 
 
@@ -33,12 +34,17 @@
     An auto-generated component, created by the Introjucer.
 
     Describe your class and how it works here!
- 
+
 */
 class Gui  : public Component,
              public ButtonListener,
-             public SliderListener
-//[/Comments]
+             public SliderListener,
+             private KeyListener,
+             public ModifierKeys,
+             public MouseListener,
+             public scaleLinToLog
+                                                                    //[/Comments]
+
 {
 public:
     //==============================================================================
@@ -47,6 +53,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    bool keyPressed (const KeyPress& key,
+                     Component* originatingComponent);
+    bool keyStateChanged (bool isKeyDown, Component* originatingComponent);
     float get_LFGainValue();
     float get_LFShapeValue();
     float get_LFFreqValue();
@@ -138,6 +147,8 @@ public:
     void startedDragging();
     void stoppedDragging();
     void sliderValueChanged (Slider* slider);
+
+
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -223,6 +234,7 @@ private:
     ScopedPointer<ImageButton> HPEnable;
     ScopedPointer<ImageButton> LPEnable;
     ScopedPointer<ImageButton> LFPos2;
+    ScopedPointer<Label> Temp;
     Image cachedImage_background_png;
 
 

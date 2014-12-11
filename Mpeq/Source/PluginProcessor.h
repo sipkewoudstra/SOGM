@@ -16,6 +16,9 @@
 #include "LowpassFilter.h"
 #include "HighpassFilter.h"
 #include "PeakFilter.h"
+#include "LowShelfFilter.h"
+#include "HighShelfFilter.h"
+#include "NotchFilter.h"
 #include "scaleParameter.h"
 
 //==============================================================================
@@ -66,14 +69,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     //==============================================================================
-    float LFShelfFilter(float buffer, int channel);
-    float LFNotchFilter(float buffer, int channel);
-    float LMFShelfFilter(float buffer, int channel);
-    float LMFNotchFilter(float buffer, int channel);
-    float HMFShelfFilter(float buffer, int channel);
-    float HMFNotchFilter(float buffer, int channel);
-    float HFShelfFilter(float buffer, int channel);
-    float HFNotchFilter(float buffer, int channel);
+
     //==============================================================================
     
     Gui custom;
@@ -125,29 +121,14 @@ private:
     PeakFilter LMFPeak;
     PeakFilter HMFPeak;
     PeakFilter HFPeak;
-    
-    
-    float xLFShelf[2][3];
-    float yLFShelf[2][3];
-    float xLFNotch[2][3];
-    float yLFNotch[2][3];
-    float xLFAllpass[2][3];
-    float yLFAllpass[2][3];
-    
-    float xLMFShelf[2][3];
-    float yLMFShelf[2][3];
-    float xLMFNotch[2][3];
-    float yLMFNotch[2][3];
-    
-    float xHMFShelf[2][3];
-    float yHMFShelf[2][3];
-    float xHMFNotch[2][3];
-    float yHMFNotch[2][3];
-    
-    float xHFShelf[2][3];
-    float yHFShelf[2][3];
-    float xHFNotch[2][3];
-    float yHFNotch[2][3];
+    LowShelfFilter LFShelf;
+    LowShelfFilter LMFShelf;
+    HighShelfFilter HMFShelf;
+    HighShelfFilter HFShelf;
+    NotchFilter LFNotch;
+    NotchFilter LMFNotch;
+    NotchFilter HMFNotch;
+    NotchFilter HFNotch;
     
     float parallelChain1;
     float parallelChain2;

@@ -304,6 +304,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\scaleLinToLog.cpp">
+      <Filter>Mpeq\Gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FilmstripSlider.cpp">
       <Filter>Mpeq\Gui</Filter>
     </ClCompile>
@@ -582,9 +585,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_processors\scanning\juce_PluginListComponent.cpp">
       <Filter>Juce Modules\juce_audio_processors\scanning</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioAppComponent.cpp">
-      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.cpp">
       <Filter>Juce Modules\juce_audio_utils\gui</Filter>
@@ -1414,9 +1414,6 @@
     <ClCompile Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_gui_extra\documents\juce_FileBasedDocument.cpp">
       <Filter>Juce Modules\juce_gui_extra\documents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.cpp">
-      <Filter>Juce Modules\juce_gui_extra\misc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_gui_extra\misc\juce_BubbleMessageComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClCompile>
@@ -1548,6 +1545,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\scaleLinToLog.h">
+      <Filter>Mpeq\Gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FilmstripSlider.h">
       <Filter>Mpeq\Gui</Filter>
     </ClInclude>
@@ -1797,9 +1797,6 @@
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorListener.h">
       <Filter>Juce Modules\juce_audio_processors\processors</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_processors\processors\juce_AudioProcessorParameter.h">
-      <Filter>Juce Modules\juce_audio_processors\processors</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_processors\processors\juce_GenericAudioProcessorEditor.h">
       <Filter>Juce Modules\juce_audio_processors\processors</Filter>
     </ClInclude>
@@ -1844,9 +1841,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_processors\juce_audio_processors.h">
       <Filter>Juce Modules\juce_audio_processors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioAppComponent.h">
-      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.h">
       <Filter>Juce Modules\juce_audio_utils\gui</Filter>
@@ -1918,9 +1912,6 @@
       <Filter>Juce Modules\juce_core\maths</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_core\maths\juce_MathsFunctions.h">
-      <Filter>Juce Modules\juce_core\maths</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_core\maths\juce_NormalisableRange.h">
       <Filter>Juce Modules\juce_core\maths</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_core\maths\juce_Random.h">
@@ -2142,9 +2133,6 @@
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_core\logging\juce_Logger.h">
       <Filter>Juce Modules\juce_core\logging</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_core\system\juce_CompilerSupport.h">
-      <Filter>Juce Modules\juce_core\system</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_core\system\juce_PlatformDefs.h">
       <Filter>Juce Modules\juce_core\system</Filter>
     </ClInclude>
@@ -2248,9 +2236,6 @@
       <Filter>Juce Modules\juce_events\messages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_events\messages\juce_MessageManager.h">
-      <Filter>Juce Modules\juce_events\messages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_events\messages\juce_MountedVolumeListChangeDetector.h">
       <Filter>Juce Modules\juce_events\messages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_events\messages\juce_NotificationType.h">
@@ -2831,9 +2816,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_gui_extra\embedding\juce_UIViewComponent.h">
       <Filter>Juce Modules\juce_gui_extra\embedding</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_gui_extra\misc\juce_AnimatedAppComponent.h">
-      <Filter>Juce Modules\juce_gui_extra\misc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\C++ \JUCE-OSX\modules\juce_gui_extra\misc\juce_AppleRemote.h">
       <Filter>Juce Modules\juce_gui_extra\misc</Filter>
